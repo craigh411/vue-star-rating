@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>Star Rating Example</title>
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <script src="../dist/star-rating.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>Default</h2>
+        <star-rating></star-rating>
+
+        <h2>Half Stars</h2>
+        <star-rating :increment="0.5"></star-rating>
+
+        <h2>Red Stars</h2>
+        <star-rating active-color="#9c0000"></star-rating>
+
+        <h2>Small Stars</h2>
+        <star-rating :star-size="20"></star-rating>
+
+        <h2>Big Stars</h2>
+        <star-rating :star-size="90"></star-rating>
+
+        <h2>Fluid Stars</h2>
+        <star-rating :increment="0.01"></star-rating>
+
+        <h2>Preset Stars</h2>
+        <star-rating :rating="4"></star-rating>
+
+        <h2>Read Only Stars</h2>
+        <star-rating :rating="3.8" :read-only="true" :increment="0.01"></star-rating>
+
+        <h2>Lots of stars</h2>
+        <star-rating :max-rating="10" star-size="20"></star-rating>
+
+        <h2>Hide Rating</h2>
+        <star-rating :show-rating="false"></star-rating>
+
+        <h2>Capture Rating</h2>
+        <star-rating :show-rating="false" @rating-selected="setRating"></star-rating>
+        <div style="margin-top:10px;font-weight:bold;">{{rating}}</div>
+
+        <h2>Capture Mouse Over Rating</h2>
+        <div @mouseleave="showCurrentRating(0)" style="display:inline-block;">
+            <star-rating :show-rating="false" @current-rating="showCurrentRating" @rating-selected="setCurrentSelectedRating" :increment="0.5"></star-rating>
+        </div>
+        <div style="margin-top:10px;font-weight:bold;">{{currentRating}}</div>
+    </div>
+
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        methods: {
+            setRating: function(rating) {
+                this.rating = "You have Selected: " + rating + " stars";
+            },
+            showCurrentRating: function(rating) {
+                this.currentRating = (rating === 0) ? this.currentSelectedRating : "Click to select " + rating + " stars"
+            },
+            setCurrentSelectedRating(rating){
+            	this.currentSelectedRating = "You have Selected: " + rating + " stars";
+            }
+        },
+        data: {
+            rating: "No Rating Selected",
+            currentRating: "No Rating",
+            currentSelectedRating: "No Current Rating"
+
+        }
+    });
+    </script>
+</body>
+
+</html>
