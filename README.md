@@ -4,8 +4,8 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 ## Features:
 
-  - Uses SVG so stars scale without loss of quality.
-  - Customise rating increments.
+  - SVG stars - scale without loss of quality.
+  - Customisable rating increments.
   - Customisable colors.
-  - Customisable star numbers.
+  - Customisable number of stars.
   - Create read-only stars.
