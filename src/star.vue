@@ -38,6 +38,8 @@ export default {
             // calculate position in percentage!
             var starWidth = (92 / 100) * this.size;
             var position = Math.round((100 / starWidth) * $event.offsetX);
+            position = (position > 100) ? 100 : position;
+            
             this.$emit('star-mouse-move', {
                 event: $event,
                 position: position,
