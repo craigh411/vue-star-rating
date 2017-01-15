@@ -5,6 +5,7 @@ import babelify from "babelify";
 import vueify from "vueify";
 import uglify from "gulp-uglify";
 import buffer from "vinyl-buffer";
+import {Server} from 'karma';
 
 gulp.task('default', () => {
     browserify({
@@ -18,4 +19,14 @@ gulp.task('default', () => {
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest('dist'));
+});
+
+/**
+ * Run tests using karma once and exit
+ */
+gulp.task('test', done => {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done).start();
 });
