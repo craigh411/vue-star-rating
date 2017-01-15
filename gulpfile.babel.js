@@ -27,6 +27,6 @@ gulp.task('default', () => {
 gulp.task('test', done => {
     new Server({
         configFile: __dirname + '/karma.conf.js',
-        singleRun: true
+        singleRun: false
     }, done).start();
 });

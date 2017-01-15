@@ -2,7 +2,8 @@
 
 <head>
     <title>Star Rating Example</title>
-    <script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script src="https://unpkg.com/vue@2.1.8/dist/vue.min.js"></script>
     <script src="../dist/star-rating.js"></script>
 </head>
 
@@ -16,7 +17,6 @@
 
         <h2>Red Stars</h2>
         <star-rating active-color="#9c0000"></star-rating>
-
 
         <h2>Small Stars</h2>
         <star-rating :star-size="20"></star-rating>
@@ -60,15 +60,14 @@
             showCurrentRating: function(rating) {
                 this.currentRating = (rating === 0) ? this.currentSelectedRating : "Click to select " + rating + " stars"
             },
-            setCurrentSelectedRating(rating){
-            	this.currentSelectedRating = "You have Selected: " + rating + " stars";
+            setCurrentSelectedRating: function(rating) {
+                this.currentSelectedRating = "You have Selected: " + rating + " stars";
             }
         },
         data: {
             rating: "No Rating Selected",
             currentRating: "No Rating",
             currentSelectedRating: "No Current Rating"
-
         }
     });
     </script>

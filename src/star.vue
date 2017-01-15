@@ -2,12 +2,13 @@
     <div>
         <svg :height="size" :width="size" @mousemove="mouseMoving" @click="selected">
 
-            <mask x="0" y="0" id="half">
-                <rect fill="white" height="100%" :width="fillWidth" />
-            </mask>
-            <polygon :points="starPointsToString" :fill="inactiveColor" />
+            <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
+                <stop :offset="fillWidth" :stop-color="activeColor" />
+                <stop :offset="fillWidth" :stop-color="inactiveColor" />
+            </linearGradient>
 
-            <polygon :points="starPointsToString" mask="url(#half)" :fill="activeColor" />
+            <polygon :points="starPointsToString" :fill="'url(#'+grad+')'" :id="id" />
+
         </svg>
     </div>
 </template>
@@ -18,6 +19,7 @@ export default {
     created() {
         this.calculatePoints;
         this.setFill;
+        this.grad = Math.random().toString(36).substring(7);
     },
     computed: {
         calculatePoints() {
@@ -29,9 +31,11 @@ export default {
             return this.starPoints.join(',');
         },
         setFill() {
-            // Normalise to base 92% to account to margins
-            this.fillWidth = (92 / 100) * this.fill + "%";
+            this.fillWidth = this.fill + "%";
         },
+        gradId(){
+
+        }
     },
     methods: {
         mouseMoving($event) {
@@ -39,7 +43,6 @@ export default {
             var starWidth = (92 / 100) * this.size;
             var position = Math.round((100 / starWidth) * $event.offsetX);
             position = (position > 100) ? 100 : position;
-            
             this.$emit('star-mouse-move', {
                 event: $event,
                 position: position,
@@ -65,7 +68,8 @@ export default {
     data() {
         return {
             fillWidth: "0%",
-            starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56]
+            starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
+            grad: ''
         }
     }
 }
