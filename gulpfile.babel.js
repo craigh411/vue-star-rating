@@ -5,7 +5,7 @@ import babelify from "babelify";
 import vueify from "vueify";
 import uglify from "gulp-uglify";
 import buffer from "vinyl-buffer";
-import {Server} from 'karma';
+import {Server} from "karma";
 
 gulp.task('default', () => {
     browserify({
@@ -22,7 +22,7 @@ gulp.task('default', () => {
 });
 
 /**
- * Run tests using karma once and exit
+ * Run tests using karma.
  */
 gulp.task('test', done => {
     new Server({

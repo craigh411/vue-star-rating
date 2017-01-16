@@ -4,20 +4,18 @@
   "description": "Star rating package for Vue.js 2",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/craigh411/vue-star-rating.git"
   },
   "keywords": [
-    "star",
-    "rating",
+    "star rating",
     "star",
     "vue",
     "vue.js",
-    "vue",
-    "2"
+    "vue 2"
   ],
   "author": "Craig Humphreys",
   "license": "MIT",
@@ -27,7 +25,6 @@
   "homepage": "https://github.com/craigh411/vue-star-rating#readme",
   "devDependencies": {
     "babel-core": "^6.21.0",
-    "babel-polyfill": "^6.20.0",
     "babel-preset-es2015": "^6.18.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",

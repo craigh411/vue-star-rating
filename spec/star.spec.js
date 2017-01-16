@@ -91,9 +91,7 @@ describe('Star Component', () => {
             inactiveColor: 'grey'
         });
 
-        // Because of margins the star is 92% of the total width, so 50% will be 50% of 92%:
-        // (92 / 100) * 50 = 46
-        expect(data.fillWidth).toBe("46%");
+        expect(data.fillWidth).toBe("50%");
     });
     
 });

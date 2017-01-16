@@ -32,30 +32,27 @@ export default {
         },
         setFill() {
             this.fillWidth = this.fill + "%";
-        },
-        gradId(){
-
         }
     },
     methods: {
         mouseMoving($event) {
-            // calculate position in percentage!
-            var starWidth = (92 / 100) * this.size;
-            var position = Math.round((100 / starWidth) * $event.offsetX);
-            position = (position > 100) ? 100 : position;
             this.$emit('star-mouse-move', {
                 event: $event,
-                position: position,
+                position: this.getPosition($event),
                 id: this.id
             })
         },
-        selected($event) {
-            // calculate position in percentage!
+        getPosition($event){
+            // calculate position in percentage.
             var starWidth = (92 / 100) * this.size;
             var position = Math.round((100 / starWidth) * $event.offsetX);
+
+            return (position > 100) ? 100 : position;
+        },
+        selected($event) {
             this.$emit('star-selected', {
                 id: this.id,
-                position: position
+                position: this.getPosition($event)
             })
         }
     },
