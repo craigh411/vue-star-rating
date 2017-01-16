@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import star from '../src/star.vue'
 
-// helper function that mounts and returns the rendered text
-function getRenderedTemplate(Component, propsData) {
-    const Ctor = Vue.extend(Component)
-    const vm = new Ctor({ propsData }).$mount()
-    return vm.$el
-}
+Vue.component('star', star);
 
 // helper function that mounts and returns the rendered text
 function getData(Component, propsData) {
@@ -22,25 +17,52 @@ function getProps(Component, propsData) {
     return vm.$options.propsData;
 }
 
-// helper function that mounts and returns the rendered text
-function createVM(Component, propsData) {
-    const Ctor = Vue.extend(Component)
-    return new Ctor({ propsData }).$mount();
+function doEvent(event, el, x, y) {
+    let evt = document.createEvent("MouseEvents");
+
+    // Use deprecated initMouseEvent because MouseEvent doesn't exist in PhantomJS apparently ???
+    evt.initMouseEvent(event, true, true, window, 0, 0, 0, x, y, false, false, false, false, 0, null);
+    el.dispatchEvent(evt);
+}
+
+    var defaultProps = {
+        fill: 50,
+        size: 40,
+        id: 'foo',
+        activeColor: 'yellow',
+        inactiveColor: 'grey'
+    };
+
+function getViewInstance(props, data) {
+    props = props || defaultProps;
+    data = data || {fired: false, position: 0};
+
+    return new Vue({
+        render: function(createElement) {
+            return createElement('star', {
+                on: {
+                    'star-selected': (e) => {
+                        this.fired = true;
+                        this.position = e.position;
+                    },
+                    'star-mouse-move': (e) => {
+                        this.fired = true;
+                        this.position = e.position;
+                    },
+                },
+                props: props,
+            });
+        },
+        data: data
+    })
 }
 
 describe('Star Component', () => {
-    it('has a created hook', () => {
-        expect(typeof star.created).toBe('function')
-    })
+
+
 
     it('should set the props', () => {
-        let props = getProps(star, {
-            fill: 50,
-            size: 40,
-            id: 'foo',
-            activeColor: 'yellow',
-            inactiveColor: 'grey'
-        });
+        let props = getProps(star, defaultProps);
 
         expect(props.fill).toEqual(50);
         expect(props.size).toEqual(40);
@@ -53,13 +75,10 @@ describe('Star Component', () => {
         // star points for a star of size 43, hardcoded into star.vue;
         let starPoints = [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56];
 
-        let data = getData(star, {
-            fill: 50,
-            size: 86, // double 43
-            id: 'foo',
-            activeColor: 'yellow',
-            inactiveColor: 'grey'
-        });
+        let props = defaultProps;
+        props['size'] = 86;
+
+        let data = getData(star, props);
 
         let createdStarPoints = data.starPoints;
 
@@ -70,28 +89,73 @@ describe('Star Component', () => {
     })
 
     it('should set the fillWidth', () => {
-        let data = getData(star, {
-            fill: 50,
-            size: 86,
-            id: 'foo',
-            activeColor: 'yellow',
-            inactiveColor: 'grey'
-        });
+
+        let data = getData(star, defaultProps);
 
         expect(data.fillWidth).not.toBe(undefined);
         expect(data.fillWidth).not.toBe("0%");
     });
 
     it('should calculate the correct fillWidth', () => {
-        let data = getData(star, {
-            fill: 50,
-            size: 86,
-            id: 'foo',
-            activeColor: 'yellow',
-            inactiveColor: 'grey'
-        });
+        let data = getData(star, defaultProps);
 
         expect(data.fillWidth).toBe("50%");
     });
-    
+
+    it('should create a random gradient id', () => {
+        let data = getData(star, defaultProps);
+
+        expect(data.grad.length > 0).toBeTruthy();
+    });
+
+    describe('dom events', () => {
+
+        var vm;
+
+        beforeEach(() => {
+            var el = document.createElement("div");
+            el.setAttribute('id', 'app');
+            document.body.appendChild(el);
+        });
+
+        afterEach(() => {
+            vm.$destroy();
+            document.body.innerHTML = "";
+        });
+
+        it('should emit "star-selected" event on click', () => {
+            vm = getViewInstance().$mount("#app");
+
+            let polygon = document.getElementById('foo');
+            // The absolute (left) position of the star on the page
+            let leftPos = polygon.getBoundingClientRect().left;
+            let x = Math.floor(Math.random() * 80) + 1;;
+            doEvent('click', polygon, x + leftPos, 0)
+            expect(vm.$data.fired).toBeTruthy();
+
+            // expect it to return the correct fill percentage (requires knowledge of the internal calculation)
+            var starWidth = (92 / 100) * 86; // 92 / 100 accounts for margins, 86 is the star size.
+            var position = Math.round((100 / starWidth) * x);
+            expect(vm.$data.position).toEqual(position);
+
+        });
+
+
+        it('should emit "star-mouse-move" event on mousemove', () => {
+            vm = getViewInstance().$mount("#app");
+
+            let polygon = document.getElementById('foo');
+            // The absolute (left) position of the star on the page
+            let leftPos = polygon.getBoundingClientRect().left;
+            let x = Math.floor(Math.random() * 80) + 1;
+            doEvent('mousemove', polygon, x + leftPos, 0)
+            expect(vm.$data.fired).toBeTruthy();
+
+            // expect it to return the correct fill percentage (requires knowledge of the internal calculation)
+            var starWidth = (92 / 100) * 86; // 92 / 100 accounts for margins, 86 is the star size.
+            var position = Math.round((100 / starWidth) * x);
+
+            expect(vm.$data.position).toEqual(position);
+        });
+    });
 });
