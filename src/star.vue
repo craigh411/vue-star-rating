@@ -1,4 +1,4 @@
-<template id="star">
+<template>
     <div>
         <svg :height="size" :width="size" @mousemove="mouseMoving" @click="selected">
 
