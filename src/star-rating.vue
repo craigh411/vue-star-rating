@@ -1,23 +1,5 @@
-<style scoped>
-.star {
-    display: inline-block;
-}
+<template>
 
-.pointer{
-    cursor: pointer;
-}
-
-#stars {
-    display: flex;
-    align-items: center;
-}
-
-#rating-text {
-    margin-left: 10px;
-}
-</style>
-
-<template id="star-rating">
     <div>
         <div @mouseleave="resetRating" id="stars">
             <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
@@ -122,3 +104,19 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.star {
+    display: inline-block;
+    cursor: pointer;
+}
+
+#stars {
+    display: flex;
+    align-items: center;
+}
+
+#rating-text {
+    margin-left: 10px;
+}
+</style>
