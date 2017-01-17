@@ -74,7 +74,7 @@ export default {
             if (!this.readOnly) {
                 let position = $event.position / 100;
                 this.currentRating = (($event.id + position) - 1).toFixed(2);
-                this.currentRating= (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating;
+                this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating;
                 this.createStars;
                 if (persist) {
                     this.selectedRating = this.currentRating;
@@ -123,7 +123,7 @@ export default {
 }
 
 #rating-text {
-    margin-left:7px;
-    margin-top:7px;
+    margin-left: 7px;
+    margin-top: 7px;
 }
 </style>

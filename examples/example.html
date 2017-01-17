@@ -10,19 +10,33 @@
     body{
         font-size: 1.2em;
     }
+
+    .rating-text {
+       font-weight:bold;
+       font-size: 1.9em;
+       border: 1px solid #cfcfcf;
+       padding-left:10px;
+       padding-right:10px;
+       border-radius: 5px;
+       color: #999;
+    }
+
     </style>
 </head>
 
 <body>
     <div id="app">
         <h2>Default</h2>
-        <star-rating text-class="myClass"></star-rating>
+        <star-rating></star-rating>
 
         <h2>Half Stars</h2>
         <star-rating :increment="0.5"></star-rating>
 
         <h2>Red Stars</h2>
         <star-rating active-color="#9c0000"></star-rating>
+
+        <h2>Vibrant Stars</h2>
+        <star-rating inactive-color="#e1bad9" active-color="#cc1166"></star-rating>
 
         <h2>Small Stars</h2>
         <star-rating :star-size="20"></star-rating>
@@ -41,6 +55,9 @@
 
         <h2>Lots of stars</h2>
         <star-rating :max-rating="10" star-size="20"></star-rating>
+
+        <h2>Style Rating</h2>
+        <star-rating text-class="rating-text"></star-rating>
 
         <h2>Hide Rating</h2>
         <star-rating :show-rating="false"></star-rating>
