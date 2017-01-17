@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <script src="https://unpkg.com/vue@2.1.8/dist/vue.min.js"></script>
     <script src="../dist/star-rating.js"></script>
+    <style>
+
+    body{
+        font-size: 1.2em;
+    }
+    </style>
 </head>
 
 <body>
     <div id="app">
         <h2>Default</h2>
-        <star-rating></star-rating>
+        <star-rating text-class="myClass"></star-rating>
 
         <h2>Half Stars</h2>
         <star-rating :increment="0.5"></star-rating>

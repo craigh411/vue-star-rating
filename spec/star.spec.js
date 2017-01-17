@@ -1,29 +1,8 @@
 import Vue from 'vue'
 import star from '../src/star.vue'
+import helpers from './helpers/helpers.js'
 
 Vue.component('star', star);
-
-// helper function that mounts and returns the rendered text
-function getData(Component, propsData) {
-    const Ctor = Vue.extend(Component)
-    const vm = new Ctor({ propsData }).$mount()
-    return vm.$data;
-}
-
-// helper function that mounts and returns the rendered text
-function getProps(Component, propsData) {
-    const Ctor = Vue.extend(Component)
-    const vm = new Ctor({ propsData }).$mount()
-    return vm.$options.propsData;
-}
-
-function doEvent(event, el, x, y) {
-    let evt = document.createEvent("MouseEvents");
-
-    // Use deprecated initMouseEvent because MouseEvent doesn't exist in PhantomJS apparently ???
-    evt.initMouseEvent(event, true, true, window, 0, 0, 0, x, y, false, false, false, false, 0, null);
-    el.dispatchEvent(evt);
-}
 
     var defaultProps = {
         fill: 50,
@@ -59,10 +38,8 @@ function getViewInstance(props, data) {
 
 describe('Star Component', () => {
 
-
-
     it('should set the props', () => {
-        let props = getProps(star, defaultProps);
+        let props = helpers.getProps(star, defaultProps);
 
         expect(props.fill).toEqual(50);
         expect(props.size).toEqual(40);
@@ -78,7 +55,7 @@ describe('Star Component', () => {
         let props = defaultProps;
         props['size'] = 86;
 
-        let data = getData(star, props);
+        let data = helpers.getData(star, props);
 
         let createdStarPoints = data.starPoints;
 
@@ -90,20 +67,20 @@ describe('Star Component', () => {
 
     it('should set the fillWidth', () => {
 
-        let data = getData(star, defaultProps);
+        let data = helpers.getData(star, defaultProps);
 
         expect(data.fillWidth).not.toBe(undefined);
         expect(data.fillWidth).not.toBe("0%");
     });
 
     it('should calculate the correct fillWidth', () => {
-        let data = getData(star, defaultProps);
+        let data = helpers.getData(star, defaultProps);
 
         expect(data.fillWidth).toBe("50%");
     });
 
     it('should create a random gradient id', () => {
-        let data = getData(star, defaultProps);
+        let data = helpers.getData(star, defaultProps);
 
         expect(data.grad.length > 0).toBeTruthy();
     });
@@ -130,7 +107,7 @@ describe('Star Component', () => {
             // The absolute (left) position of the star on the page
             let leftPos = polygon.getBoundingClientRect().left;
             let x = Math.floor(Math.random() * 80) + 1;;
-            doEvent('click', polygon, x + leftPos, 0)
+            helpers.doEvent('click', polygon, x + leftPos, 0)
             expect(vm.$data.fired).toBeTruthy();
 
             // expect it to return the correct fill percentage (requires knowledge of the internal calculation)
@@ -148,7 +125,7 @@ describe('Star Component', () => {
             // The absolute (left) position of the star on the page
             let leftPos = polygon.getBoundingClientRect().left;
             let x = Math.floor(Math.random() * 80) + 1;
-            doEvent('mousemove', polygon, x + leftPos, 0)
+            helpers.doEvent('mousemove', polygon, x + leftPos, 0)
             expect(vm.$data.fired).toBeTruthy();
 
             // expect it to return the correct fill percentage (requires knowledge of the internal calculation)

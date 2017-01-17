@@ -5,7 +5,7 @@
             <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
       <star :fill="fillLevel[n-1]" :size="starSize" :id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>    
     </span>
-            <span id="#rating-text" v-if="showRating"> {{currentRating}}</span>
+            <span id="rating-text" v-if="showRating" :class="textClass"> {{currentRating}}</span>
         </div>
 
     </div>
@@ -41,6 +41,9 @@ export default {
         },
         readOnly: {
             default: false
+        },
+        textClass: {
+            default: ''
         }
     },
     created() {
@@ -108,6 +111,9 @@ export default {
 <style scoped>
 .star {
     display: inline-block;
+}
+
+.pointer {
     cursor: pointer;
 }
 
@@ -117,6 +123,7 @@ export default {
 }
 
 #rating-text {
-    margin-left: 10px;
+    margin-left:7px;
+    margin-top:7px;
 }
 </style>
