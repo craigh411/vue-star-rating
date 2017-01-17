@@ -6,6 +6,8 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 [![vue-star-rating_ss.png](https://s28.postimg.org/hz3y0skot/vue_star_rating_ss.png)](https://postimg.org/image/4uydo3smx/)
 
+[See it in action on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
+
 ## Features:
 
   - SVG stars - scale without loss of quality.
