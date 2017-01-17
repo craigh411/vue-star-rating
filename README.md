@@ -2,6 +2,10 @@
 
 A simple, highly customisable star rating component for Vue 2.x.
 
+### Screenshot
+
+[![vue-star-rating_ss.png](https://s28.postimg.org/hz3y0skot/vue_star_rating_ss.png)](https://postimg.org/image/4uydo3smx/)
+
 ## Features:
 
   - SVG stars - scale without loss of quality.
@@ -10,6 +14,40 @@ A simple, highly customisable star rating component for Vue 2.x.
   - Customisable number of stars.
   - Create read-only stars.
  
+## Usage
+
+Install via npm:
+
+`npm install vue-star-rating --save-dev`
+
+Then require in your project:
+
+`var starRating = require('vue-star-rating');`
+
+or ES6 syntax:
+
+`import starRating from 'vue-star-rating'`
+
+Then you can register the component globally:
+
+`Vue.component('star-rating', starRating);`
+
+Or in your `Vue component`:
+
+```javascript
+components: {
+  starRating
+}
+```
+
+You can then use the following markup in your project:
+
+`<star-rating></star-rating>`
+
+### Important
+
+When using require or import you will need to make sure you can compile `ES6` (see: [babel](https://babeljs.io)  and the [ES2015 preset](https://babeljs.io/docs/plugins/preset-es2015/)) and have either [vueify](https://github.com/vuejs/vueify) or [vue-loader](https://github.com/vuejs/vue-loader) in your project to compile the `.vue` files.
+
 ## Docs
 
 ### Props
@@ -26,6 +64,7 @@ The following props can be passed to the component:
 | star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
 | show-rating  | Whether or not to show the rating next to the stars  | true |
 | read-only  | When set to false, the rating cannot be edited  | true |
+| text-class  | A css class name to style the rating text | '' |
 
 **Important:** Vue requires you to pass numbers using `v-bind`, any props that require a number should use `v-bind:` or the colon (`:`) shorthand.
 
