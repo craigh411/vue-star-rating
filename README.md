@@ -56,7 +56,7 @@ When using require or import you will need to make sure you can compile `ES6` (s
 
 A `dist` file has also been created, which you can include in your webpage like so:
 
-<script src="https://unpkg.com/vue-star-rating@1.0.1/dist/star-rating.js"></script>
+`<script src="https://unpkg.com/vue-star-rating@1.0.1/dist/star-rating.js"></script>`
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
