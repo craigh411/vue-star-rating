@@ -56,7 +56,7 @@ When using require or import you will need to make sure you can compile `ES6` (s
 
 A `dist` file has also been created, which you can include in your webpage like so:
 
-`<script src="https://unpkg.com/vue-star-rating@1.0.1/dist/star-rating.js"></script>`
+`<script src="https://unpkg.com/vue-star-rating@1.0.3/dist/star-rating.js"></script>`
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
@@ -94,6 +94,8 @@ The following props can be passed to the component:
 ### Reactive Props
 
 The `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child. 
+
+[See here for an example](https://jsfiddle.net/craig_h_411/g8x3z5ps/)
 
 ### Custom Events
 
