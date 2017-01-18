@@ -50,12 +50,32 @@ export default {
         this.step = this.increment * 100;
         this.currentRating = this.rating;
         this.selectedRating = this.rating;
-        this.createStars;
+        this.createStars();
     },
-    computed: {
+    methods: {
+        setRating($event, persist) {
+            if (!this.readOnly) {
+                let position = $event.position / 100;
+                this.currentRating = (($event.id + position) - 1).toFixed(2);
+                this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating;
+                this.createStars();
+                if (persist) {
+                    this.selectedRating = this.currentRating;
+                    this.$emit('rating-selected', this.selectedRating);
+                } else {
+                    this.$emit('current-rating', this.currentRating);
+                }
+            }
+        },
+        resetRating() {
+            if (!this.readOnly) {
+                this.currentRating = this.selectedRating;
+                this.createStars();
+            }
+        },
         createStars() {
             this.fillLevel = [];
-            this.round;
+            this.round();
             for (var i = 0; i < this.maxRating; i++) {
                 let level = 0;
                 if (i < this.currentRating) {
@@ -69,32 +89,11 @@ export default {
             this.currentRating = Math.ceil(this.currentRating * inv) / inv;
         }
     },
-    methods: {
-        setRating($event, persist) {
-            if (!this.readOnly) {
-                let position = $event.position / 100;
-                this.currentRating = (($event.id + position) - 1).toFixed(2);
-                this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating;
-                this.createStars;
-                if (persist) {
-                    this.selectedRating = this.currentRating;
-                    this.$emit('rating-selected', this.selectedRating);
-                } else {
-                    this.$emit('current-rating', this.currentRating);
-                }
-            }
-        },
-        resetRating() {
-            if (!this.readOnly) {
-                this.currentRating = this.selectedRating;
-                this.createStars;
-            }
-        }
-    },
     watch: {
         rating(val) {
             this.currentRating = val;
-            this.createStars;
+            this.selectedRating = val;
+            this.createStars();
         }
     },
     data() {

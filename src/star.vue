@@ -18,7 +18,7 @@ export default {
     props: ['fill', 'size', 'id', 'activeColor', 'inactiveColor'],
     created() {
         this.calculatePoints;
-        this.setFill;
+        this.setFill();
         this.grad = Math.random().toString(36).substring(7);
     },
     computed: {
@@ -29,9 +29,6 @@ export default {
         },
         starPointsToString() {
             return this.starPoints.join(',');
-        },
-        setFill() {
-            this.fillWidth = this.fill + "%";
         }
     },
     methods: {
@@ -42,11 +39,10 @@ export default {
                 id: this.id
             })
         },
-        getPosition($event){
+        getPosition($event) {
             // calculate position in percentage.
             var starWidth = (92 / 100) * this.size;
             var position = Math.round((100 / starWidth) * $event.offsetX);
-
             return (position > 100) ? 100 : position;
         },
         selected($event) {
@@ -54,12 +50,15 @@ export default {
                 id: this.id,
                 position: this.getPosition($event)
             })
+        },
+        setFill() {
+            this.fillWidth = this.fill + "%";
         }
     },
     watch: {
         fill(val) {
             this.fillWidth = val;
-            this.setFill;
+            this.setFill();
         }
     },
     data() {

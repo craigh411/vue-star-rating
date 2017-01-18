@@ -6,21 +6,19 @@
     <script src="https://unpkg.com/vue@2.1.8/dist/vue.min.js"></script>
     <script src="../dist/star-rating.js"></script>
     <style>
-
-    body{
+    body {
         font-size: 1.2em;
     }
-
+    
     .rating-text {
-       font-weight:bold;
-       font-size: 1.9em;
-       border: 1px solid #cfcfcf;
-       padding-left:10px;
-       padding-right:10px;
-       border-radius: 5px;
-       color: #999;
+        font-weight: bold;
+        font-size: 1.9em;
+        border: 1px solid #cfcfcf;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 5px;
+        color: #999;
     }
-
     </style>
 </head>
 
@@ -71,6 +69,12 @@
             <star-rating :show-rating="false" @current-rating="showCurrentRating" @rating-selected="setCurrentSelectedRating" :increment="0.5"></star-rating>
         </div>
         <div style="margin-top:10px;font-weight:bold;">{{currentRating}}</div>
+
+        <h2>Resetable stars</h2>
+        <div style="display:inline-block;">
+            <star-rating :rating="resetableRating" @rating-selected="syncRating"></star-rating>
+            <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -85,12 +89,19 @@
             },
             setCurrentSelectedRating: function(rating) {
                 this.currentSelectedRating = "You have Selected: " + rating + " stars";
+            },
+            reset: function() {
+                this.resetableRating = 0;
+            },
+            syncRating: function(rating) {
+                this.resetableRating = rating;
             }
         },
         data: {
             rating: "No Rating Selected",
             currentRating: "No Rating",
-            currentSelectedRating: "No Current Rating"
+            currentSelectedRating: "No Current Rating",
+            resetableRating: 3
         }
     });
     </script>
