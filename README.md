@@ -1,5 +1,7 @@
 # Star Rating Component for Vue 2.x
 
+[![Build Status](https://travis-ci.org/craigh411/vue-star-rating.svg?branch=master)](https://travis-ci.org/craigh411/vue-star-rating)
+
 A simple, highly customisable star rating component for Vue 2.x.
 
 ### Screenshot
