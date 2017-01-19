@@ -26,21 +26,21 @@ Install via npm:
 
 Then require in your project:
 
-`var starRating = require('vue-star-rating');`
+`var StarRating = require('vue-star-rating');`
 
 or ES6 syntax:
 
-`import starRating from 'vue-star-rating'`
+`import StarRating from 'vue-star-rating'`
 
 Then you can register the component globally:
 
-`Vue.component('star-rating', starRating);`
+`Vue.component('star-rating', StarRating);`
 
 Or in your `Vue component`:
 
 ```javascript
 components: {
-  starRating
+  StarRating
 }
 ```
 
@@ -56,7 +56,7 @@ When using require or import you will need to make sure you can compile `ES6` (s
 
 A `dist` file has also been created, which you can include in your webpage like so:
 
-`<script src="https://unpkg.com/vue-star-rating@1.0.3/dist/star-rating.js"></script>`
+`<script src="https://unpkg.com/vue-star-rating@1.0.4/dist/star-rating.js"></script>`
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
@@ -68,14 +68,14 @@ The following props can be passed to the component:
 
 | Prop  | Description | Default |
 | ------------- | ------------- |-------------|
-| increment  |  The rating increment for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1. | 1
+| increment  |  The rating increment, for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1. | 1
 | rating  | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment  | 0 |
 | max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
 | inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
 | active-color  | The color of the highlighted portion of a star.  | #ffd055 |
 | star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
 | show-rating  | Whether or not to show the rating next to the stars  | true |
-| read-only  | When set to false, the rating cannot be edited  | true |
+| read-only  | When set to true, the rating cannot be edited  | false |
 | text-class  | A css class name to style the rating text | '' |
 
 **Important:** Vue requires you to pass numbers using `v-bind`, any props that require a number should use `v-bind:` or the colon (`:`) shorthand.
@@ -101,10 +101,11 @@ The `rating` prop is reactive, meaning that if you bind it to data in your paren
 
 `vue-star-rating` fires the following custom events, simply use `v-on:event` or the `@` shortand to capture the event.
 
-| Event  | Description |
-| ------------- | ------------- |
-| rating-selected  | Returns the rating the user selects via the click event |
-| current-rating  | Returns the rating that the users mouse is currently over  |
+| Event  | Description | Return Value
+| ------------- | ------------- |-----------|
+| rating-selected  | Returns the rating the user selects via the click event |  rating
+| current-rating  | Returns the rating that the users mouse is currently over  | rating
+
 
 #### Custom Events Example
 
@@ -128,6 +129,13 @@ new Vue({
 });
 
 ```
+
+**Note:** When writing methods to capture custom events, the rating param is automatically passed to the method. If you need to declare methods with multiple paramaters you will need to use `$event` to pass the rating to the method:
+
+```HTML
+<star-rating @rating-selected="setRating($event, anotherParam)"></star-rating>
+```
+
 ### IE9 Support
   
   `vue-star-rating` supports IE 9+; make sure you place the following in the `head` of your webpage to ensure that IE is in standards mode:
