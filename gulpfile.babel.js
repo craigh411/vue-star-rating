@@ -5,7 +5,7 @@ import babelify from "babelify";
 import vueify from "vueify";
 import uglify from "gulp-uglify";
 import buffer from "vinyl-buffer";
-import {Server} from "karma";
+import { Server } from "karma";
 
 gulp.task('default', () => {
     browserify({
@@ -15,7 +15,20 @@ gulp.task('default', () => {
         .transform(babelify)
         .transform(vueify)
         .bundle()
-        .pipe(source('star-rating.js'))
+        .pipe(source('star-rating.min.js'))
+        .pipe(buffer())
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
+
+
+    browserify({
+            entries: 'src/star-rating.vue',
+            debug: true
+        })
+        .transform(babelify)
+        .transform(vueify)
+        .bundle()
+        .pipe(source('main.js'))
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest('dist'));

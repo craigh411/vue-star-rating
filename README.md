@@ -50,15 +50,11 @@ You can then use the following markup in your project:
 
 `<star-rating></star-rating>`
 
-### Important
-
-When using require or import you will need to make sure you can compile `ES6` (see: [babel](https://babeljs.io)  and the [ES2015 preset](https://babeljs.io/docs/plugins/preset-es2015/)) and have either [vueify](https://github.com/vuejs/vueify) or [vue-loader](https://github.com/vuejs/vue-loader) in your project to compile the `.vue` files.
-
 ### Via CDN
 
 A `dist` file has also been created, which you can include in your webpage like so:
 
-`<script src="https://unpkg.com/vue-star-rating@1.0.4/dist/star-rating.js"></script>`
+`<script src="https://unpkg.com/vue-star-rating@1.0.5/dist/star-rating.min.js"></script>`
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
