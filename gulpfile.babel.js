@@ -12,8 +12,6 @@ gulp.task('default', () => {
             entries: 'src/dist.js',
             debug: true
         })
-        .transform(babelify)
-        .transform(vueify)
         .bundle()
         .pipe(source('star-rating.min.js'))
         .pipe(buffer())
@@ -25,8 +23,6 @@ gulp.task('default', () => {
             entries: 'src/star-rating.vue',
             debug: true
         })
-        .transform(babelify)
-        .transform(vueify)
         .bundle()
         .pipe(source('main.js'))
         .pipe(buffer())
