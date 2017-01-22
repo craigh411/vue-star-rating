@@ -17,17 +17,6 @@ gulp.task('default', () => {
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest('dist'));
-
-
-    browserify({
-            entries: 'src/star-rating.vue',
-            debug: true
-        })
-        .bundle()
-        .pipe(source('main.js'))
-        .pipe(buffer())
-        .pipe(uglify())
-        .pipe(gulp.dest('dist'));
 });
 
 /**
