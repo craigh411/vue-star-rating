@@ -50,6 +50,7 @@ describe('star-rating component', () => {
         expect(props.showRating.default).toBeTruthy();
         expect(props.readOnly.default).toBeFalsy();
         expect(props.textClass.default).toBe("");
+        expect(props.inline.default).toBeFalsy();
     });
 
     it('should set the props', () => {
@@ -63,7 +64,8 @@ describe('star-rating component', () => {
             starSize: 20,
             showRating: false,
             readOnly: true,
-            textClass: 'foo'
+            textClass: 'foo',
+            inline: true
         }
 
         let propsData = helpers.getProps(starRating, props);
@@ -77,6 +79,7 @@ describe('star-rating component', () => {
         expect(propsData.showRating).toBeFalsy();
         expect(propsData.readOnly).toBeTruthy();
         expect(propsData.textClass).toBe("foo");
+        expect(propsData.inline).toBeTruthy();
     });
 
 
@@ -173,7 +176,7 @@ describe('star-rating component', () => {
             // currentRating should now be 2
             expect(vm.$children[0].$data.currentRating).toEqual(2);
 
-            let starRating = vm.$children[0].$el.getElementsByTagName('div')[0];
+            let starRating = vm.$children[0].$el;
             let leftPos = starRating.getBoundingClientRect().left;
 
             // leave the starRating component, currentRating should reset to 1
@@ -223,12 +226,12 @@ describe('star-rating component', () => {
 
         it('should display the current rating', () => {
             vm = getViewInstance().$mount("#app");
-            expect(document.getElementById('rating-text')).not.toBe(null);
+            expect(document.getElementsByClassName('rating-text')[0]).not.toBe(undefined);
         });
 
         it('should hide the current rating', () => {
             vm = getViewInstance({ showRating: false }).$mount("#app");
-            expect(document.getElementById('rating-text')).toBe(null);
+            expect(document.getElementsByClassName('rating-text')[0]).toBe(undefined);
         });
 
         it('should not update currentRating when star is readonly ', () => {
@@ -275,11 +278,25 @@ describe('star-rating component', () => {
             expect(starRating.className).toBe('star');
         });
 
-        it('should add the textClass to rating-text', () => {
+        it('should add the textClass class to rating-text', () => {
             vm = getViewInstance({ textClass: 'foo' }).$mount("#app");
 
-            let ratingText = document.getElementById('rating-text');
-            expect(ratingText.className).toBe('foo');
+            let ratingText = document.getElementsByClassName('rating-text')[0];
+            expect(ratingText.className).toBe('rating-text foo');
+        });
+
+         it('should not add the inline class to star-rating', () => {
+            vm = getViewInstance().$mount("#app");
+
+            let ratingText = document.getElementsByClassName('star-rating')[0];
+            expect(ratingText.className).toBe('star-rating');
+        });
+
+         it('should add the inline class to star-rating', () => {
+            vm = getViewInstance({ inline: true }).$mount("#app");
+
+            let ratingText = document.getElementsByClassName('star-rating')[0];
+            expect(ratingText.className).toBe('star-rating inline');
         });
     });
 });

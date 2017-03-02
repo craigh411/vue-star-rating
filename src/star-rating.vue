@@ -1,12 +1,10 @@
 <template>
-
-    <div @mouseleave="resetRating" class="stars-rating">
+    <div @mouseleave="resetRating" :class="['star-rating', {inline: inline}]">
         <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
             <star :fill="fillLevel[n-1]" :size="starSize" :id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
         </span>
-        <span class="rating-text" v-if="showRating" :class="textClass"> {{currentRating}}</span>
+        <span v-if="showRating" :class="['rating-text', textClass]"> {{currentRating}}</span>
     </div>
-
 </template>
 
 <script type="text/javascript">
@@ -42,6 +40,9 @@ export default {
         },
         textClass: {
             default: ''
+        },
+        inline: {
+            default: false
         }
     },
     created() {
@@ -72,14 +73,13 @@ export default {
             }
         },
         createStars() {
-            this.fillLevel = [];
             this.round();
             for (var i = 0; i < this.maxRating; i++) {
                 let level = 0;
                 if (i < this.currentRating) {
                     level = (this.currentRating - i > 1) ? 100 : (this.currentRating - i) * 100;
                 }
-                this.fillLevel[i] = Math.round(level);
+               this.$set(this.fillLevel, i, Math.round(level));
             }
         },
         round() {
@@ -114,9 +114,13 @@ export default {
     cursor: pointer;
 }
 
-.stars-rating {
-    display: inline-flex;
+.star-rating {
+    display: flex;
     align-items: center;
+}
+
+.inline {
+    display: inline-flex;
 }
 
 .rating-text {

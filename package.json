@@ -30,11 +30,11 @@
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-preset-es2015": "^6.18.0",
+    "babel-register": "^6.23.0",
     "babelify": "^7.3.0",
-    "browserify": "^13.1.1",
+    "browserify": "^14.1.0",
     "gulp": "^3.9.0",
     "gulp-uglify": "^2.0.0",
-    "install": "^0.8.4",
     "jasmine": "^2.5.3",
     "karma": "^1.4.0",
     "karma-browserify": "^5.1.0",
@@ -45,8 +45,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.1.8",
-    "vueify": "^9.4.0",
-    "watchify": "^3.8.0"
+    "vueify": "^9.4.0"
   },
   "browserify": {
     "transform": [

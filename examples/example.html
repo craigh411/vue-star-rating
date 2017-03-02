@@ -3,14 +3,14 @@
 <head>
     <title>Star Rating Example</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <script src="https://unpkg.com/vue@2.1.8/dist/vue.min.js"></script>
-    <script src="../dist/star-rating.js"></script>
+    <script src="https://unpkg.com/vue@2.2.1/dist/vue.js"></script>
+    <script src="../dist/star-rating.min.js"></script>
     <style>
     body {
         font-size: 1.2em;
     }
     
-    .rating-text {
+    .custom-text {
         font-weight: bold;
         font-size: 1.9em;
         border: 1px solid #cfcfcf;
@@ -55,7 +55,7 @@
         <star-rating :max-rating="10" star-size="20"></star-rating>
 
         <h2>Style Rating</h2>
-        <star-rating text-class="rating-text"></star-rating>
+        <star-rating text-class="custom-text"></star-rating>
 
         <h2>Hide Rating</h2>
         <star-rating :show-rating="false"></star-rating>
@@ -74,6 +74,12 @@
         <div style="display:inline-block;">
             <star-rating :rating="resetableRating" @rating-selected="syncRating"></star-rating>
             <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
+        </div>
+
+      <h2>Inline Stars</h2>
+        <div style="display:inline-block;">
+           Rated <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating> by trusted users.
+
         </div>
     </div>
 

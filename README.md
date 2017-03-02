@@ -80,9 +80,10 @@ The following props can be passed to the component:
 | star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
 | show-rating  | Whether or not to show the rating next to the stars  | true |
 | read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | false |
-| text-class  | A css class name to style the rating text | '' |
+| text-class  | A css class name to style the rating text on an individual basis | '' |
+| inline  | Sets the star rating to display inline | false |
 
-**Important:** Vue requires you to pass numbers using `v-bind`, any props that require a number should use `v-bind:` or the colon (`:`) shorthand.
+**Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
 #### Props Example
 

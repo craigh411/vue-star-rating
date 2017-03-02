@@ -1,16 +1,11 @@
 <template>
-    <div>
-        <svg :height="size" :width="size" @mousemove="mouseMoving" @click="selected">
-
-            <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
-                <stop :offset="fillWidth" :stop-color="activeColor" />
-                <stop :offset="fillWidth" :stop-color="inactiveColor" />
-            </linearGradient>
-
-            <polygon :points="starPointsToString" :fill="'url(#'+grad+')'" :id="id" />
-
-        </svg>
-    </div>
+    <svg :height="size" :width="size" @mousemove="mouseMoving" @click="selected">
+        <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
+            <stop :offset="fillWidth" :stop-color="activeColor" />
+            <stop :offset="fillWidth" :stop-color="inactiveColor" />
+        </linearGradient>
+        <polygon :points="starPointsToString" :fill="getGradId" :id="id" />
+    </svg>
 </template>
 
 <script type="text/javascript">
@@ -29,6 +24,9 @@ export default {
         },
         starPointsToString() {
             return this.starPoints.join(',');
+        },
+        getGradId(){
+            return 'url(#'+this.grad+')';
         }
     },
     methods: {
