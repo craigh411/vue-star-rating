@@ -60,7 +60,7 @@ If you are using `browserify` ensure you have both [vueify](https://github.com/v
 
 A `dist` file has also been created, which you can include in your webpage like so:
 
-`<script src="https://unpkg.com/vue-star-rating@1.0.6/dist/star-rating.min.js"></script>`
+`<script src="unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
