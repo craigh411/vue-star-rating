@@ -1,14 +1,12 @@
 <template>
 
-    <div>
-        <div @mouseleave="resetRating" id="stars">
-            <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
-      <star :fill="fillLevel[n-1]" :size="starSize" :id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>    
-    </span>
-            <span id="rating-text" v-if="showRating" :class="textClass"> {{currentRating}}</span>
-        </div>
-
+    <div @mouseleave="resetRating" class="stars-rating">
+        <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
+            <star :fill="fillLevel[n-1]" :size="starSize" :id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
+        </span>
+        <span class="rating-text" v-if="showRating" :class="textClass"> {{currentRating}}</span>
     </div>
+
 </template>
 
 <script type="text/javascript">
@@ -116,12 +114,12 @@ export default {
     cursor: pointer;
 }
 
-#stars {
-    display: flex;
+.stars-rating {
+    display: inline-flex;
     align-items: center;
 }
 
-#rating-text {
+.rating-text {
     margin-left: 7px;
     margin-top: 7px;
 }
