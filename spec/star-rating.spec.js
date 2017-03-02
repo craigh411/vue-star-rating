@@ -29,6 +29,7 @@ function doEventOnStar(event, vm, position, offset) {
     position = position - 1 || 0;
     offset = offset || 1;
 
+
     let star = vm.$el.getElementsByTagName('polygon')[position];
     let leftPos = star.getBoundingClientRect().left;
 

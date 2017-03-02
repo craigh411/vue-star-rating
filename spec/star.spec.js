@@ -7,7 +7,7 @@ Vue.component('star', star);
     var defaultProps = {
         fill: 50,
         size: 40,
-        id: 'foo',
+        starId: 'foo',
         activeColor: 'yellow',
         inactiveColor: 'grey'
     };
@@ -43,7 +43,7 @@ describe('Star Component', () => {
 
         expect(props.fill).toEqual(50);
         expect(props.size).toEqual(40);
-        expect(props.id).toBe('foo');
+        expect(props.starId).toBe('foo');
         expect(props.activeColor).toBe('yellow');
         expect(props.inactiveColor).toBe('grey');
     })
@@ -103,7 +103,7 @@ describe('Star Component', () => {
         it('should emit "star-selected" event on click', () => {
             vm = getViewInstance().$mount("#app");
 
-            let polygon = document.getElementById('foo');
+            let polygon = document.getElementsByTagName('polygon')[0];
             // The absolute (left) position of the star on the page
             let leftPos = polygon.getBoundingClientRect().left;
             let x = Math.floor(Math.random() * 80) + 1;;
@@ -121,7 +121,7 @@ describe('Star Component', () => {
         it('should emit "star-mouse-move" event on mousemove', () => {
             vm = getViewInstance().$mount("#app");
 
-            let polygon = document.getElementById('foo');
+            let polygon = document.getElementsByTagName('polygon')[0];
             // The absolute (left) position of the star on the page
             let leftPos = polygon.getBoundingClientRect().left;
             let x = Math.floor(Math.random() * 80) + 1;

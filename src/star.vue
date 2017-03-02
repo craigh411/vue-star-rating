@@ -4,13 +4,13 @@
             <stop :offset="fillWidth" :stop-color="activeColor" />
             <stop :offset="fillWidth" :stop-color="inactiveColor" />
         </linearGradient>
-        <polygon :points="starPointsToString" :fill="getGradId" :id="id" />
+        <polygon :points="starPointsToString" :fill="getGradId" :star-id="starId" />
     </svg>
 </template>
 
 <script type="text/javascript">
 export default {
-    props: ['fill', 'size', 'id', 'activeColor', 'inactiveColor'],
+    props: ['fill', 'size', 'starId', 'activeColor', 'inactiveColor'],
     created() {
         this.calculatePoints;
         this.setFill();
@@ -34,7 +34,7 @@ export default {
             this.$emit('star-mouse-move', {
                 event: $event,
                 position: this.getPosition($event),
-                id: this.id
+                id: this.starId
             })
         },
         getPosition($event) {
@@ -45,7 +45,7 @@ export default {
         },
         selected($event) {
             this.$emit('star-selected', {
-                id: this.id,
+                id: this.starId,
                 position: this.getPosition($event)
             })
         },
