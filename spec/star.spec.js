@@ -9,7 +9,9 @@ Vue.component('star', star);
         size: 40,
         starId: 'foo',
         activeColor: 'yellow',
-        inactiveColor: 'grey'
+        inactiveColor: 'grey',
+        borderColor: '#000',
+        borderWidth: 0
     };
 
 function getViewInstance(props, data) {
@@ -65,18 +67,18 @@ describe('Star Component', () => {
         }
     })
 
-    it('should set the fillWidth', () => {
+    it('should set the fill level', () => {
 
-        let data = helpers.getData(star, defaultProps);
+        let props = helpers.getProps(star, defaultProps);
 
-        expect(data.fillWidth).not.toBe(undefined);
-        expect(data.fillWidth).not.toBe("0%");
+        expect(props.fill).not.toBe(undefined);
+        expect(props.fill).not.toEqual(0);
     });
 
-    it('should calculate the correct fillWidth', () => {
-        let data = helpers.getData(star, defaultProps);
+    it('should calculate the correct fill', () => {
+        let props = helpers.getProps(star, defaultProps);
 
-        expect(data.fillWidth).toBe("50%");
+        expect(props.fill).toEqual(50);
     });
 
     it('should create a random gradient id', () => {

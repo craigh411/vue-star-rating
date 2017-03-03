@@ -3,7 +3,7 @@ module.exports = function(config) {
     config.set({
         browsers: [
             'PhantomJS',
-            'Chrome'
+           // 'Chrome'
         ],
         frameworks: ['browserify', 'jasmine'],
         files: ['spec/**/*.js'],

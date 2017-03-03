@@ -1,7 +1,7 @@
 <template>
     <div @mouseleave="resetRating" :class="['star-rating', {inline: inline}]">
         <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
-            <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
+            <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
         </span>
         <span v-if="showRating" :class="['rating-text', textClass]"> {{currentRating}}</span>
     </div>
@@ -43,6 +43,15 @@ export default {
         },
         inline: {
             default: false
+        },
+        borderColor: {
+            default: "#d8d8d8"
+        },
+        borderWidth: {
+            default: 0
+        },
+        padding: {
+            default: 0
         }
     },
     created() {

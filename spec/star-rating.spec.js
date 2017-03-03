@@ -26,7 +26,7 @@ function getViewInstance(props, data) {
 }
 
 function doEventOnStar(event, vm, position, offset) {
-    position = position - 1 || 0;
+    position = (position * 2) - 1 || 0;
     offset = offset || 1;
 
 
@@ -135,7 +135,9 @@ describe('star-rating component', () => {
 
         it('should add the given number of stars to the page ', () => {
             vm = getViewInstance().$mount("#app");
-            expect(vm.$el.getElementsByTagName('polygon').length).toEqual(5);
+            // expect there to be 10 polygons, because we have 2 polygones for each star to account for border
+            // so, 5 stars is 10 polygons
+            expect(vm.$el.getElementsByTagName('polygon').length).toEqual(10);
         });
 
 

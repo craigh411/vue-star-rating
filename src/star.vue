@@ -1,25 +1,25 @@
 <template>
-    <svg :height="size" :width="size" @mousemove="mouseMoving" @click="selected">
+    <svg :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected">
         <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
-            <stop :offset="fillWidth" :stop-color="activeColor" />
-            <stop :offset="fillWidth" :stop-color="inactiveColor" />
+            <stop :offset="getFill" :stop-color="activeColor" />
+            <stop :offset="getFill" :stop-color="inactiveColor" />
         </linearGradient>
-        <polygon :points="starPointsToString" :fill="getGradId" :star-id="starId" />
+        <polygon :points="starPointsToString" :fill="getGradId"  :stroke="borderColor" :stroke-width="borderWidth" />
+        <polygon :points="starPointsToString" :fill="getGradId" />
     </svg>
 </template>
 
 <script type="text/javascript">
 export default {
-    props: ['fill', 'size', 'starId', 'activeColor', 'inactiveColor'],
+    props: ['fill', 'size', 'starId', 'activeColor', 'inactiveColor', 'borderColor', 'borderWidth', 'padding'],
     created() {
         this.calculatePoints;
-        this.setFill();
         this.grad = Math.random().toString(36).substring(7);
     },
     computed: {
         calculatePoints() {
             this.starPoints = this.starPoints.map((point) => {
-                return (this.size / 43) * point;
+                return ((this.size / 43) * point) + (this.borderWidth * 1.5);
             });
         },
         starPointsToString() {
@@ -27,6 +27,12 @@ export default {
         },
         getGradId(){
             return 'url(#'+this.grad+')';
+        },
+        getSize(){
+            return parseInt(this.size) +  parseInt(this.borderWidth * 3) + this.padding;
+        },
+        getFill(){
+          return this.fill + "%";
         }
     },
     methods: {
@@ -48,20 +54,10 @@ export default {
                 id: this.starId,
                 position: this.getPosition($event)
             })
-        },
-        setFill() {
-            this.fillWidth = this.fill + "%";
-        }
-    },
-    watch: {
-        fill(val) {
-            this.fillWidth = val;
-            this.setFill();
         }
     },
     data() {
         return {
-            fillWidth: "0%",
             starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
             grad: ''
         }
