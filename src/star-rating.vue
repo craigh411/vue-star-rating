@@ -58,7 +58,7 @@ export default {
         },
         borderColor: {
             type: String,
-            default: "#d8d8d8"
+            default: "#999"
         },
         borderWidth: {
             type: Number,

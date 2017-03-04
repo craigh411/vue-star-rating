@@ -52,7 +52,7 @@ describe('star-rating component', () => {
         expect(props.readOnly.default).toBeFalsy();
         expect(props.textClass.default).toBe("");
         expect(props.inline.default).toBeFalsy();
-        expect(props.borderColor.default).toBe("#d8d8d8");
+        expect(props.borderColor.default).toBe("#999");
         expect(props.borderWidth.default).toEqual(0);
         expect(props.padding.default).toEqual(0);
     });
