@@ -1,9 +1,11 @@
 <template>
-    <div @mouseleave="resetRating" :class="['star-rating', {inline: inline}]">
-        <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
-            <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
-        </span>
-        <span v-if="showRating" :class="['rating-text', textClass]"> {{currentRating}}</span>
+    <div :class="['star-rating', {inline: inline}]">
+        <div @mouseleave="resetRating" class="star-rating">
+            <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
+              <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
+            </span>
+            <span v-if="showRating" :class="['rating-text', textClass]"> {{currentRating}}</span>
+        </div>
     </div>
 </template>
 
@@ -101,7 +103,7 @@ export default {
                 if (i < this.currentRating) {
                     level = (this.currentRating - i > 1) ? 100 : (this.currentRating - i) * 100;
                 }
-               this.$set(this.fillLevel, i, Math.round(level));
+                this.$set(this.fillLevel, i, Math.round(level));
             }
         },
         round() {
@@ -146,7 +148,7 @@ export default {
 }
 
 .rating-text {
-    margin-left: 7px;
     margin-top: 7px;
+    margin-left: 7px;
 }
 </style>

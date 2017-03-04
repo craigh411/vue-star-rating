@@ -7,7 +7,8 @@
     <script src="../dist/star-rating.min.js"></script>
     <style>
     body {
-        font-size: 1.2em;
+        font-size: 1em;
+        font-family: 'Tahoma', sans-serif;
     }
     
     .custom-text {
@@ -47,7 +48,7 @@
         <star-rating :border-width="5"></star-rating>
 
         <h2>Fluid Stars</h2>
-        <star-rating :increment="0.01" :padding="10"></star-rating>
+        <star-rating :increment="0.01"></star-rating>
 
         <h2>Preset Stars</h2>
         <star-rating :rating="4"></star-rating>
@@ -82,7 +83,7 @@
 
       <h2>Inline Stars</h2>
         <div style="display:inline-block;">
-           Rated <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating> by trusted users.
+           Rated <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating> by our customers.
 
         </div>
     </div>
