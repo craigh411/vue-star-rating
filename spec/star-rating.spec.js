@@ -188,8 +188,7 @@ describe('star-rating component', () => {
             // currentRating should now be 2
             expect(vm.$children[0].$data.currentRating).toEqual(2);
 
-            let starRating = vm.$children[0].$el;
-            let leftPos = starRating.getBoundingClientRect().left;
+            let starRating = document.getElementsByTagName('div')[1];
 
             // leave the starRating component, currentRating should reset to 1
             helpers.doEvent('mouseleave', starRating, 0, 0);

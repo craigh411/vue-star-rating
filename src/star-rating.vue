@@ -133,20 +133,16 @@ export default {
 .star {
     display: inline-block;
 }
-
 .pointer {
     cursor: pointer;
 }
-
 .star-rating {
     display: flex;
     align-items: center;
 }
-
 .inline {
     display: inline-flex;
 }
-
 .rating-text {
     margin-top: 7px;
     margin-left: 7px;
