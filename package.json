@@ -1,6 +1,6 @@
 {
   "name": "vue-star-rating",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple, highly customisable star rating component for Vue 2.x.",
   "main": "src/star-rating.vue",
   "scripts": {
