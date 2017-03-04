@@ -15,42 +15,55 @@ export default {
     },
     props: {
         increment: {
+            type: Number,
             default: 1
         },
         rating: {
+            type: Number,
             default: 0
         },
         activeColor: {
+            type: String,
             default: "#ffd055"
         },
         inactiveColor: {
+            type: String,
             default: "#d8d8d8"
         },
         maxRating: {
+            type: Number,
             default: 5
         },
         starSize: {
+            type: Number,
             default: 50
         },
         showRating: {
+            type: Boolean,
             default: true
         },
         readOnly: {
+            type: Boolean,
             default: false
         },
         textClass: {
-            default: ''
+            type: String,
+            default: ""
         },
         inline: {
+            type: Boolean,
             default: false
         },
         borderColor: {
+            type: String,
             default: "#d8d8d8"
         },
         borderWidth: {
+            type: Number,
             default: 0
         },
         padding: {
+            type: Number,
             default: 0
         }
     },

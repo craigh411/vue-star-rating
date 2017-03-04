@@ -4,14 +4,47 @@
             <stop :offset="getFill" :stop-color="activeColor" />
             <stop :offset="getFill" :stop-color="inactiveColor" />
         </linearGradient>
-        <polygon :points="starPointsToString" :fill="getGradId"  :stroke="borderColor" :stroke-width="borderWidth" />
+        <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
         <polygon :points="starPointsToString" :fill="getGradId" />
     </svg>
 </template>
 
 <script type="text/javascript">
 export default {
-    props: ['fill', 'size', 'starId', 'activeColor', 'inactiveColor', 'borderColor', 'borderWidth', 'padding'],
+    props: {
+        fill: {
+            type: Number,
+            default: 0
+        },
+        size: {
+            type: Number,
+            default: 50
+        },
+        starId: {
+            type: Number,
+            required: true
+        },
+        activeColor: {
+            type: String,
+            required: true
+        },
+        inactiveColor: {
+            type: String,
+            required: true
+        },
+        borderColor: {
+            type: String,
+            default: "#000"
+        },
+        borderWidth: {
+            type: Number,
+            default: 0
+        },
+        padding: {
+            type: Number,
+            default: 0
+        }
+    },
     created() {
         this.calculatePoints;
         this.grad = Math.random().toString(36).substring(7);
@@ -25,14 +58,14 @@ export default {
         starPointsToString() {
             return this.starPoints.join(',');
         },
-        getGradId(){
-            return 'url(#'+this.grad+')';
+        getGradId() {
+            return 'url(#' + this.grad + ')';
         },
-        getSize(){
-            return parseInt(this.size) +  parseInt(this.borderWidth * 3) + this.padding;
+        getSize() {
+            return parseInt(this.size) + parseInt(this.borderWidth * 3) + this.padding;
         },
-        getFill(){
-          return this.fill + "%";
+        getFill() {
+            return this.fill + "%";
         }
     },
     methods: {

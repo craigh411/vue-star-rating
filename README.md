@@ -82,6 +82,9 @@ The following props can be passed to the component:
 | read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | false |
 | text-class  | A css class name to style the rating text for a specific star rating component | '' |
 | inline  | Sets the star rating to display inline | false |
+| border-color  | Sets the colour of the border for each star | #d8d8d8 |
+| border-width  | Sets the width of the border for each star | 0 |
+| padding  | Pads the right of each star so distance between stars can be altered | 0 |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 

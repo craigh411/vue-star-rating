@@ -52,6 +52,9 @@ describe('star-rating component', () => {
         expect(props.readOnly.default).toBeFalsy();
         expect(props.textClass.default).toBe("");
         expect(props.inline.default).toBeFalsy();
+        expect(props.borderColor.default).toBe("#d8d8d8");
+        expect(props.borderWidth.default).toEqual(0);
+        expect(props.padding.default).toEqual(0);
     });
 
     it('should set the props', () => {
@@ -66,7 +69,10 @@ describe('star-rating component', () => {
             showRating: false,
             readOnly: true,
             textClass: 'foo',
-            inline: true
+            inline: true,
+            borderColor: "#000",
+            borderWidth: 1,
+            padding: 5
         }
 
         let propsData = helpers.getProps(starRating, props);
@@ -79,8 +85,11 @@ describe('star-rating component', () => {
         expect(propsData.starSize).toEqual(20);
         expect(propsData.showRating).toBeFalsy();
         expect(propsData.readOnly).toBeTruthy();
-        expect(propsData.textClass).toBe("foo");
-        expect(propsData.inline).toBeTruthy();
+        expect(propsData.borderColor).toBe("#000");
+        expect(propsData.borderWidth).toEqual(1);
+        expect(propsData.padding).toEqual(5);
+
+        expect(propsData.inline).toBeTruthy();  expect(propsData.textClass).toBe("foo");
     });
 
 

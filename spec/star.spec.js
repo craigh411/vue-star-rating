@@ -7,11 +7,12 @@ Vue.component('star', star);
     var defaultProps = {
         fill: 50,
         size: 40,
-        starId: 'foo',
+        starId: 1,
         activeColor: 'yellow',
         inactiveColor: 'grey',
         borderColor: '#000',
-        borderWidth: 0
+        borderWidth: 0,
+        padding: 0
     };
 
 function getViewInstance(props, data) {
@@ -45,9 +46,12 @@ describe('Star Component', () => {
 
         expect(props.fill).toEqual(50);
         expect(props.size).toEqual(40);
-        expect(props.starId).toBe('foo');
+        expect(props.starId).toBe(1);
         expect(props.activeColor).toBe('yellow');
         expect(props.inactiveColor).toBe('grey');
+        expect(props.borderColor).toBe('#000');
+        expect(props.borderWidth).toEqual(0);
+        expect(props.padding).toEqual(0);
     })
 
     it('should scale the star based on size', () => {
