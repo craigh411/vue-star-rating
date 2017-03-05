@@ -6,7 +6,7 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 ### Screenshot
 
-[![vue-star-rating_ss.png](https://s28.postimg.org/hz3y0skot/vue_star_rating_ss.png)](https://postimg.org/image/4uydo3smx/)
+[![star-rating.png](https://s13.postimg.org/rle6t2g3r/star_rating.png)](https://postimg.org/image/wwt3ds26b/)
 
 [See it in action on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
 
@@ -60,7 +60,7 @@ If you are using `browserify` ensure you have both [vueify](https://github.com/v
 
 A `dist` file has also been created, which you can include in your webpage like so:
 
-`<script src="unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
+`<script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
