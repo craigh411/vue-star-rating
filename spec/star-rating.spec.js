@@ -44,6 +44,7 @@ describe('star-rating component', () => {
 
         expect(props.increment.default).toEqual(1);
         expect(props.rating.default).toEqual(0);
+        expect(props.value.default).toEqual(0);
         expect(props.activeColor.default).toBe("#ffd055");
         expect(props.inactiveColor.default).toBe("#d8d8d8");
         expect(props.maxRating.default).toEqual(5);
@@ -62,6 +63,7 @@ describe('star-rating component', () => {
         let props = {
             increment: 0.1,
             rating: 1,
+            value: 1,
             activeColor: "red",
             inactiveColor: "black",
             maxRating: 10,
@@ -79,6 +81,7 @@ describe('star-rating component', () => {
 
         expect(propsData.increment).toEqual(0.1);
         expect(propsData.rating).toEqual(1);
+        expect(propsData.value).toEqual(1);
         expect(propsData.activeColor).toBe("red");
         expect(propsData.inactiveColor).toBe("black");
         expect(propsData.maxRating).toEqual(10);

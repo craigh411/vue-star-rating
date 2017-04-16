@@ -10,7 +10,7 @@
         font-size: 1em;
         font-family: 'Tahoma', sans-serif;
     }
-    
+
     .custom-text {
         font-weight: bold;
         font-size: 1.9em;
@@ -69,6 +69,10 @@
         <star-rating :show-rating="false" @rating-selected="setRating"></star-rating>
         <div style="margin-top:10px;font-weight:bold;">{{rating}}</div>
 
+        <h2>Bind Rating</h2>
+        <star-rating :show-rating="false" v-model="bindedRating"></star-rating>
+        <div style="margin-top:10px;font-weight:bold;">{{bindedRating}}</div>
+
         <h2>Capture Mouse Over Rating</h2>
         <div @mouseleave="showCurrentRating(0)" style="display:inline-block;">
             <star-rating :show-rating="false" @current-rating="showCurrentRating" @rating-selected="setCurrentSelectedRating" :increment="0.5"></star-rating>
@@ -110,6 +114,7 @@
         },
         data: {
             rating: "No Rating Selected",
+            bindedRating: 3,
             currentRating: "No Rating",
             currentSelectedRating: "No Current Rating",
             resetableRating: 3

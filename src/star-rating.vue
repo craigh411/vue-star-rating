@@ -20,6 +20,10 @@ export default {
             type: Number,
             default: 1
         },
+        value: {
+            type: Number,
+            default: 0
+        },
         rating: {
             type: Number,
             default: 0
@@ -71,8 +75,13 @@ export default {
     },
     created() {
         this.step = this.increment * 100;
-        this.currentRating = this.rating;
-        this.selectedRating = this.rating;
+        if (this.value !== 0) {
+            this.currentRating = this.value;
+            this.selectedRating = this.value;
+        } else {
+            this.currentRating = this.rating;
+            this.selectedRating = this.rating;
+        }
         this.createStars();
     },
     methods: {
@@ -85,6 +94,7 @@ export default {
                 if (persist) {
                     this.selectedRating = this.currentRating;
                     this.$emit('rating-selected', this.selectedRating);
+                    this.$emit('input', this.selectedRating);
                 } else {
                     this.$emit('current-rating', this.currentRating);
                 }
