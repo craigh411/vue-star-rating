@@ -17,7 +17,7 @@ A simple, highly customisable star rating component for Vue 2.x.
   - Customisable colors.
   - Customisable number of stars.
   - Create read-only stars.
- 
+
 ## Usage
 
 ### Via NPM
@@ -54,7 +54,7 @@ You can then use the following markup in your project:
 
 When using require or import you will need to make sure you can compile `ES6` (see: [babel](https://babeljs.io)  and the [ES2015 preset](https://babeljs.io/docs/plugins/preset-es2015/)) and have either [vueify](https://github.com/vuejs/vueify) (for browserify) or [vue-loader](https://github.com/vuejs/vue-loader) (for webpack) in your project to compile the `.vue` files.
 
-If you are using `browserify` ensure you have both [vueify](https://github.com/vuejs/vueify) and [babelify](https://github.com/babel/babelify) in your project to correctly compile the components. 
+If you are using `browserify` ensure you have both [vueify](https://github.com/vuejs/vueify) and [babelify](https://github.com/babel/babelify) in your project to correctly compile the components.
 
 ### Via CDN
 
@@ -70,40 +70,47 @@ The `star-rating` component is registered automatically, so there is no need to 
 
 The following props can be passed to the component:
 
-| Prop  | Description | Default |
-| ------------- | ------------- |-------------|
-| increment  |  The rating increment, for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1. | 1
-| rating  | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment  | 0 |
-| max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
-| inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
-| active-color  | The color of the highlighted portion of a star.  | #ffd055 |
-| star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
-| show-rating  | Whether or not to show the rating next to the stars  | true |
-| read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | false |
-| text-class  | A css class name to style the rating text for a specific star rating component | '' |
-| inline  | Sets the star rating to display inline | false |
-| border-color  | Sets the colour of the border for each star | #999 |
-| border-width  | Sets the width of the border for each star | 0 |
-| padding  | Pads the right of each star so distance between stars can be altered | 0 |
+| Prop           | Description                                                                                                                        | Default |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------|---------|
+| increment      | The rating increment, for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1.              | 1       |
+| rating         | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment | 0       |
+| max-rating     | The maximum rating, this lets `vue-star-rating` know how many stars to display                                                     | 5       |
+| inactive-color | The color of the non-highlighted portion of a star.                                                                                | #d8d8d8 |
+| active-color   | The color of the highlighted portion of a star.                                                                                    | #ffd055 |
+| star-size      | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars                          | 50      |
+| show-rating    | Whether or not to show the rating next to the stars                                                                                | true    |
+| read-only      | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.                    | false   |
+| text-class     | A css class name to style the rating text for a specific star rating component                                                     | ''      |
+| inline         | Sets the star rating to display inline                                                                                             | false   |
+| border-color   | Sets the colour of the border for each star                                                                                        | #999    |
+| border-width   | Sets the width of the border for each star                                                                                         | 0       |
+| padding        | Pads the right of each star so distance between stars can be altered                                                               | 0       |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
 #### Props Example
 
 ```HTML
-<star-rating v-bind:increment="0.5" 
-             v-bind:max-rating="3" 
-             inactive-color="#000" 
-             active-color="#f00" 
+<star-rating v-bind:increment="0.5"
+             v-bind:max-rating="3"
+             inactive-color="#000"
+             active-color="#f00"
              v-bind:star-size="90">
 </star-rating>
 ```
 
 ### Reactive Props
 
-The `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child. 
+The `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child.
 
 [See here for an example](https://jsfiddle.net/craig_h_411/g8x3z5ps/)
+
+Or you can bind data by adding `v-model` attribute:
+
+```HTML
+<star-rating v-model="rating"></star-rating>
+```
+
 
 ### Custom Events
 
@@ -145,9 +152,9 @@ new Vue({
 ```
 
 ### IE9 Support
-  
+
   `vue-star-rating` supports IE 9+; make sure you place the following in the `head` of your webpage to ensure that IE is in standards mode:
-  
+
 `<meta http-equiv="X-UA-Compatible" content="IE=Edge">`
-  
-  
+
+
