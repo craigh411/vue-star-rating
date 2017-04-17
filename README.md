@@ -99,9 +99,15 @@ The following props can be passed to the component:
 </star-rating>
 ```
 
+### V-Model
+
+vue-star-rating supports `v-model` when using Vue 2.2 and above, so it's possible to crete a two-way binding like so:
+
+<star-rating v-model="rating"></star-rating>
+
 ### Reactive Props
 
-The `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child. 
+For versions of Vue below 2.2 `v-model` is not supported, however, the `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child. 
 
 [See here for an example](https://jsfiddle.net/craig_h_411/g8x3z5ps/)
 

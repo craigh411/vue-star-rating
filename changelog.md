@@ -5,6 +5,17 @@
 ## [Unreleased]
 
 ### Added
+- Added v-model support
+- Added new v-model example
+
+### Changed
+
+- Updated Readme
+
+
+## Version 1.2.2
+
+### Added
 - Added Watchify for development
 - ChangeLog
 

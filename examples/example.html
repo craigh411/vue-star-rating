@@ -3,7 +3,7 @@
 <head>
     <title>Star Rating Example</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <script src="https://unpkg.com/vue@2.2.1/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <script src="../dist/star-rating.js"></script>
     <style>
     body {
@@ -75,7 +75,13 @@
         </div>
         <div style="margin-top:10px;font-weight:bold;">{{currentRating}}</div>
 
-        <h2>Resetable stars</h2>
+        <h2>Resetable stars with v-model (Vue 2.2 and above)</h2>
+        <div style="display:inline-block;">
+                   <star-rating v-model="boundRating"></star-rating>
+            <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="boundRating = 0;">Reset Rating</a></div>
+        </div>
+
+        <h2>Resetable stars without v-model (Vue 2.1.x and below)</h2>
         <div style="display:inline-block;">
             <star-rating :rating="resetableRating" @rating-selected="syncRating"></star-rating>
             <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
@@ -109,6 +115,7 @@
             }
         },
         data: {
+            boundRating: 2,
             rating: "No Rating Selected",
             currentRating: "No Rating",
             currentSelectedRating: "No Current Rating",
