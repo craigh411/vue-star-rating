@@ -101,9 +101,13 @@ The following props can be passed to the component:
 
 ### V-Model
 
-vue-star-rating supports `v-model` when using Vue 2.2 and above, so it's possible to crete a two-way binding like so:
+vue-star-rating supports `v-model` when using Vue 2.2 and above, so it's possible to create a two-way binding like so:
 
+```HTML
 <star-rating v-model="rating"></star-rating>
+```
+
+[See Examples on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
 
 ### Reactive Props
 
