@@ -64,6 +64,30 @@ A `dist` file has also been created, which you can include in your webpage like 
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
+## Getting Started
+
+To get started with `vue-star-rating` you will want to sync the rating values between the component and parent, you can then take a look at the props and custom events section of the docs to customise your `star-rating` component.
+
+### Syncing Rating Values with V-Model for Vue 2.2 +
+
+`vue-star-rating` supports `v-model` when using Vue 2.2 and above, which is the simplest way to keep your ratings in sync:
+
+```HTML
+<star-rating v-model="rating"></star-rating>
+```
+
+[See this example on JSFiddle](https://jsfiddle.net/craig_h_411/mcz7oha2/)
+
+###  Sycning Rating Values when using Vue 2.1.x and below
+
+If you are using Vue 2.1.x or below the following is the equivelent to the `v-model` example above:
+
+```HTML
+<star-rating @rating-selected="rating = $event" :rating="rating"></star-rating>
+```
+
+[See this example on JSFiddle](https://jsfiddle.net/craig_h_411/npq5e21h/)
+
 ## Docs
 
 ### Props
@@ -99,22 +123,6 @@ The following props can be passed to the component:
 </star-rating>
 ```
 
-### V-Model
-
-vue-star-rating supports `v-model` when using Vue 2.2 and above, so it's possible to create a two-way binding like so:
-
-```HTML
-<star-rating v-model="rating"></star-rating>
-```
-
-[See Examples on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
-
-### Reactive Props
-
-For versions of Vue below 2.2 `v-model` is not supported, however, the `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child. 
-
-[See here for an example](https://jsfiddle.net/craig_h_411/g8x3z5ps/)
-
 ### Custom Events
 
 `vue-star-rating` fires the following custom events, simply use `v-on:event` or the `@` shortand to capture the event.
@@ -128,7 +136,7 @@ For versions of Vue below 2.2 `v-model` is not supported, however, the `rating` 
 #### Custom Events Example
 
 ```HTML
-<star-rating @current-rating="setCurrentRating"></star-rating>
+<star-rating @rating-selected ="setRating"></star-rating>
 ```
 
 Then in your view model:
@@ -137,12 +145,12 @@ Then in your view model:
 new Vue({
   el: '#app',
   methods: {
-    setCurrentRating: function(rating){
-      this.currentRating = rating;
+    setRating: function(rating){
+      this.rating= rating;
     }
   },
   data: {
-    currentRating: 0
+    rating: 0
   }
 });
 
