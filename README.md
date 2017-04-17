@@ -128,7 +128,7 @@ For versions of Vue below 2.2 `v-model` is not supported, however, the `rating` 
 #### Custom Events Example
 
 ```HTML
-<star-rating @rating-selected="setRating"></star-rating>
+<star-rating @current-rating="setCurrentRating"></star-rating>
 ```
 
 Then in your view model:
@@ -137,12 +137,12 @@ Then in your view model:
 new Vue({
   el: '#app',
   methods: {
-    setRating: function(rating){
-      this.rating = rating;
+    setCurrentRating: function(rating){
+      this.currentRating = rating;
     }
   },
   data: {
-    rating: 0
+    currentRating: 0
   }
 });
 
@@ -151,7 +151,7 @@ new Vue({
 **Note:** When writing methods to capture custom events, the rating param is automatically passed to the method. If you need to declare methods with multiple paramaters you will need to use `$event` to pass the rating to the method:
 
 ```HTML
-<star-rating @rating-selected="setRating($event, anotherParam)"></star-rating>
+<star-rating @current-rating="setCurrentRating($event, anotherParam)"></star-rating>
 ```
 
 ### IE9 Support
