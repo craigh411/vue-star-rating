@@ -78,7 +78,7 @@ To get started with `vue-star-rating` you will want to sync the rating values be
 
 [See this example on JSFiddle](https://jsfiddle.net/craig_h_411/mcz7oha2/)
 
-###  Sycning Rating Values when using Vue 2.1.x and below
+###  Syncing Rating Values when using Vue 2.1.x and below
 
 If you are using Vue 2.1.x or below the following is the equivelent to the `v-model` example above:
 
