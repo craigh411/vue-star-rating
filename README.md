@@ -6,7 +6,7 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 ### Screenshot
 
-[![star-rating.png](https://s13.postimg.org/rle6t2g3r/star_rating.png)](https://postimg.org/image/wwt3ds26b/)
+[![star-rating.png](https://s9.postimg.org/v9up16tdb/star-rating.png)](https://postimg.org/image/63tqucs2z/)
 
 [See it in action on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
 
@@ -64,6 +64,30 @@ A `dist` file has also been created, which you can include in your webpage like 
 
 The `star-rating` component is registered automatically, so there is no need to manually register the component.
 
+## Getting Started
+
+To get started with `vue-star-rating` you will want to sync the rating values between the component and parent, you can then take a look at the props and custom events section of the docs to customise your `star-rating` component.
+
+### Syncing Rating Values with V-Model for Vue 2.2 +
+
+`vue-star-rating` supports `v-model` when using Vue 2.2 and above, which is the simplest way to keep your ratings in sync:
+
+```HTML
+<star-rating v-model="rating"></star-rating>
+```
+
+[See this example on JSFiddle](https://jsfiddle.net/craig_h_411/mcz7oha2/)
+
+###  Syncing Rating Values when using Vue 2.1.x and below
+
+If you are using Vue 2.1.x or below the following is the equivelent to the `v-model` example above:
+
+```HTML
+<star-rating @rating-selected="rating = $event" :rating="rating"></star-rating>
+```
+
+[See this example on JSFiddle](https://jsfiddle.net/craig_h_411/npq5e21h/)
+
 ## Docs
 
 ### Props
@@ -99,12 +123,6 @@ The following props can be passed to the component:
 </star-rating>
 ```
 
-### Reactive Props
-
-The `rating` prop is reactive, meaning that if you bind it to data in your parent view model, any change to that value will automatically feed through to the component. It's important to note that if you want to use this functionality you will have to manually sync data between the parent and child. 
-
-[See here for an example](https://jsfiddle.net/craig_h_411/g8x3z5ps/)
-
 ### Custom Events
 
 `vue-star-rating` fires the following custom events, simply use `v-on:event` or the `@` shortand to capture the event.
@@ -118,7 +136,7 @@ The `rating` prop is reactive, meaning that if you bind it to data in your paren
 #### Custom Events Example
 
 ```HTML
-<star-rating @rating-selected="setRating"></star-rating>
+<star-rating @rating-selected ="setRating"></star-rating>
 ```
 
 Then in your view model:
@@ -128,7 +146,7 @@ new Vue({
   el: '#app',
   methods: {
     setRating: function(rating){
-      this.rating = rating;
+      this.rating= rating;
     }
   },
   data: {
@@ -141,7 +159,7 @@ new Vue({
 **Note:** When writing methods to capture custom events, the rating param is automatically passed to the method. If you need to declare methods with multiple paramaters you will need to use `$event` to pass the rating to the method:
 
 ```HTML
-<star-rating @rating-selected="setRating($event, anotherParam)"></star-rating>
+<star-rating @current-rating="setCurrentRating($event, anotherParam)"></star-rating>
 ```
 
 ### IE9 Support
