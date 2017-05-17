@@ -1,10 +1,10 @@
 <template>
-    <div :class="['star-rating', {inline: inline}]">
+    <div :class="['star-rating', {'star-rating-rtl':rtl}, {inline: inline}]">
         <div @mouseleave="resetRating" class="star-rating">
             <span v-for="n in maxRating" :class="[{pointer: !readOnly }, 'star']">
-              <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating"></star>
+              <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating" :rtl="rtl"></star>
             </span>
-            <span v-if="showRating" :class="['rating-text', textClass]"> {{currentRating}}</span>
+            <span v-if="showRating" :class="['rating-text', textClass]"> {{formattedRating}}</span>
         </div>
     </div>
 </template>
@@ -71,6 +71,14 @@ export default {
         padding: {
             type: Number,
             default: 0
+        },
+        rtl: {
+            type: Boolean,
+            default: false
+        },
+        fixedPoints: {
+            type: Number,
+            default: null
         }
     },
     created() {
@@ -82,7 +90,7 @@ export default {
     methods: {
         setRating($event, persist) {
             if (!this.readOnly) {
-                let position = $event.position / 100;
+                let position = (this.rtl) ? (100 - $event.position) / 100 : $event.position / 100;
                 this.currentRating = (($event.id + position) - 1).toFixed(2);
                 this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating;
                 this.createStars();
@@ -113,6 +121,11 @@ export default {
         round() {
             var inv = 1.0 / this.increment;
             this.currentRating = Math.ceil(this.currentRating * inv) / inv;
+        }
+    },
+    computed: {
+        formattedRating() {
+            return (this.fixedPoints === null) ? this.currentRating : this.currentRating.toFixed(this.fixedPoints);
         }
     },
     watch: {
@@ -154,5 +167,13 @@ export default {
 .rating-text {
     margin-top: 7px;
     margin-left: 7px;
+}
+
+.star-rating-rtl {
+    direction: rtl;
+}
+
+.star-rating-rtl .rating-text {
+    padding-right: 10px;
 }
 </style>

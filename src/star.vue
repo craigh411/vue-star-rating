@@ -1,9 +1,11 @@
 <template>
     <svg :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected">
+
         <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
-            <stop :offset="getFill" :stop-color="activeColor" />
-            <stop :offset="getFill" :stop-color="inactiveColor" />
+            <stop :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor" />
+            <stop :offset="getFill" :stop-color="(rtl) ? activeColor : inactiveColor" />
         </linearGradient>
+
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
         <polygon :points="starPointsToString" :fill="getGradId" />
     </svg>
@@ -43,6 +45,10 @@ export default {
         padding: {
             type: Number,
             default: 0
+        },
+        rtl:{
+            type: Boolean,
+            default: false
         }
     },
     created() {
@@ -65,7 +71,7 @@ export default {
             return parseInt(this.size) + parseInt(this.borderWidth * 3) + this.padding;
         },
         getFill() {
-            return this.fill + "%";
+            return (this.rtl) ? 100-this.fill + "%" : this.fill + "%";
         }
     },
     methods: {

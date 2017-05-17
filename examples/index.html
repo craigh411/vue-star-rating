@@ -77,7 +77,7 @@
 
         <h2>Resetable stars with v-model (Vue 2.2 and above)</h2>
         <div style="display:inline-block;">
-                   <star-rating v-model="boundRating"></star-rating>
+            <star-rating v-model="boundRating"></star-rating>
             <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="boundRating = 0;">Reset Rating</a></div>
         </div>
 
@@ -87,16 +87,23 @@
             <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
         </div>
 
-      <h2>Inline Stars</h2>
+        <h2>Inline Stars</h2>
         <div style="display:inline-block;">
-           Rated <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating> by our customers.
+            Rated
+            <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating> by our customers.
 
         </div>
+
+        <h2>Right To Left</h2>
+        <star-rating :rtl="true" :increment="0.01"></star-rating>
     </div>
 
     <script type="text/javascript">
     new Vue({
         el: '#app',
+        components: {
+            'star-rating': VueStarRating.default
+        },
         methods: {
             setRating: function(rating) {
                 this.rating = "You have Selected: " + rating + " stars";
