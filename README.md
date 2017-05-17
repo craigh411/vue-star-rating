@@ -6,7 +6,7 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 ### Screenshot
 
-[![star-rating.png](https://s13.postimg.org/rle6t2g3r/star_rating.png)](https://postimg.org/image/wwt3ds26b/)
+[![star-rating.png](https://s9.postimg.org/v9up16tdb/star-rating.png)](https://postimg.org/image/63tqucs2z/)
 
 [See it in action on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
 
