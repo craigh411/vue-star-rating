@@ -54,7 +54,7 @@ You can then use the following markup in your project:
 
 ### Via CDN
 
-You may also include vue-star-rating directly in to your webpage via Unpkg. Simply add the following script tag:
+You may also include `vue-star-rating` directly in to your webpage via Unpkg. Simply add the following script tag:
 
 `<script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
 
@@ -112,7 +112,7 @@ The following props can be passed to the component:
 | border-width  | Sets the width of the border for each star | 0 |
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
 | fixed-points  | Specify a fixed number of digits after the decimal point. | null |
-| rtl  | Pass true to display star-rating right-to-left | false |
+| rtl  | Pass true to display star rating using rtl (right-to-left) | false |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
