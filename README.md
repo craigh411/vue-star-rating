@@ -4,6 +4,8 @@
 
 A simple, highly customisable star rating component for Vue 2.x.
 
+> Need more than stars? Check out [vue-rate-it](https://github.com/craigh411/vue-rate-it) with hundreds of different raters built in!
+
 ### Screenshot
 
 [![star-rating.png](https://s9.postimg.org/v9up16tdb/star-rating.png)](https://postimg.org/image/63tqucs2z/)
@@ -24,7 +26,7 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 Install via npm:
 
-`npm install vue-star-rating --save-dev`
+`npm install vue-star-rating`
 
 Then require in your project:
 
@@ -52,7 +54,7 @@ You can then use the following markup in your project:
 
 ### Via CDN
 
-You may also include vue-star-rating via CDN by adding the following to your webpage:
+You may also include vue-star-rating directly in to your webpage via Unpkg. Simply add the following script tag:
 
 `<script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
 
@@ -62,7 +64,7 @@ You will need to register the component by doing:
 Vue.component('star-rating', VueStarRating.default);
 ```
 
-You may also register the component locallay via the [components option](https://vuejs.org/v2/guide/components.html#Local-Registration).
+You may also register the component locally via the [components option](https://vuejs.org/v2/guide/components.html#Local-Registration).
 
 ## Getting Started
 
