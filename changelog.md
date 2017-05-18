@@ -4,19 +4,19 @@
 
 ## Version 1.4.0
 
-- RTL Support Added via `rtl` prop (closes issue #11)
-- `fixed-points` prop added
-- css class names changed to avoid name clashes causing unexpected formatting issues (solves issue #12)
-- Webpack added for build, development and tests
-- Webpack configs added for dev and now export a single UMD module
-- ESLint, eslint-config-vue and eslint-plugin-vue added
-- Scripts added to package.json for linting (global & local eslint & plugins required to run this)
-- Browserify & gulp removed
-- Browserify transforms removed from package json as they are no longer required with umb module
-- Further tests added for new features
-- Added rtl example
-- Created new commonjs example
-- Readme updated
+- RTL Support Added via `rtl` prop (closes issue #11).
+- `fixed-points` prop added.
+- css class names changed to avoid name clashes causing unexpected formatting issues (solves issue #12).
+- Webpack added for build, development and tests.
+- Webpack configs added for dev & dist whcih now exports a single UMD module.
+- ESLint, eslint-config-vue and eslint-plugin-vue added.
+- Scripts added to package.json for linting (global & local eslint & plugins required to run this).
+- Browserify & gulp removed.
+- Browserify transforms removed from package json as they are no longer required with UMD module.
+- Further tests added for new features.
+- Added rtl example.
+- Created new commonjs example.
+- Readme updated.
 
 ## Version 1.3.0
 
