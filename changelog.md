@@ -2,10 +2,10 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
-## [Unreleased]
+## Version 1.4.0
 
-- RTL Support Added via rtl prop (closes issue #11)
-- fixed-points prop added
+- RTL Support Added via `rtl` prop (closes issue #11)
+- `fixed-points` prop added
 - css class names changed to avoid name clashes causing unexpected formatting issues (solves issue #12)
 - Webpack added for build, development and tests
 - Webpack configs added for dev and now export a single UMD module
