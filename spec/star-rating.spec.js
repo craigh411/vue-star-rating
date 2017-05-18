@@ -2,6 +2,8 @@ import Vue from 'vue'
 import starRating from '../src/star-rating.vue'
 import helpers from './helpers/helpers.js'
 
+Vue.config.productionTip = false;
+
 Vue.component('star-rating', starRating);
 
 function getViewInstance(props, data) {
@@ -55,6 +57,8 @@ describe('star-rating component', () => {
         expect(props.borderColor.default).toBe("#999");
         expect(props.borderWidth.default).toEqual(0);
         expect(props.padding.default).toEqual(0);
+        expect(props.fixedPoints.default).toBe(null);
+        expect(props.rtl.default).toBeFalsy();
     });
 
     it('should set the props', () => {
@@ -72,7 +76,9 @@ describe('star-rating component', () => {
             inline: true,
             borderColor: "#000",
             borderWidth: 1,
-            padding: 5
+            padding: 5,
+            fixedPoints: 2,
+            rtl: true
         }
 
         let propsData = helpers.getProps(starRating, props);
@@ -88,8 +94,11 @@ describe('star-rating component', () => {
         expect(propsData.borderColor).toBe("#000");
         expect(propsData.borderWidth).toEqual(1);
         expect(propsData.padding).toEqual(5);
+        expect(propsData.fixedPoints).toEqual(2);
+        expect(propsData.rtl).toBeTruthy(2);
 
-        expect(propsData.inline).toBeTruthy();  expect(propsData.textClass).toBe("foo");
+        expect(propsData.inline).toBeTruthy();
+        expect(propsData.textClass).toBe("foo");
     });
 
 
@@ -127,6 +136,39 @@ describe('star-rating component', () => {
         expect(data.step).toEqual(10);
     });
 
+    it('should return the correct percentage when using rtl', () => {
+        let Component = Vue.extend(starRating);
+        let component = new Component();
+        component.increment = 0.5;
+
+        // left-to-right
+        let event = { position: 51, id: 2 };
+        component.setRating(event);
+        expect(component.currentRating).toEqual(2);
+
+        component.rtl = true;
+
+        // right to left
+        component.setRating(event);
+        expect(component.currentRating).toEqual(1.5);
+
+    });
+
+    it('should set the fixed points', () => {
+         let Component = Vue.extend(starRating);
+         Component = Component.extend({
+            props:{
+                fixedPoints: {
+                   default: 2
+                } 
+            }
+         });
+
+         let component = new Component();
+
+         expect(component.formattedRating).toBe("0.00")
+    });
+
     describe('dom events', () => {
 
         var vm;
@@ -162,6 +204,7 @@ describe('star-rating component', () => {
             doEventOnStar('mousemove', vm, 2);
             expect(vm.$children[0].$data.currentRating).toEqual(2);
         });
+
 
         it('should set the selectedRating on mouse over', () => {
             vm = getViewInstance().$mount("#app");
@@ -237,7 +280,7 @@ describe('star-rating component', () => {
 
         it('should display the current rating', () => {
             vm = getViewInstance().$mount("#app");
-            expect(document.getElementsByClassName('rating-text')[0]).not.toBe(undefined);
+            expect(document.getElementsByClassName('vue-star-rating-rating-text')[0]).not.toBe(undefined);
         });
 
         it('should hide the current rating', () => {
@@ -273,11 +316,11 @@ describe('star-rating component', () => {
             expect(vm.$data.position).toEqual(0);
         });
 
-        it('should add the pointer class', () => {
+        it('should add the vue-star-rating-pointer class', () => {
             vm = getViewInstance().$mount("#app");
             let starRating = vm.$children[0].$el.getElementsByTagName('span')[0];
 
-            expect(starRating.className).toBe('pointer star');
+            expect(starRating.className).toBe('vue-star-rating-pointer vue-star-rating-star');
         });
 
 
@@ -286,28 +329,28 @@ describe('star-rating component', () => {
 
             let starRating = vm.$children[0].$el.getElementsByTagName('span')[0];
 
-            expect(starRating.className).toBe('star');
+            expect(starRating.className).toBe('vue-star-rating-star');
         });
 
         it('should add the textClass class to rating-text', () => {
             vm = getViewInstance({ textClass: 'foo' }).$mount("#app");
 
-            let ratingText = document.getElementsByClassName('rating-text')[0];
-            expect(ratingText.className).toBe('rating-text foo');
+            let ratingText = document.getElementsByClassName('vue-star-rating-rating-text')[0];
+            expect(ratingText.className).toBe('vue-star-rating-rating-text foo');
         });
 
-         it('should not add the inline class to star-rating', () => {
+        it('should not add the vue-star-rating class to star-rating', () => {
             vm = getViewInstance().$mount("#app");
 
-            let ratingText = document.getElementsByClassName('star-rating')[0];
-            expect(ratingText.className).toBe('star-rating');
+            let ratingText = document.getElementsByClassName('vue-star-rating')[0];
+            expect(ratingText.className).toBe('vue-star-rating');
         });
 
-         it('should add the inline class to star-rating', () => {
+        it('should add the vue-star-rating-inline class to star-rating', () => {
             vm = getViewInstance({ inline: true }).$mount("#app");
 
-            let ratingText = document.getElementsByClassName('star-rating')[0];
-            expect(ratingText.className).toBe('star-rating inline');
+            let ratingText = document.getElementsByClassName('vue-star-rating')[0];
+            expect(ratingText.className).toBe('vue-star-rating vue-star-rating-inline');
         });
     });
 });

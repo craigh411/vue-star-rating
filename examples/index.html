@@ -3,8 +3,8 @@
 <head>
     <title>Star Rating Example</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
-    <script src="../dist/star-rating.js"></script>
+    <script src="https://unpkg.com/vue@2.3.3/dist/vue.js"></script>
+    <script src="../dist/star-rating.min.js"></script>
     <style>
     body {
         font-size: 1em;
@@ -84,6 +84,7 @@
         <h2>Resetable stars without v-model (Vue 2.1.x and below)</h2>
         <div style="display:inline-block;">
             <star-rating :rating="resetableRating" @rating-selected="syncRating"></star-rating>
+
             <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
         </div>
 
@@ -101,8 +102,8 @@
     <script type="text/javascript">
     new Vue({
         el: '#app',
-        components: {
-            'star-rating': VueStarRating.default
+        components:{
+          'star-rating': VueStarRating.default
         },
         methods: {
             setRating: function(rating) {

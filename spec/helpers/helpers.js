@@ -1,4 +1,5 @@
 import Vue from 'vue'
+Vue.config.productionTip = false;
 
 export default {
     getData: function(Component, propsData) {

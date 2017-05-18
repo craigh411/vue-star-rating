@@ -50,19 +50,19 @@ You can then use the following markup in your project:
 
 `<star-rating></star-rating>`
 
-### Important
-
-When using require or import you will need to make sure you can compile `ES6` (see: [babel](https://babeljs.io)  and the [ES2015 preset](https://babeljs.io/docs/plugins/preset-es2015/)) and have either [vueify](https://github.com/vuejs/vueify) (for browserify) or [vue-loader](https://github.com/vuejs/vue-loader) (for webpack) in your project to compile the `.vue` files.
-
-If you are using `browserify` ensure you have both [vueify](https://github.com/vuejs/vueify) and [babelify](https://github.com/babel/babelify) in your project to correctly compile the components. 
-
 ### Via CDN
 
-A `dist` file has also been created, which you can include in your webpage like so:
+You may also include vue-star-rating via CDN by adding the following to your webpage:
 
 `<script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
 
-The `star-rating` component is registered automatically, so there is no need to manually register the component.
+You will need to register the component by doing:
+
+```javascript
+Vue.component('star-rating', VueStarRating.default);
+```
+
+You may also register the component locallay via the [components option](https://vuejs.org/v2/guide/components.html#Local-Registration).
 
 ## Getting Started
 
@@ -109,6 +109,8 @@ The following props can be passed to the component:
 | border-color  | Sets the colour of the border for each star | #999 |
 | border-width  | Sets the width of the border for each star | 0 |
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
+| fixed-points  | Specify a fixed number of digits after the decimal point. | null |
+| rtl  | Pass true to display star-rating right-to-left | false |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 

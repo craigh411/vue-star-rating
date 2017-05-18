@@ -1,3 +1,3 @@
-import StarRating from './star-rating.vue';
+/* import StarRating from './star-rating.vue';
 
-Vue.component('star-rating', StarRating);
+Vue.component('star-rating', StarRating);*/

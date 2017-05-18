@@ -3,21 +3,22 @@ import star from '../src/star.vue'
 import helpers from './helpers/helpers.js'
 
 Vue.component('star', star);
+Vue.config.productionTip = false;
 
-    var defaultProps = {
-        fill: 50,
-        size: 40,
-        starId: 1,
-        activeColor: 'yellow',
-        inactiveColor: 'grey',
-        borderColor: '#000',
-        borderWidth: 0,
-        padding: 0
-    };
+var defaultProps = {
+    fill: 50,
+    size: 40,
+    starId: 1,
+    activeColor: 'yellow',
+    inactiveColor: 'grey',
+    borderColor: '#000',
+    borderWidth: 0,
+    padding: 0
+};
 
 function getViewInstance(props, data) {
     props = props || defaultProps;
-    data = data || {fired: false, position: 0};
+    data = data || { fired: false, position: 0 };
 
     return new Vue({
         render: function(createElement) {
@@ -71,6 +72,35 @@ describe('Star Component', () => {
         }
     })
 
+    it('should set the correct fill level when using rtl', () => {
+        let Component = Vue.extend(star);
+        Component = Component.extend({
+            props: {
+                starId: {
+                    required: false
+                },
+                activeColor: {
+                    required: false
+                },
+                inactiveColor: {
+                    required: false
+                },
+                fill:{
+                    default: 51
+                }
+            }
+        });
+
+        let component = new Component();
+
+        // left-to-right
+        expect(component.getFill).toBe("51%");
+        component.rtl = true;
+        // right to left
+        expect(component.getFill).toEqual("49%");
+
+    });
+
     it('should set the fill level', () => {
 
         let props = helpers.getProps(star, defaultProps);
@@ -119,7 +149,7 @@ describe('Star Component', () => {
             // expect it to return the correct fill percentage (requires knowledge of the internal calculation)
             var starWidth = (92 / 100) * 86; // 92 / 100 accounts for margins, 86 is the star size.
             var position = Math.round((100 / starWidth) * x);
-            expect(vm.$data.position).toEqual(position);
+            expect(vm.$data.position).toEqual(Math.min(100, position));
 
         });
 

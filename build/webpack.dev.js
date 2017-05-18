@@ -3,15 +3,12 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: {
-        'star-rating': './src/index.js',
+        'star-rating': './examples/commonjs/app.js',
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: '[name].js',
-        library: 'VueStarRating',
-        libraryTarget: 'umd',
-        umdNamedDefine: true
+        filename: '[name].js'
     },
     module: {
         rules: [{

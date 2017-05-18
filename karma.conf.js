@@ -2,14 +2,26 @@
 module.exports = function(config) {
     config.set({
         browsers: [
-            'PhantomJS',
-            'Chrome'
+            'PhantomJS'
+            //'Chrome'
         ],
-        frameworks: ['browserify', 'jasmine'],
+        frameworks: ['jasmine'],
         files: ['spec/**/*.js'],
         reporters: ['spec'],
         preprocessors: {
-            'spec/**/*.js': ['browserify']
+            'spec/**/*.js': ['webpack']
+        },
+        webpack: {
+            module: {
+                rules: [{
+                    test: /\.vue$/,
+                    loader: 'vue-loader'
+                }, {
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/
+                }]
+            }
         },
         // if you want to continuously re-run tests on file-save,
         // replace the following line with `autoWatch: true`
