@@ -2,6 +2,12 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+## Version 1.5.0
+- Added `round-start-value` prop
+- Fixed dead column of pixels allowing rating to be reset to 0
+- Added new tests
+- Updated Readme
+
 ## Version 1.4.0
 
 - RTL Support Added via `rtl` prop (closes issue #11).
