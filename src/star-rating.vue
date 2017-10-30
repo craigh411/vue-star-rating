@@ -117,7 +117,6 @@ export default {
             if (round) {
                 this.round()
             }
-
             for (var i = 0; i < this.maxRating; i++) {
                 let level = 0
                 if (i < this.currentRating) {
@@ -162,29 +161,23 @@ export default {
 .vue-star-rating-star {
     display: inline-block;
 }
-
 .vue-star-rating-pointer {
     cursor: pointer;
 }
-
 .vue-star-rating {
     display: flex;
     align-items: center;
 }
-
 .vue-star-rating-inline {
     display: inline-flex;
 }
-
 .vue-star-rating-rating-text {
     margin-top: 7px;
     margin-left: 7px;
 }
-
 .vue-star-rating-rtl {
     direction: rtl;
 }
-
 .vue-star-rating-rtl .vue-star-rating-rating-text {
     margin-right: 10px;
     direction:rtl;
