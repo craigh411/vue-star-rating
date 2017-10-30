@@ -100,7 +100,7 @@ The following props can be passed to the component:
 | Prop  | Description | Default |
 | ------------- | ------------- |-------------|
 | increment  |  The rating increment, for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1. | 1
-| rating  | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment  | 0 |
+| rating  | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment or set the `round-start-rating` prop to false  | 0 |
 | max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
 | inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
 | active-color  | The color of the highlighted portion of a star.  | #ffd055 |
@@ -114,6 +114,7 @@ The following props can be passed to the component:
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
 | fixed-points  | Specify a fixed number of digits after the decimal point. | null |
 | rtl  | Pass true to display star rating using rtl (right-to-left) | false |
+| round-start-rating  | Pass false if you don't want the start rating value to round to the closest increment. The user will still only be able to select based on the given increment. | true |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
