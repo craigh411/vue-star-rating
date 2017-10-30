@@ -124,6 +124,15 @@ describe('star-rating component', () => {
         expect(data.fillLevel[1]).toEqual(50);
     });
 
+
+    it('should not round the fillLevel up to the nearest given increment', () => {
+        let data = helpers.getData(starRating, { increment: 0.5, rating: 1.1, roundStartRating: false });
+
+        expect(data.fillLevel[0]).toEqual(100);
+        expect(data.fillLevel[1]).toEqual(10);
+    });
+
+
     it('should set the currentRating and selected Rating based on passed rating prop', () => {
         let data = helpers.getData(starRating, { rating: 2 });
 
@@ -217,6 +226,40 @@ describe('star-rating component', () => {
             // mouse over second star
             doEventOnStar('click', vm, 2);
             expect(vm.$children[0].$data.selectedRating).toEqual(2);
+        });
+
+
+        it('should set the currentRating to selectedRating on mouseout with rounding', () => {
+            vm = getViewInstance({roundStartRating: true, rating: 4.34}).$mount("#app");
+
+
+            // mousemove on the second star
+            doEventOnStar('mousemove', vm, 2);
+            // currentRating should now be 2
+            expect(vm.$children[0].$data.currentRating).toEqual(2);
+
+            let starRating = document.getElementsByTagName('div')[1];
+
+            // leave the starRating component, currentRating should reset to 1
+            helpers.doEvent('mouseleave', starRating, 0, 0);
+            expect(vm.$children[0].$data.currentRating).toEqual(5);
+        });
+
+
+        it('should set the currentRating to selectedRating on mouseout without rounding', () => {
+            vm = getViewInstance({roundStartRating: false, rating: 4.34}).$mount("#app");
+
+
+            // mousemove on the second star
+            doEventOnStar('mousemove', vm, 2);
+            // currentRating should now be 2
+            expect(vm.$children[0].$data.currentRating).toEqual(2);
+
+            let starRating = document.getElementsByTagName('div')[1];
+
+            // leave the starRating component, currentRating should reset to 1
+            helpers.doEvent('mouseleave', starRating, 0, 0);
+            expect(vm.$children[0].$data.currentRating).toEqual(4.34);
         });
 
         it('should set the currentRating to selectedRating on mouseout', () => {

@@ -28,6 +28,10 @@ export default {
             type: Number,
             default: 0
         },
+        roundStartRating: {
+            type: Boolean,
+            default: true
+        },
         activeColor: {
             type: String,
             default: '#ffd055'
@@ -84,8 +88,8 @@ export default {
     created() {
         this.step = this.increment * 100
         this.currentRating = this.rating
-        this.selectedRating = this.rating
-        this.createStars()
+        this.selectedRating = this.currentRating
+        this.createStars(this.roundStartRating)
     },
     methods: {
         setRating($event, persist) {
@@ -97,6 +101,7 @@ export default {
                 if (persist) {
                     this.selectedRating = this.currentRating
                     this.$emit('rating-selected', this.selectedRating)
+                    this.ratingSelected = true
                 } else {
                     this.$emit('current-rating', this.currentRating)
                 }
@@ -105,11 +110,13 @@ export default {
         resetRating() {
             if (!this.readOnly) {
                 this.currentRating = this.selectedRating
-                this.createStars()
+                this.createStars(this.shouldRound)
             }
         },
-        createStars() {
-            this.round()
+        createStars(round = true) {
+            if (round) {
+                this.round()
+            }
             for (var i = 0; i < this.maxRating; i++) {
                 let level = 0
                 if (i < this.currentRating) {
@@ -126,6 +133,9 @@ export default {
     computed: {
         formattedRating() {
             return (this.fixedPoints === null) ? this.currentRating : this.currentRating.toFixed(this.fixedPoints)
+        },
+        shouldRound() {
+            return this.ratingSelected || this.roundStartRating
         }
     },
     watch: {
@@ -140,7 +150,8 @@ export default {
             step: 0,
             fillLevel: [],
             currentRating: 0,
-            selectedRating: 0
+            selectedRating: 0,
+            ratingSelected: false
         }
     }
 }
@@ -150,29 +161,23 @@ export default {
 .vue-star-rating-star {
     display: inline-block;
 }
-
 .vue-star-rating-pointer {
     cursor: pointer;
 }
-
 .vue-star-rating {
     display: flex;
     align-items: center;
 }
-
 .vue-star-rating-inline {
     display: inline-flex;
 }
-
 .vue-star-rating-rating-text {
     margin-top: 7px;
     margin-left: 7px;
 }
-
 .vue-star-rating-rtl {
     direction: rtl;
 }
-
 .vue-star-rating-rtl .vue-star-rating-rating-text {
     margin-right: 10px;
     direction:rtl;

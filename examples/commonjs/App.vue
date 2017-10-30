@@ -1,11 +1,11 @@
 <template>
     <div>
-        <star-rating v-model="rating" active-color="black" :increment="0.01"></star-rating> {{rating}}
+        <star-rating v-model="rating" active-color="black" :increment="1" :rating="rating" :round-start-rating="false" :rtl="true"></star-rating> {{rating}}
     </div>
 </template>
 
 <script type="text/javascript">
-import StarRating from '../../dist/star-rating.min.js';
+import StarRating from '../../src/star-rating.vue';
 
 export default {
     components: {
@@ -13,7 +13,7 @@ export default {
     },
     data(){
     	return{
-    		rating: 4.38
+    		rating: 3.48
     	}
     }
 }
