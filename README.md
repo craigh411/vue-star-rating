@@ -114,7 +114,6 @@ The following props can be passed to the component:
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
 | fixed-points  | Specify a fixed number of digits after the decimal point. | null |
 | rtl  | Pass true to display star rating using rtl (right-to-left) | false |
-| round-start-rating  | Pass false if you don't want the start rating value to round to the closest increment. The user will still only be able to select based on the given increment. | true |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
