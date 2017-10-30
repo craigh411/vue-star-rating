@@ -1,6 +1,6 @@
 <template>
     <div>
-        <star-rating v-model="rating" active-color="black" :increment="1"></star-rating> {{rating}}
+        <star-rating v-model="rating" active-color="black" :increment="1" :rating="rating" :round-start-rating="false"></star-rating> {{rating}}
     </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     },
     data(){
     	return{
-    		rating: 4.38
+    		rating: 3.48
     	}
     }
 }
