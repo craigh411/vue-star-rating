@@ -6,8 +6,20 @@
             <stop :offset="getFill" :stop-color="(rtl) ? activeColor : inactiveColor" />
         </linearGradient>
 
+        <filter id="glow">
+            <feGaussianBlur :stdDeviation="glow" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <polygon :points="starPointsToString" :fill="getGradId" :stroke="activeColor"
+              filter="url(#glow)" v-show="fill === 100" />
+
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
         <polygon :points="starPointsToString" :fill="getGradId" />
+    
     </svg>
 </template>
 
@@ -49,6 +61,10 @@ export default {
         rtl: {
             type: Boolean,
             default: false
+        },
+        glow: {
+            type: Number,
+            default: 0
         }
     },
     created() {
