@@ -14,8 +14,8 @@
             </feMerge>
         </filter>
 
-        <polygon :points="starPointsToString" :fill="getGradId" :stroke="activeColor"
-              filter="url(#glow)" v-show="fill === 100" />
+        <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor"
+              filter="url(#glow)" v-show="fill > 1" />
 
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
         <polygon :points="starPointsToString" :fill="getGradId" />
@@ -65,6 +65,10 @@ export default {
         glow: {
             type: Number,
             default: 0
+        },
+        glowColor:{
+            type: String,
+            required:false
         }
     },
     created() {
