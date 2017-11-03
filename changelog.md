@@ -2,6 +2,9 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+## Version 1.5.1
+- Fixed Screenshot im Readme.md
+
 ## Version 1.5.0
 - Added `round-start-value` prop
 - Fixed dead column of pixels allowing rating to be reset to 0
