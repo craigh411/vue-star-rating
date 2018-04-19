@@ -2,7 +2,7 @@
     <div :class="['vue-star-rating', {'vue-star-rating-rtl':rtl}, {'vue-star-rating-inline': inline}]">
         <div @mouseleave="resetRating" class="vue-star-rating">
             <span v-for="n in maxRating" :key="n" :class="[{'vue-star-rating-pointer': !readOnly }, 'vue-star-rating-star']">
-              <star :fill="fillLevel[n-1]" :size="starSize" :points="starPoints" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :rounded-corners="roundedCorners" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating" :rtl="rtl"></star>
+              <star :fill="fillLevel[n-1]" :size="starSize" :points="starPoints" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :rounded-corners="roundedCorners" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating" :rtl="rtl" :glow="glow" :glow-color="glowColorComputed"></star>
             </span>
             <span v-if="showRating" :class="['vue-star-rating-rating-text', textClass]"> {{formattedRating}}</span>
         </div>
@@ -93,6 +93,14 @@ export default {
         fixedPoints: {
             type: Number,
             default: null
+        },
+        glow:{
+            type: Number,
+            default: 0
+        },
+        glowColor:{
+            type: String,
+            default: null
         }
     },
     created() {
@@ -100,6 +108,7 @@ export default {
         this.currentRating = this.rating
         this.selectedRating = this.currentRating
         this.createStars(this.roundStartRating)
+        console.log(this.glowColor)
     },
     methods: {
         setRating($event, persist) {
@@ -146,6 +155,9 @@ export default {
         },
         shouldRound() {
             return this.ratingSelected || this.roundStartRating
+        },
+        glowColorComputed(){
+            return this.glowColor || this.activeColor
         }
     },
     watch: {

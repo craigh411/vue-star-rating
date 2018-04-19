@@ -1,6 +1,6 @@
 <template>
     <div>
-        <star-rating v-model="rating" active-color="black" :increment="1" :rating="rating" :round-start-rating="false" :rtl="true"></star-rating> {{rating}}
+        <star-rating v-model="rating" active-color="black" :increment="0.01" :rating="rating" :round-start-rating="false" :glow="3" :border-width="1" glow-color="#cc1166"></star-rating> {{rating}}
     </div>
 </template>
 

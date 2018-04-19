@@ -195,9 +195,9 @@ describe('star-rating component', () => {
 
         it('should add the given number of stars to the page ', () => {
             vm = getViewInstance().$mount("#app");
-            // expect there to be 10 polygons, because we have 2 polygones for each star to account for border
-            // so, 5 stars is 10 polygons
-            expect(vm.$el.getElementsByTagName('polygon').length).toEqual(10);
+            // expect there to be 15 polygons, because we have 3 polygons for each star to account for border and glow
+            // so, 5 stars is 15 polygons
+            expect(vm.$el.getElementsByTagName('polygon').length).toEqual(15);
         });
 
 
