@@ -20,7 +20,7 @@ A simple, highly customisable star rating component for Vue 2.x.
   - Customisable colors.
   - Customisable number of stars.
   - Create read-only stars.
- 
+
 ## Usage
 
 ### Via NPM
@@ -104,6 +104,7 @@ The following props can be passed to the component:
 | max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
 | inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
 | active-color  | The color of the highlighted portion of a star.  | #ffd055 |
+| star-points | The points defining to customize the shape of the stars.<br><small>_If no points are passed the default star shape is used._</small> | [] |
 | star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
 | show-rating  | Whether or not to show the rating next to the stars  | true |
 | read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | false |
@@ -111,6 +112,7 @@ The following props can be passed to the component:
 | inline  | Sets the star rating to display inline | false |
 | border-color  | Sets the colour of the border for each star | #999 |
 | border-width  | Sets the width of the border for each star | 0 |
+| rounded-corners | Whether or not to round the corners of the star's borders | false |
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
 | fixed-points  | Specify a fixed number of digits after the decimal point. | null |
 | rtl  | Pass true to display star rating using rtl (right-to-left) | false |
@@ -121,10 +123,10 @@ The following props can be passed to the component:
 #### Props Example
 
 ```HTML
-<star-rating v-bind:increment="0.5" 
-             v-bind:max-rating="3" 
-             inactive-color="#000" 
-             active-color="#f00" 
+<star-rating v-bind:increment="0.5"
+             v-bind:max-rating="3"
+             inactive-color="#000"
+             active-color="#f00"
              v-bind:star-size="90">
 </star-rating>
 ```
@@ -169,9 +171,7 @@ new Vue({
 ```
 
 ### IE9 Support
-  
+
   `vue-star-rating` supports IE 9+; make sure you place the following in the `head` of your webpage to ensure that IE is in standards mode:
-  
+
 `<meta http-equiv="X-UA-Compatible" content="IE=Edge">`
-  
-  
