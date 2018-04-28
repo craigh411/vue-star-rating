@@ -1,8 +1,8 @@
 <template>
     <div :class="['vue-star-rating', {'vue-star-rating-rtl':rtl}, {'vue-star-rating-inline': inline}]">
         <div @mouseleave="resetRating" class="vue-star-rating">
-            <span v-for="n in maxRating" :class="[{'vue-star-rating-pointer': !readOnly }, 'vue-star-rating-star']">
-              <star :fill="fillLevel[n-1]" :size="starSize" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating" :rtl="rtl" :glow="glow" :glow-color="glowColorComputed"></star>
+            <span v-for="n in maxRating" :key="n" :class="[{'vue-star-rating-pointer': !readOnly }, 'vue-star-rating-star']">
+              <star :fill="fillLevel[n-1]" :size="starSize" :points="starPoints" :star-id="n" :step="step" :active-color="activeColor" :inactive-color="inactiveColor" :border-color="borderColor" :border-width="borderWidth" :rounded-corners="roundedCorners" :padding="padding" @star-selected="setRating($event, true)" @star-mouse-move="setRating" :rtl="rtl" :glow="glow" :glow-color="glowColorComputed"></star>
             </span>
             <span v-if="showRating" :class="['vue-star-rating-rating-text', textClass]"> {{formattedRating}}</span>
         </div>
@@ -44,6 +44,12 @@ export default {
             type: Number,
             default: 5
         },
+        starPoints: {
+            type: Array,
+            default() {
+                return []
+            }
+        },
         starSize: {
             type: Number,
             default: 50
@@ -72,6 +78,10 @@ export default {
             type: Number,
             default: 0
         },
+        roundedCorners: {
+            type: Boolean,
+            default: false
+        },
         padding: {
             type: Number,
             default: 0
@@ -86,7 +96,7 @@ export default {
         },
         glow:{
             type: Number,
-            default: 0 
+            default: 0
         },
         glowColor:{
             type: String,

@@ -17,9 +17,9 @@
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor"
               filter="url(#glow)" v-show="fill > 1" />
 
-        <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" />
+        <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" :stroke-linejoin="roundedCorners ? 'round' : 'miter'" />
         <polygon :points="starPointsToString" :fill="getGradId" />
-    
+
     </svg>
 </template>
 
@@ -29,6 +29,12 @@ export default {
         fill: {
             type: Number,
             default: 0
+        },
+        points: {
+            type: Array,
+            default() {
+                return []
+            }
         },
         size: {
             type: Number,
@@ -54,6 +60,10 @@ export default {
             type: Number,
             default: 0
         },
+        roundedCorners: {
+            type: Boolean,
+            default: false
+        },
         padding: {
             type: Number,
             default: 0
@@ -72,6 +82,9 @@ export default {
         }
     },
     created() {
+        if (this.points.length) {
+            this.starPoints = this.points
+        }
         this.calculatePoints
         this.grad = Math.random().toString(36).substring(7)
     },
