@@ -56,11 +56,12 @@ describe('Star Component', () => {
     })
 
     it('should scale the star based on size', () => {
-        // star points for a star of size 43, hardcoded into star.vue;
+        
         let starPoints = [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56];
 
+        // Double maximum size
         let props = defaultProps;
-        props['size'] = 86;
+        props['size'] = 87.12;
 
         let data = helpers.getData(star, props);
 
