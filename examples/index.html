@@ -98,6 +98,24 @@
 
         </div>
 
+
+        <h2>Rounded Corners</h2>
+        <star-rating :rounded-corners="true" :border-width="6"></star-rating>
+
+    <h2>Custom Stars</h2>
+
+        <star-rating
+            :star-size="50"
+            :rounded-corners="true"
+            :border-width="4"
+            :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
+
+
+        <h2>Glowing Stars</h2>
+        <div style="background:#000;overflow:auto;padding:10px;padding-bottom:20px;">
+            <star-rating :star-size="70" :glow="10" glow-color="#ffd055"></star-rating>
+        </div>
+
         <h2>Right To Left</h2>
         <star-rating :rtl="true" :increment="0.01"></star-rating>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <svg class="vue-star-rating-star" :height="getSize" :width="getSize" :viewBox="viewBox" @mousemove="mouseMoving" @click="selected" :style="{'padding-right': padding}">
+    <svg class="vue-star-rating-star" :height="getSize" :width="getSize" :viewBox="viewBox" @mousemove="mouseMoving" @click="selected">
 
         <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
             <stop :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor" />
@@ -63,10 +63,6 @@ export default {
             type: Boolean,
             default: false
         },
-        padding: {
-            type: Number,
-            default: 0
-        },
         rtl: {
             type: Boolean,
             default: false
@@ -75,26 +71,18 @@ export default {
             type: Number,
             default: 0
         },
-        glowColor:{
+        glowColor: {
             type: String,
-            required:false
+            required: false
         }
     },
     created() {
-        if (this.points.length) {
-            this.starPoints = this.points
-        }
-        this.calculatePoints
+        this.starPoints = (this.points.length) ? this.points : this.starPoints
+        this.calculatePoints()
         this.grad = this.getRandomId()
         this.glowId = this.getRandomId()
-        console.log(this.glowColor);
     },
     computed: {
-        calculatePoints() {
-            this.starPoints = this.starPoints.map((point) => {
-                return ((this.size / 43) * point) + (this.border* 1.5)
-            })
-        },
         starPointsToString() {
             return this.starPoints.join(',')
         },
@@ -103,8 +91,8 @@ export default {
         },
         getSize() {
             // Adjust star size when rounded corners are set with no border, to account for the 'hidden' border
-            let size = (this.roundedCorners && this.borderWidth <= 0) ? parseInt(this.size) - parseInt(this.border) : this.size
-            return parseInt(size) + parseInt(this.border) + this.padding
+            const size = (this.roundedCorners && this.borderWidth <= 0) ? parseInt(this.size) - parseInt(this.border) : this.size
+            return parseInt(size) + parseInt(this.border)
         },
         getFill() {
             return (this.rtl) ? 100 - this.fill + '%' : this.fill + '%'
@@ -113,20 +101,20 @@ export default {
             return (this.roundedCorners && this.borderWidth <= 0) ? 6 : this.borderWidth
         },
         getBorderColor() {
-            if(this.roundedCorners && this.borderWidth <= 0){
+            if (this.roundedCorners && this.borderWidth <= 0) {
                 // create a hidden border
                 return (this.fill <= 0) ? this.inactiveColor : this.activeColor
             }
 
             return this.borderColor
         },
+        maxSize() {
+            return this.starPoints.reduce(function(a, b) {
+                return Math.max(a, b)
+            })
+        },
         viewBox() {
-           let max = this.starPoints.reduce(function(a, b) {
-                return Math.max(a, b);
-            });
-
-           return "0 0 " + max + " " + max
-
+            return '0 0 ' + this.maxSize + ' ' + this.maxSize
         }
     },
     methods: {
@@ -153,6 +141,11 @@ export default {
         },
         getRandomId() {
             return Math.random().toString(36).substring(7)
+        },
+        calculatePoints() {
+            this.starPoints = this.starPoints.map((point) => {
+                return ((this.size / this.maxSize) * point) + (this.border * 1.5)
+            })
         }
     },
     data() {

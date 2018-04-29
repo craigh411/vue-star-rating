@@ -2,6 +2,14 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+## Version 1.6.0
+- Add rounded corners (thanks to @SparoHawk)
+- Add custom star shapes (thanks to @SparoHawk)
+- Add glow prop, for a subtle glow when star selected
+- Add glow-color prop
+- Add viewbox attribute
+- Space by adding right margin to star div in star-rating.vue, rather than on SVG
+
 ## Version 1.5.1
 - Fixed Screenshot im Readme.md
 

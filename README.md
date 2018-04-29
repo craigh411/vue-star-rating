@@ -104,8 +104,8 @@ The following props can be passed to the component:
 | max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
 | inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
 | active-color  | The color of the highlighted portion of a star.  | #ffd055 |
-| star-points | The points defining to customize the shape of the stars.<br><small>_If no points are passed the default star shape is used._</small> | [] |
 | star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
+| star-points | The points defining to customize the shape of the stars.<br><small>_If no points are passed the default star shape is used._</small> | [] |
 | show-rating  | Whether or not to show the rating next to the stars  | true |
 | read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | false |
 | text-class  | A css class name to style the rating text for a specific star rating component | '' |
