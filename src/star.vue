@@ -17,7 +17,7 @@
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor"
               filter="url(#glow)" v-show="fill > 1" />
 
-        <polygon :points="starPointsToString" :fill="getGradId" :stroke="borderColor" :stroke-width="borderWidth" :stroke-linejoin="roundedCorners ? 'round' : 'miter'" />
+        <polygon :points="starPointsToString" :fill="getGradId" :stroke="getBorderColor" :stroke-width="border" :stroke-linejoin="roundedCorners ? 'round' : 'miter'" />
         <polygon :points="starPointsToString" :fill="getGradId" />
 
     </svg>
@@ -91,7 +91,7 @@ export default {
     computed: {
         calculatePoints() {
             this.starPoints = this.starPoints.map((point) => {
-                return ((this.size / 43) * point) + (this.borderWidth * 1.5)
+                return ((this.size / 43) * point) + (this.border* 1.5)
             })
         },
         starPointsToString() {
@@ -101,10 +101,23 @@ export default {
             return 'url(#' + this.grad + ')'
         },
         getSize() {
-            return parseInt(this.size) + parseInt(this.borderWidth * 3) + this.padding
+            // Adjust star size when rounded corners are set with no border, to account for the 'hidden' border
+            let size = (this.roundedCorners && this.borderWidth <= 0) ? this.size - this.border : this.size
+            return parseInt(size) + parseInt(this.border * 3) + this.padding
         },
         getFill() {
             return (this.rtl) ? 100 - this.fill + '%' : this.fill + '%'
+        },
+        border() {
+            return (this.roundedCorners && this.borderWidth <= 0) ? 4 : this.borderWidth
+        },
+        getBorderColor() {
+            if(this.roundedCorners && this.borderWidth <= 0){
+                // create a hidden border
+                return (this.fill <= 0) ? this.inactiveColor : this.activeColor
+            }
+
+            return this.borderColor
         }
     },
     methods: {
