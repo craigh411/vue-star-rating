@@ -1,12 +1,12 @@
 <template>
-    <svg :height="getSize" :width="getSize" @mousemove="mouseMoving" @click="selected" style="overflow:visible;">
+    <svg class="vue-star-rating-star" :height="getSize" :width="getSize" :viewBox="viewBox" @mousemove="mouseMoving" @click="selected" :style="{'padding-right': padding}">
 
         <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
             <stop :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor" />
             <stop :offset="getFill" :stop-color="(rtl) ? activeColor : inactiveColor" />
         </linearGradient>
 
-        <filter id="glow">
+        <filter :id="glowId"  height="130%" width="130%" filterUnits="userSpaceOnUse">
             <feGaussianBlur :stdDeviation="glow" result="coloredBlur"/>
             <feMerge>
                 <feMergeNode in="coloredBlur"/>
@@ -15,11 +15,10 @@
         </filter>
 
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor"
-              filter="url(#glow)" v-show="fill > 1" />
+              :filter="'url(#'+this.glowId+')'" v-show="fill > 1" />
 
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="getBorderColor" :stroke-width="border" :stroke-linejoin="roundedCorners ? 'round' : 'miter'" />
         <polygon :points="starPointsToString" :fill="getGradId" />
-
     </svg>
 </template>
 
@@ -86,7 +85,9 @@ export default {
             this.starPoints = this.points
         }
         this.calculatePoints
-        this.grad = Math.random().toString(36).substring(7)
+        this.grad = this.getRandomId()
+        this.glowId = this.getRandomId()
+        console.log(this.glowColor);
     },
     computed: {
         calculatePoints() {
@@ -102,14 +103,14 @@ export default {
         },
         getSize() {
             // Adjust star size when rounded corners are set with no border, to account for the 'hidden' border
-            let size = (this.roundedCorners && this.borderWidth <= 0) ? this.size - this.border : this.size
-            return parseInt(size) + parseInt(this.border * 3) + this.padding
+            let size = (this.roundedCorners && this.borderWidth <= 0) ? parseInt(this.size) - parseInt(this.border) : this.size
+            return parseInt(size) + parseInt(this.border) + this.padding
         },
         getFill() {
             return (this.rtl) ? 100 - this.fill + '%' : this.fill + '%'
         },
         border() {
-            return (this.roundedCorners && this.borderWidth <= 0) ? 4 : this.borderWidth
+            return (this.roundedCorners && this.borderWidth <= 0) ? 6 : this.borderWidth
         },
         getBorderColor() {
             if(this.roundedCorners && this.borderWidth <= 0){
@@ -118,6 +119,14 @@ export default {
             }
 
             return this.borderColor
+        },
+        viewBox() {
+           let max = this.starPoints.reduce(function(a, b) {
+                return Math.max(a, b);
+            });
+
+           return "0 0 " + max + " " + max
+
         }
     },
     methods: {
@@ -141,13 +150,23 @@ export default {
                 id: this.starId,
                 position: this.getPosition($event)
             })
+        },
+        getRandomId() {
+            return Math.random().toString(36).substring(7)
         }
     },
     data() {
         return {
             starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
-            grad: ''
+            grad: '',
+            glowId: ''
         }
     }
 }
 </script>
+
+<style scoped>
+    .vue-star-rating-star {
+        overflow: visible !important;
+    }
+</style>
