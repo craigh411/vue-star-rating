@@ -97,26 +97,40 @@ If you are using Vue 2.1.x or below the following is the equivelent to the `v-mo
 
 The following props can be passed to the component:
 
+#### General Props
+
+These props provide general functionailty to the star rating component
+
 | Prop  | Description | Default |
 | ------------- | ------------- |-------------|
 | increment  |  The rating increment, for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1. | 1
 | rating  | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment or set the `round-start-rating` prop to false  | 0 |
 | max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
-| inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
-| active-color  | The color of the highlighted portion of a star.  | #ffd055 |
-| star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
-| star-points | The points defining to customize the shape of the stars.<br><small>_If no points are passed the default star shape is used._</small> | [] |
-| show-rating  | Whether or not to show the rating next to the stars  | true |
+| star-points | The points defining a custom star shape.<br><small>_If no points are passed the default star shape is used._</small> | [] |
 | read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | false |
-| text-class  | A css class name to style the rating text for a specific star rating component | '' |
-| inline  | Sets the star rating to display inline | false |
-| border-color  | Sets the colour of the border for each star | #999 |
-| border-width  | Sets the width of the border for each star | 0 |
-| rounded-corners | Whether or not to round the corners of the star's borders | false |
-| padding  | Pads the right of each star so distance between stars can be altered | 0 |
+| show-rating  | Whether or not to show the rating next to the stars  | true |
 | fixed-points  | Specify a fixed number of digits after the decimal point. | null |
 | rtl  | Pass true to display star rating using rtl (right-to-left) | false |
 | round-start-rating  | Pass false if you don't want the start rating value to round to the closest increment. The user will still only be able to select based on the given increment. | true |
+
+#### Style Props
+
+These props are used to style the star rating component
+
+
+| Prop  | Description | Default |
+| ------------- | ------------- |-------------|
+| star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | 50 |
+| inactive-color  | The color of the non-highlighted portion of a star.  | #d8d8d8 |
+| active-color  | The color of the highlighted portion of a star.  | #ffd055 |
+| border-color  | Sets the colour of the border for each star | #999 |
+| border-width  | Sets the width of the border for each star | 0 |
+| padding  | Pads the right of each star so distance between stars can be altered | 0 |
+| rounded-corners | Whether or not to round the star's corners | false |
+| inline  | Sets the star rating to display inline | false |
+| glow | Adds a glow around each active star, this should be a number to spread the glow | 0 |
+| glow-color | Sets the color for the glow (note, this effect is subtle) | 0 |
+| text-class  | A css class name to style the rating text for a specific star rating component | '' |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
