@@ -148,9 +148,9 @@ describe('Star Component', () => {
             expect(vm.$data.fired).toBeTruthy();
 
             // expect it to return the correct fill percentage (requires knowledge of the internal calculation)
-            var starWidth = (92 / 100) * 86; // 92 / 100 accounts for margins, 86 is the star size.
-            var position = Math.round((100 / starWidth) * x);
-            expect(vm.$data.position).toEqual(Math.min(100, position));
+            var starWidth = (92 / 100) * 87.12; // 92 / 100 accounts for margins, 87.12 is the star size.
+            var position = Math.round((100 / starWidth) * x); 
+            expect(vm.$data.position).toEqual(Math.min(100, position)); 
 
         });
 
@@ -166,7 +166,7 @@ describe('Star Component', () => {
             expect(vm.$data.fired).toBeTruthy();
 
             // expect it to return the correct fill percentage (requires knowledge of the internal calculation)
-            var starWidth = (92 / 100) * 86; // 92 / 100 accounts for margins, 86 is the star size.
+            var starWidth = (92 / 100) * 87.12; // 92 / 100 accounts for margins, 87.12 is the star size.
             var position = Math.round((100 / starWidth) * x);
             position = (position > 100) ? 100 : position;
             expect(vm.$data.position).toEqual(position);
