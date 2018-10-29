@@ -1,7 +1,8 @@
 sudo: required  
 dist: trusty  
 language: node_js  
-node_js:  
+node_js: 
+  - "8" 
   - "6"
   - "6.1"
   - "5.11"
