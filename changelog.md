@@ -2,6 +2,9 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+## Version 1.6.1
+- Fixes issue where round-start-rating isn't respected when initial value is set via an async call
+
 ## Version 1.6.0
 - Add rounded corners (thanks to @SparoHawk)
 - Add custom star shapes (thanks to @SparoHawk)
