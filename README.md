@@ -189,3 +189,10 @@ new Vue({
   `vue-star-rating` supports IE 9+; make sure you place the following in the `head` of your webpage to ensure that IE is in standards mode:
 
 `<meta http-equiv="X-UA-Compatible" content="IE=Edge">`
+
+
+------------------------------------------------
+
+Open-source should always be 100% FREE! but, if you're feeling generous, feel free to:
+
+<a href="https://www.buymeacoffee.com/fkocI2e6H" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
