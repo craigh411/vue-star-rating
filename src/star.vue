@@ -14,7 +14,7 @@
             </feMerge>
         </filter>
 
-        <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor"
+        <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor" :stroke-width="border"
               :filter="'url(#'+this.glowId+')'" v-show="fill > 1" />
 
         <polygon :points="starPointsToString" :fill="getGradId" :stroke="getBorderColor" :stroke-width="border" :stroke-linejoin="roundedCorners ? 'round' : 'miter'" />
