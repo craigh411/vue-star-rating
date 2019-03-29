@@ -122,6 +122,83 @@ describe('Star Component', () => {
         expect(data.grad.length > 0).toBeTruthy();
     });
 
+    describe('color parsing function', () => {
+
+        let Component = Vue.extend(star);
+        Component = Component.extend({
+            props: {
+                starId: {
+                    required: false
+                },
+                activeColor: {
+                    required: false
+                },
+                inactiveColor: {
+                    required: false
+                },
+            }
+        });
+        let component = new Component();
+
+        it('should calculate hex(a) color and opacity', () => {
+            expect(component.getColor("#000")).toBe("#000");
+            expect(component.getOpacity("#000")).toBe("1");
+
+            expect(component.getColor("#0009")).toBe("#000");
+            expect(component.getOpacity("#0009")).toBe("0.60");
+
+            expect(component.getColor("#000000")).toBe("#000000");
+            expect(component.getOpacity("#000000")).toBe("1");
+
+            expect(component.getColor("#00000080")).toBe("#000000");
+            expect(component.getOpacity("#00000080")).toBe("0.50");
+        });
+
+        it('should calculate rgb(a) color and opacity', () => {
+            expect(component.getColor('rgb(100, 100, 100)')).toBe("rgb(100, 100, 100)");
+            expect(component.getOpacity('rgb(100, 100, 100)')).toBe("1");
+
+            expect(component.getColor('rgba(100, 100, 100, 0)')).toBe("rgb(100, 100, 100)");
+            expect(component.getOpacity('rgba(100, 100, 100, 0)')).toBe("0");
+
+            expect(component.getColor('rgba(100, 100, 100, 0.67)')).toBe("rgb(100, 100, 100)");
+            expect(component.getOpacity('rgba(100, 100, 100, 0.67)')).toBe(".67");
+
+            expect(component.getColor('rgba(100, 100, 100, .67)')).toBe("rgb(100, 100, 100)");
+            expect(component.getOpacity('rgba(100, 100, 100, .67)')).toBe(".67");
+
+            expect(component.getColor('rgba(50%, 50%, 50%, .67)')).toBe("rgb(50%, 50%, 50%)");
+            expect(component.getOpacity('rgba(50%, 50%, 50%, .67)')).toBe(".67");
+
+            expect(component.getColor('rgba(100,100,100,.67)')).toBe("rgb(100,100,100)");
+            expect(component.getOpacity('rgba(100,100,100,.67)')).toBe(".67");
+
+            expect(component.getColor('rgba(100, 100, 100, 1)')).toBe("rgb(100, 100, 100)");
+            expect(component.getOpacity('rgba(100, 100, 100, 1)')).toBe("1");
+        });
+
+        it('should calculate hsl(a) color and opacity', () => {
+            expect(component.getColor('hsl(100, 50%, 50%)')).toBe("hsl(100, 50%, 50%)");
+            expect(component.getOpacity('hsl(100, 50%, 50%)')).toBe("1");
+
+            expect(component.getColor('hsla(100, 50%, 50%, 0)')).toBe("hsl(100, 50%, 50%)");
+            expect(component.getOpacity('hsla(100, 50%, 50%, 0)')).toBe("0");
+
+            expect(component.getColor('hsla(100, 50%, 50%, 0.67)')).toBe("hsl(100, 50%, 50%)");
+            expect(component.getOpacity('hsla(100, 50%, 50%, 0.67)')).toBe(".67");
+
+            expect(component.getColor('hsla(100, 50%, 50%, .67)')).toBe("hsl(100, 50%, 50%)");
+            expect(component.getOpacity('hsla(100, 50%, 50%, .67)')).toBe(".67");
+
+            expect(component.getColor('hsla(100,50%,50%,.67)')).toBe("hsl(100,50%,50%)");
+            expect(component.getOpacity('hsla(100,50%,50%,.67)')).toBe(".67");
+
+            expect(component.getColor('hsla(100, 50%, 50%, 1)')).toBe("hsl(100, 50%, 50%)");
+            expect(component.getOpacity('hsla(100, 50%, 50%, 1)')).toBe("1");
+        });
+
+    })
+
     describe('dom events', () => {
 
         var vm;

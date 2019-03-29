@@ -2,8 +2,8 @@
     <svg class="vue-star-rating-star" :height="getSize" :width="getSize" :viewBox="viewBox" @mousemove="mouseMoving" @click="selected">
 
         <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
-            <stop :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor" />
-            <stop :offset="getFill" :stop-color="(rtl) ? activeColor : inactiveColor" />
+            <stop :offset="getFill" :stop-color="(rtl) ? getColor(inactiveColor) : getColor(activeColor)" :stop-opacity="(rtl) ? getOpacity(inactiveColor) : getOpacity(activeColor)" />
+            <stop :offset="getFill" :stop-color="(rtl) ? getColor(activeColor) : getColor(inactiveColor)" :stop-opacity="(rtl) ? getOpacity(activeColor) : getOpacity(inactiveColor)" />
         </linearGradient>
 
         <filter :id="glowId"  height="130%" width="130%" filterUnits="userSpaceOnUse">
@@ -146,6 +146,57 @@ export default {
             this.starPoints = this.starPoints.map((point) => {
                 return ((this.size / this.maxSize) * point) + (this.border * 1.5)
             })
+        },
+        parseAlphaColor(inputColor) {
+            const patterns = [
+                {
+                    // rgba
+                    pattern: /^rgba\((\d{1,3}%?\s*,\s*){3}(\d*(?:\.\d+)?)\)$/,
+                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
+                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
+                }, {
+                    // hsla
+                    pattern: /^hsla\(\d+\s*,\s*([\d.]+%\s*,\s*){2}(\d*(?:\.\d+)?)\)$/,
+                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
+                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
+                }, {
+                    // alphahex
+                    pattern: /^#([0-9A-Fa-f]{4}|[0-9A-Fa-f]{8})$/,
+                    getColor: color => color.length === 5 ? color.substring(0, 4) : color.substring(0, 7),
+                    getOpacity: color => {
+                        if (color.length === 5) {
+                            return (parseInt(color.substring(4, 5) + color.substring(4, 5), 16) / 255).toFixed(2)
+                        } else {
+                            return (parseInt(color.substring(7, 9), 16) / 255).toFixed(2)
+                        }
+                    }
+                }, {
+                    // transparent
+                    pattern: /^transparent$/,
+                    getColor: () => '#fff',
+                    getOpacity: () => '0'
+                }
+            ]
+
+            for (let i = 0; i < patterns.length; i++) {
+                if (patterns[i].pattern.test(inputColor)) {
+                    return {
+                        color: patterns[i].getColor(inputColor),
+                        opacity: patterns[i].getOpacity(inputColor)
+                    }
+                }
+            }
+
+            return {
+                color: inputColor,
+                opacity: '1'
+            }
+        },
+        getColor(color) {
+            return this.parseAlphaColor(color).color
+        },
+        getOpacity(color) {
+            return this.parseAlphaColor(color).opacity
         }
     },
     data() {
