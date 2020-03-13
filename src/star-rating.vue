@@ -101,6 +101,10 @@ export default {
         glowColor: {
             type: String,
             default: '#fff'
+        },
+        clearable: {
+           type: Boolean,
+           default: false
         }
     },
     created() {
@@ -117,9 +121,15 @@ export default {
                 this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating
                 this.createStars()
                 if (persist) {
-                    this.selectedRating = this.currentRating
+                    if(this.clearable && this.currentRating == this.selectedRating){
+                      this.selectedRating = 0
+                    }else {
+                      this.selectedRating = this.currentRating
+                    }
+
                     this.$emit('rating-selected', this.selectedRating)
                     this.ratingSelected = true
+
                 } else {
                     this.$emit('current-rating', this.currentRating)
                 }

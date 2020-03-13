@@ -1,6 +1,7 @@
 <template>
     <div>
-        <star-rating  />
+        <star-rating v-model="rating" :increment="0.5" :round-start-rating="false" :clearable="true" />
+        <a href="#" @click.prevent="rating = 3.5">Reset</a>
     </div>
 </template>
 
@@ -13,7 +14,7 @@ export default {
     },
     data(){
     	return{
-    		rating: 3.48
+    		rating: 3.5
     	}
     }
 }
