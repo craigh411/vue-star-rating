@@ -8,7 +8,6 @@
         </div>
     </div>
 </template>
-
 <script type="text/javascript">
 import star from './star.vue'
 export default {
@@ -173,7 +172,7 @@ export default {
         rating(val) {
             this.currentRating = val
             this.selectedRating = val
-            this.createStars()
+            this.createStars(this.shouldRound)
         }
     },
     data() {
@@ -187,30 +186,35 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .vue-star-rating-star {
     display: inline-block;
 }
+
 .vue-star-rating-pointer {
     cursor: pointer;
 }
+
 .vue-star-rating {
     display: flex;
     align-items: center;
 }
+
 .vue-star-rating-inline {
     display: inline-flex;
 }
+
 .vue-star-rating-rating-text {
     margin-top: 7px;
     margin-left: 7px;
 }
+
 .vue-star-rating-rtl {
     direction: rtl;
 }
+
 .vue-star-rating-rtl .vue-star-rating-rating-text {
     margin-right: 10px;
-    direction:rtl;
+    direction: rtl;
 }
 </style>

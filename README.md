@@ -9,7 +9,7 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 ### Screenshot
 
-![star-rating.png](http://i64.tinypic.com/219pca1.png)
+![star-rating.png](https://user-images.githubusercontent.com/13747552/76623388-4ee74580-652b-11ea-9efb-5fb0ca548980.png)
 
 [See it in action on JSFiddle](https://jsfiddle.net/craig_h_411/992o7cq5/)
 
@@ -128,8 +128,8 @@ These props are used to style the star rating component
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
 | rounded-corners | Whether or not to round the star's corners | false |
 | inline  | Sets the star rating to display inline | false |
-| glow | Adds a glow around each active star, this should be a number to spread the glow | 0 |
-| glow-color | Sets the color for the glow (note, this effect is subtle) | 0 |
+| glow | Adds a subtle glow around each active star, this should be a number to spread the glow | 0 |
+| glow-color | Sets the color for the glow (note, this effect can be very subtle) | #000 |
 | text-class  | A css class name to style the rating text for a specific star rating component | '' |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
@@ -189,3 +189,10 @@ new Vue({
   `vue-star-rating` supports IE 9+; make sure you place the following in the `head` of your webpage to ensure that IE is in standards mode:
 
 `<meta http-equiv="X-UA-Compatible" content="IE=Edge">`
+
+
+------------------------------------------------
+
+Open-source should always be 100% FREE! but, if you're feeling generous, feel free to:
+
+<a href="https://www.buymeacoffee.com/fkocI2e6H" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
