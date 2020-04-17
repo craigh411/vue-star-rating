@@ -143,8 +143,9 @@ export default {
             return Math.random().toString(36).substring(7)
         },
         calculatePoints() {
-            this.starPoints = this.starPoints.map((point) => {
-                return ((this.size / this.maxSize) * point) + (this.border * 1.5)
+            this.starPoints = this.starPoints.map((point, i) => {
+                const offset = i % 2 === 0 ? this.border * 1.5 : 0
+                return ((this.size / this.maxSize) * point) + offset
             })
         }
     },
