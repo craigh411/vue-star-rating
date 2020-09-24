@@ -1,29 +1,74 @@
 <template>
-    <svg class="vue-star-rating-star" :height="getSize" :width="getSize" :viewBox="viewBox" @mousemove="mouseMoving" @click="selected">
+  <svg
+    class="vue-star-rating-star"
+    :height="starSize"
+    :width="starSize"
+    :viewBox="viewBox"
+    @mousemove="mouseMoving"
+    @click="selected"
+  >
 
-        <linearGradient :id="grad" x1="0" x2="100%" y1="0" y2="0">
-            <stop :offset="getFill" :stop-color="(rtl) ? inactiveColor : activeColor" />
-            <stop :offset="getFill" :stop-color="(rtl) ? activeColor : inactiveColor" />
-        </linearGradient>
+    <linearGradient
+      :id="grad"
+      x1="0"
+      x2="100%"
+      y1="0"
+      y2="0"
+    >
+      <stop
+        :offset="starFill"
+        :stop-color="(rtl) ? getColor(inactiveColor) : getColor(activeColor)"
+        :stop-opacity="(rtl) ? getOpacity(inactiveColor) : getOpacity(activeColor)"
+      />
+      <stop
+        :offset="starFill"
+        :stop-color="(rtl) ? getColor(activeColor) : getColor(inactiveColor)"
+        :stop-opacity="(rtl) ? getOpacity(activeColor) : getOpacity(inactiveColor)"
+      />
+    </linearGradient>
 
-        <filter :id="glowId"  height="130%" width="130%" filterUnits="userSpaceOnUse">
-            <feGaussianBlur :stdDeviation="glow" result="coloredBlur"/>
-            <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
+    <filter
+      :id="glowId"
+      height="130%"
+      width="130%"
+      filterUnits="userSpaceOnUse"
+    >
+      <feGaussianBlur
+        :stdDeviation="glow"
+        result="coloredBlur"
+      />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
 
-        <polygon :points="starPointsToString" :fill="getGradId" :stroke="glowColor"
-              :filter="'url(#'+this.glowId+')'" v-show="fill > 1" />
+    <polygon
+      v-if="glowColor"
+      v-show="fill > 1"
+      :points="starPointsToString"
+      :fill="gradId"
+      :stroke="glowColor"
+      :filter="'url(#'+glowId+')'"
+    />
 
-        <polygon :points="starPointsToString" :fill="getGradId" :stroke="getBorderColor" :stroke-width="border" :stroke-linejoin="roundedCorners ? 'round' : 'miter'" />
-        <polygon :points="starPointsToString" :fill="getGradId" />
-    </svg>
+    <polygon
+      :points="starPointsToString"
+      :fill="gradId"
+      :stroke="getBorderColor"
+      :stroke-width="border"
+      :stroke-linejoin="roundedCorners ? 'round' : 'miter'"
+    />
+    <polygon
+      :points="starPointsToString"
+      :fill="gradId"
+    />
+  </svg>
 </template>
 
 <script type="text/javascript">
 export default {
+    name: 'Star',
     props: {
         fill: {
             type: Number,
@@ -73,28 +118,31 @@ export default {
         },
         glowColor: {
             type: String,
+            default: null,
             required: false
         }
     },
-    created() {
-        this.starPoints = (this.points.length) ? this.points : this.starPoints
-        this.calculatePoints()
-        this.grad = this.getRandomId()
-        this.glowId = this.getRandomId()
+    emits: ['star-mouse-move', 'star-selected'],
+    data() {
+        return {
+            starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
+            grad: '',
+            glowId: ''
+        }
     },
     computed: {
         starPointsToString() {
             return this.starPoints.join(',')
         },
-        getGradId() {
+        gradId() {
             return 'url(#' + this.grad + ')'
         },
-        getSize() {
+        starSize() {
             // Adjust star size when rounded corners are set with no border, to account for the 'hidden' border
             const size = (this.roundedCorners && this.borderWidth <= 0) ? parseInt(this.size) - parseInt(this.border) : this.size
             return parseInt(size) + parseInt(this.border)
         },
-        getFill() {
+        starFill() {
             return (this.rtl) ? 100 - this.fill + '%' : this.fill + '%'
         },
         border() {
@@ -116,6 +164,12 @@ export default {
         viewBox() {
             return '0 0 ' + this.maxSize + ' ' + this.maxSize
         }
+    },
+    created() {
+        this.starPoints = (this.points.length) ? this.points : this.starPoints
+        this.calculatePoints()
+        this.grad = this.getRandomId()
+        this.glowId = this.getRandomId()
     },
     methods: {
         mouseMoving($event) {
@@ -146,13 +200,57 @@ export default {
             this.starPoints = this.starPoints.map((point) => {
                 return ((this.size / this.maxSize) * point) + (this.border * 1.5)
             })
-        }
-    },
-    data() {
-        return {
-            starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
-            grad: '',
-            glowId: ''
+        },
+        parseAlphaColor(inputColor) {
+            const patterns = [
+                {
+                    // rgba
+                    pattern: /^rgba\((\d{1,3}%?\s*,\s*){3}(\d*(?:\.\d+)?)\)$/,
+                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
+                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
+                }, {
+                    // hsla
+                    pattern: /^hsla\(\d+\s*,\s*([\d.]+%\s*,\s*){2}(\d*(?:\.\d+)?)\)$/,
+                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
+                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
+                }, {
+                    // alphahex
+                    pattern: /^#([0-9A-Fa-f]{4}|[0-9A-Fa-f]{8})$/,
+                    getColor: color => color.length === 5 ? color.substring(0, 4) : color.substring(0, 7),
+                    getOpacity: color => {
+                        if (color.length === 5) {
+                            return (parseInt(color.substring(4, 5) + color.substring(4, 5), 16) / 255).toFixed(2)
+                        } else {
+                            return (parseInt(color.substring(7, 9), 16) / 255).toFixed(2)
+                        }
+                    }
+                }, {
+                    // transparent
+                    pattern: /^transparent$/,
+                    getColor: () => '#fff',
+                    getOpacity: () => '0'
+                }
+            ]
+
+            for (let i = 0; i < patterns.length; i++) {
+                if (patterns[i].pattern.test(inputColor)) {
+                    return {
+                        color: patterns[i].getColor(inputColor),
+                        opacity: patterns[i].getOpacity(inputColor)
+                    }
+                }
+            }
+
+            return {
+                color: inputColor,
+                opacity: '1'
+            }
+        },
+        getColor(color) {
+            return this.parseAlphaColor(color).color
+        },
+        getOpacity(color) {
+            return this.parseAlphaColor(color).opacity
         }
     }
 }

@@ -1,6 +1,21 @@
 # Change Log
+
+
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
+
+## Version 2.0.0 - Vue 3!!
+
+- Code updated to Vue 3
+- Examples updated to Vue 3
+- `rating-selected` event renamed to `update:rating` for use witn `v-model`
+- `current-rating` event renamed to `hover:rating` (note: kebab-case is usually preferred, but this format has been chosen for consistency with the update:rating event so rule ignored for star-rating.vue)
+- `vue-cli-service` now being used for builds and dev
+- Deprecated babel-preset-es2015 replaced with "@babel/preset-env" for tests
+- Tests rewritten using vue-test-utils with jest (vue-jest)
+- Eslint now executed via vue cli and lint rules updated with "plugin:vue/vue3-recommended"
+- Update Node versions in travis.yml
+- Various dependencies updated / removed
 
 ## Version 1.6.1
 - Fixes issue where round-start-rating isn't respected when initial value is set via an async call

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <star-rating v-model="rating" :round-start-rating="false" />
+        <star-rating v-model:rating="rating" :increment="0.5" :round-start-rating="false" :clearable="true" />
         <a href="#" @click.prevent="rating = 3.5">Reset</a>
+dd
+        {{rating}}
     </div>
 </template>
 <script type="text/javascript">
@@ -11,16 +13,10 @@ export default {
     components: {
         StarRating
     },
-    created() {
-       setTimeout(() => {
-            this.rating = 3.5
-        }, 1000)
-
-    },
-    data() {
-        return {
-            rating: 0
-        }
+    data(){
+    	return{
+    		rating: 3.5
+    	}
     }
 }
 </script>

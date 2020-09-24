@@ -1,156 +1,152 @@
-<html>
+<html xmlns:https="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Star Rating Example</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <script src="https://unpkg.com/vue@2.6.0/dist/vue.js"></script>
-    <script src="../dist/star-rating.min.js"></script>
+    <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+    <script src="../dist/VueStarRating.umd.min.js"></script>
+
+
     <style>
-    body {
-        font-size: 1em;
-        font-family: 'Tahoma', sans-serif;
-    }
-    
-    .custom-text {
-        font-weight: bold;
-        font-size: 1.9em;
-        border: 1px solid #cfcfcf;
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 5px;
-        color: #999;
-    }
+        body {
+            font-size: 1em;
+            font-family: 'Tahoma', sans-serif;
+        }
+
+        .custom-text {
+            font-weight: bold;
+            font-size: 1.9em;
+            border: 1px solid #cfcfcf;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 5px;
+            color: #999;
+        }
     </style>
 </head>
 
 <body>
-    <div id="app">
+<div id="app">
 
-        <h2>Default</h2>
-        <star-rating></star-rating>
+    <h2>Default</h2>
+    <star-rating></star-rating>
 
-        <h2>Half Stars</h2>
-        <star-rating :increment="0.5"></star-rating>
+    <h2>Half Stars</h2>
+    <star-rating :increment="0.5"></star-rating>
 
-        <h2>Red Stars</h2>
-        <star-rating active-color="#9c0000"></star-rating>
+    <h2>Red Stars</h2>
+    <star-rating active-color="#9c0000"></star-rating>
 
-        <h2>Vibrant Stars</h2>
-        <star-rating inactive-color="#e1bad9" active-color="#cc1166"></star-rating>
+    <h2>Vibrant Stars</h2>
+    <star-rating inactive-color="#e1bad9" active-color="#cc1166"></star-rating>
 
-        <h2>Small Stars</h2>
-        <star-rating :star-size="20"></star-rating>
+    <h2>Small Stars</h2>
+    <star-rating :star-size="20"></star-rating>
 
-        <h2>Big Stars</h2>
-        <star-rating :star-size="90"></star-rating>
+    <h2>Big Stars</h2>
+    <star-rating :star-size="90"></star-rating>
 
-        <h2>Bordered Stars</h2>
-        <star-rating :border-width="5"></star-rating>
+    <h2>Bordered Stars</h2>
+    <star-rating :border-width="5"></star-rating>
 
-        <h2>Fluid Stars</h2>
-        <star-rating :increment="0.01"></star-rating>
+    <h2>Fluid Stars</h2>
+    <star-rating :increment="0.01"></star-rating>
 
-        <h2>Preset Stars</h2>
-        <star-rating :rating="4"></star-rating>
+    <h2>Preset Stars</h2>
+    <star-rating :rating="4"></star-rating>
 
-        <h2>Non rounded start rating</h2>
-        <star-rating :rating="4.67" :round-start-rating="false"></star-rating>
+    <h2>Non rounded start rating</h2>
+    <star-rating :rating="4.67" :round-start-rating="false"></star-rating>
 
-        <h2>Read Only Stars</h2>
-        <star-rating :rating="3.8" :read-only="true" :increment="0.01"></star-rating>
+    <h2>Read Only Stars</h2>
+    <star-rating :rating="3.8" :read-only="true" :increment="0.01"></star-rating>
 
-        <h2>Lots of stars</h2>
-        <star-rating :max-rating="10" :star-size="20"></star-rating>
+    <h2>Lots of stars</h2>
+    <star-rating :max-rating="10" :star-size="20"></star-rating>
 
-        <h2>Style Rating</h2>
-        <star-rating text-class="custom-text"></star-rating>
+    <h2>Style Rating</h2>
+    <star-rating text-class="custom-text"></star-rating>
 
-        <h2>Hide Rating</h2>
-        <star-rating :show-rating="false"></star-rating>
+    <h2>Hide Rating</h2>
+    <star-rating :show-rating="false"></star-rating>
 
-        <h2>Capture Rating</h2>
-        <star-rating :show-rating="false" @rating-selected="setRating"></star-rating>
-        <div style="margin-top:10px;font-weight:bold;">{{rating}}</div>
+    <h2>Capture Rating</h2>
+    <star-rating :show-rating="false" @update:rating="rating = $event"></star-rating>
+    <div style="margin-top:10px;font-weight:bold;">{{currentRatingText}}</div>
 
-        <h2>Capture Mouse Over Rating</h2>
-        <div @mouseleave="showCurrentRating(0)" style="display:inline-block;">
-            <star-rating :show-rating="false" @current-rating="showCurrentRating" @rating-selected="setCurrentSelectedRating" :increment="0.5"></star-rating>
-        </div>
-        <div style="margin-top:10px;font-weight:bold;">{{currentRating}}</div>
+    <h2>Capture Mouse Over Rating</h2>
+    <div @mouseleave="mouseOverRating = null" style="display:inline-block;">
+        <star-rating :show-rating="false"  @hover:rating="mouseOverRating = $event" :increment="0.5"></star-rating>
+    </div>
+    <div style="margin-top:10px;font-weight:bold;">{{mouseOverRatingText}}</div>
 
-        <h2>Resetable stars with v-model (Vue 2.2 and above)</h2>
-        <div style="display:inline-block;">
-            <star-rating v-model="boundRating"></star-rating>
-            <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="boundRating = 0;">Reset Rating</a></div>
-        </div>
+    <h2>Resetable stars with v-model</h2>
+    <div style="display:inline-block;">
+        <star-rating v-model:rating="resetableRating"></star-rating>
+        <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="resetableRating = 0;">Reset
+            Rating</a></div>
+    </div>
 
-        <h2>Resetable stars without v-model (Vue 2.1.x and below)</h2>
-        <div style="display:inline-block;">
-            <star-rating :rating="resetableRating" @rating-selected="syncRating"></star-rating>
+    <h2>Inline Stars</h2>
+    <div style="display:inline-block;">
+        Rated
+        <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating>
+        by our customers.
 
-            <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
-        </div>
-
-        <h2>Inline Stars</h2>
-        <div style="display:inline-block;">
-            Rated
-            <star-rating :inline="true" :star-size="20" :read-only="true" :show-rating="false" :rating="5"></star-rating> by our customers.
-
-        </div>
+    </div>
 
 
-        <h2>Rounded Corners</h2>
-        <star-rating :rounded-corners="true" :border-width="6"></star-rating>
+    <h2>Rounded Corners</h2>
+    <star-rating :rounded-corners="true" :border-width="6"></star-rating>
 
     <h2>Custom Stars</h2>
 
-        <star-rating
+    <star-rating
             :star-size="50"
             :rounded-corners="true"
             :border-width="4"
             :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
 
 
-        <h2>Glowing Stars</h2>
-        <div style="background:#000;overflow:auto;padding:10px;padding-bottom:20px;">
-            <star-rating :star-size="70" :glow="10" glow-color="#ffd055"></star-rating>
-        </div>
-
-        <h2>Right To Left</h2>
-        <star-rating :rtl="true" :increment="0.01"></star-rating>
+    <h2>Glowing Stars</h2>
+    <div style="background:#000;overflow:auto;padding:10px;padding-bottom:20px;">
+        <star-rating :star-size="70" :glow="10" glow-color="#ffd055"></star-rating>
     </div>
 
-    <script type="text/javascript">
-    new Vue({
-        el: '#app',
-        components:{
-          'star-rating': VueStarRating.default
-        },
+    <h2>Right To Left</h2>
+    <star-rating :rtl="true" :increment="0.01"></star-rating>
+</div>
+
+<script type="text/javascript">
+    const app = Vue.createApp({
         methods: {
-            setRating: function(rating) {
-                this.rating = "You have Selected: " + rating + " stars";
+            showCurrentRating(rating) {
+                this.currentSelectedRating = (rating === 0) ? this.currentSelectedRating : "Click to select " + rating + " stars"
             },
-            showCurrentRating: function(rating) {
-                this.currentRating = (rating === 0) ? this.currentSelectedRating : "Click to select " + rating + " stars"
-            },
-            setCurrentSelectedRating: function(rating) {
+            setCurrentSelectedRating(rating) {
                 this.currentSelectedRating = "You have Selected: " + rating + " stars";
-            },
-            reset: function() {
-                this.resetableRating = 0;
-            },
-            syncRating: function(rating) {
-                this.resetableRating = rating;
             }
         },
-        data: {
-            boundRating: 2,
-            rating: "No Rating Selected",
-            currentRating: "No Rating",
-            currentSelectedRating: "No Current Rating",
-            resetableRating: 3
+        computed: {
+            currentRatingText() {
+                return (this.rating) ? "You have selected " + this.rating + " stars" : "No rating selected"
+            },
+            mouseOverRatingText() {
+                return (this.mouseOverRating) ? "Click to select " + this.mouseOverRating + " stars" : "No Rating"
+            }
+        },
+        data() {
+            return {
+                rating: null,
+                resetableRating: 2,
+                currentRating: "No Rating",
+                mouseOverRating: null
+            }
         }
-    });
-    </script>
+    })
+    app.component('star-rating', VueStarRating.default)
+
+    app.mount("#app")
+</script>
 </body>
 </html>
