@@ -1,9 +1,9 @@
-# Star Rating Component for Vue 2.x
+# Star Rating Component for Vue 2.x / 3.x
 
 [![Build Status](https://travis-ci.org/craigh411/vue-star-rating.svg?branch=master)](https://travis-ci.org/craigh411/vue-star-rating)
 [![npm](https://img.shields.io/npm/dt/vue-star-rating.svg)]()
 
-A simple, highly customisable star rating component for Vue 2.x.
+A simple, highly customisable star rating component for Vue 2.x. / 3.x
 
 > Need more than stars? Check out [vue-rate-it](https://github.com/craigh411/vue-rate-it) with hundreds of different raters built in!
 
@@ -25,23 +25,24 @@ A simple, highly customisable star rating component for Vue 2.x.
 
 ### Via NPM
 
+
 Install via npm:
+
+#### Vue 2.x Install
 
 `npm install vue-star-rating`
 
-Then require in your project:
+#### Vue 3.x Install
 
-`var StarRating = require('vue-star-rating');`
+If you're using Vue 3 you will currently need to install the next version of `vue-star-rating`
 
-or ES6 syntax:
+`npm install vue-star-rating@next`
+
+Then import in to your component:
 
 `import StarRating from 'vue-star-rating'`
 
-Then you can register the component globally:
-
-`Vue.component('star-rating', StarRating);`
-
-Or in your `Vue component`:
+Then you can register the component:
 
 ```javascript
 components: {
@@ -51,11 +52,15 @@ components: {
 
 You can then use the following markup in your project:
 
-`<star-rating></star-rating>`
+`<star-rating />`
 
 ### Via CDN
 
+
+
 You may also include `vue-star-rating` directly in to your webpage via Unpkg. Simply add the following script tag:
+
+#### Vue 2.x
 
 `<script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
 
@@ -65,31 +70,45 @@ You will need to register the component by doing:
 Vue.component('star-rating', VueStarRating.default);
 ```
 
-You may also register the component locally via the [components option](https://vuejs.org/v2/guide/components.html#Local-Registration).
+#### Vue 3.x
+
+`<script src="https://unpkg.com/vue-star-rating@2.0.0/dist/VueStarRating.umd.min.js"></script>`
+
+```javascript
+const app = Vue.createApp({ 
+  // Base component code
+ })
+app.component('star-rating', VueStarRating.default)
+app.mount('#app')
+```
+
 
 ## Getting Started
 
 To get started with `vue-star-rating` you will want to sync the rating values between the component and parent, you can then take a look at the props and custom events section of the docs to customise your `star-rating` component.
 
-### Syncing Rating Values with V-Model for Vue 2.2 +
+### Syncing Rating Values with V-Model
 
-`vue-star-rating` supports `v-model` when using Vue 2.2 and above, which is the simplest way to keep your ratings in sync:
+`vue-star-rating` supports `v-model`, which is the simplest way to keep your ratings in sync:
+
+#### Vue 2
 
 ```HTML
 <star-rating v-model="rating"></star-rating>
 ```
 
-[See this example on JSFiddle](https://jsfiddle.net/craig_h_411/mcz7oha2/)
+[See this Vue 2 example on JSFiddle](https://jsfiddle.net/craig_h_411/mcz7oha2/)
 
-###  Syncing Rating Values when using Vue 2.1.x and below
+#### Vue 3
 
-If you are using Vue 2.1.x or below the following is the equivelent to the `v-model` example above:
+v-model works on the `rating` prop, so if you're using **Vue 3** you will need to do:
 
 ```HTML
-<star-rating @rating-selected="rating = $event" :rating="rating"></star-rating>
+<star-rating v-model:rating="rating"></star-rating>
 ```
 
-[See this example on JSFiddle](https://jsfiddle.net/craig_h_411/npq5e21h/)
+
+[See this Vue 3 example on JSFiddle](https://jsfiddle.net/craig_h_411/mcz7oha2/)
 
 ## Docs
 
@@ -149,13 +168,14 @@ These props are used to style the star rating component
 
 `vue-star-rating` fires the following custom events, simply use `v-on:event` or the `@` shortand to capture the event.
 
+### Vue 2 Events
+
 | Event  | Description | Return Value
 | ------------- | ------------- |-----------|
 | rating-selected  | Returns the rating the user selects via the click event |  rating
 | current-rating  | Returns the rating that the users mouse is currently over  | rating
 
-
-#### Custom Events Example
+#### Vue 2 Example
 
 ```HTML
 <star-rating @rating-selected ="setRating"></star-rating>
@@ -175,13 +195,40 @@ new Vue({
     rating: 0
   }
 });
-
 ```
 
-**Note:** When writing methods to capture custom events, the rating param is automatically passed to the method. If you need to declare methods with multiple paramaters you will need to use `$event` to pass the rating to the method:
+### Vue 3 Events
+
+Some changes have been made to event names in Vue 3
+
+| Event  | Description | Return Value
+| ------------- | ------------- |-----------|
+| update:rating  | Returns the rating the user selects via the click event |  rating
+| hover:rating  | Returns the rating that the users mouse is currently over  | rating
+
+
+#### Vue 3 Example
 
 ```HTML
-<star-rating @current-rating="setCurrentRating($event, anotherParam)"></star-rating>
+<star-rating @update:rating ="setRating"></star-rating>
+```
+
+Then in your view model:
+
+```javascript
+const app = Vue.createApp({
+  methods: {
+    setRating(rating){
+      this.rating= rating;
+    }
+  },
+  data: {
+    rating: 0
+  }
+})
+app.component('star-rating', VueStarRating.default)
+app.mount('#app')
+
 ```
 
 ### IE9 Support

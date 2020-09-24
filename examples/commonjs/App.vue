@@ -1,7 +1,9 @@
 <template>
     <div>
-        <star-rating v-model="rating" :increment="0.5" :round-start-rating="false" :clearable="true" />
+        <star-rating v-model:rating="rating" :increment="0.5" :round-start-rating="false" :clearable="true" />
         <a href="#" @click.prevent="rating = 3.5">Reset</a>
+dd
+        {{rating}}
     </div>
 </template>
 <script type="text/javascript">

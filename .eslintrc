@@ -1,7 +1,15 @@
 {
-  "extends": "vue",
-   "rules": {
-     "space-before-function-paren": [2, "never"],
-      "indent": ["error",4]
-   }
+  "extends": [
+    "plugin:vue/vue3-recommended"
+  ],
+  "rules": {
+    "space-before-function-paren": [
+      2,
+      "never"
+    ],
+    "indent": [
+      "error",
+      4
+    ]
+  }
 }

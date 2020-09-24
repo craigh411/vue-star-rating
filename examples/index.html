@@ -1,10 +1,12 @@
-<html>
+<html xmlns:https="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Star Rating Example</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <script src="https://unpkg.com/vue@2.6.0/dist/vue.js"></script>
-    <script src="../dist/star-rating.min.js"></script>
+    <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+    <script src="../dist/VueStarRating.umd.min.js"></script>
+
+
     <style>
     body {
         font-size: 1em;
@@ -69,8 +71,8 @@
         <star-rating :show-rating="false"></star-rating>
 
         <h2>Capture Rating</h2>
-        <star-rating :show-rating="false" @rating-selected="setRating"></star-rating>
-        <div style="margin-top:10px;font-weight:bold;">{{rating}}</div>
+        <star-rating :show-rating="false" @update:rating="rating = $event"></star-rating>
+        <div style="margin-top:10px;font-weight:bold;">{{currentRatingText}}</div>
 
         <h2>Capture Mouse Over Rating</h2>
         <div @mouseleave="showCurrentRating(0)" style="display:inline-block;">
@@ -78,17 +80,10 @@
         </div>
         <div style="margin-top:10px;font-weight:bold;">{{currentRating}}</div>
 
-        <h2>Resetable stars with v-model (Vue 2.2 and above)</h2>
+        <h2>Resetable stars with v-model</h2>
         <div style="display:inline-block;">
-            <star-rating v-model="boundRating"></star-rating>
+            <star-rating v-model:rating="boundRating"></star-rating>
             <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="boundRating = 0;">Reset Rating</a></div>
-        </div>
-
-        <h2>Resetable stars without v-model (Vue 2.1.x and below)</h2>
-        <div style="display:inline-block;">
-            <star-rating :rating="resetableRating" @rating-selected="syncRating"></star-rating>
-
-            <div style="padding-top:10px;cursor:pointer;margin-bottom:20px;color: blue;"><a @click="reset">Reset Rating</a></div>
         </div>
 
         <h2>Inline Stars</h2>
@@ -121,15 +116,9 @@
     </div>
 
     <script type="text/javascript">
-    new Vue({
-        el: '#app',
-        components:{
-          'star-rating': VueStarRating.default
-        },
+        console.log(VueStarRating.default.render)
+    const app = Vue.createApp({
         methods: {
-            setRating: function(rating) {
-                this.rating = "You have Selected: " + rating + " stars";
-            },
             showCurrentRating: function(rating) {
                 this.currentRating = (rating === 0) ? this.currentSelectedRating : "Click to select " + rating + " stars"
             },
@@ -143,14 +132,24 @@
                 this.resetableRating = rating;
             }
         },
-        data: {
-            boundRating: 2,
-            rating: "No Rating Selected",
-            currentRating: "No Rating",
-            currentSelectedRating: "No Current Rating",
-            resetableRating: 3
+        computed: {
+          currentRatingText() {
+              return (this.rating) ? "You have selected " + this.rating + " stars" : "No rating selected"
+          }
+        },
+        data() {
+            return {
+                boundRating: 2,
+                rating: null,
+                currentRating: "No Rating",
+                currentSelectedRating: "No Current Rating",
+                resetableRating: 3
+            }
         }
-    });
+    })
+        app.component('star-rating', VueStarRating.default)
+
+        app.mount("#app")
     </script>
 </body>
 </html>
