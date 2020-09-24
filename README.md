@@ -76,7 +76,7 @@ Vue.component('star-rating', VueStarRating.default);
 
 #### Vue 3.x
 
-`<script src="https://unpkg.com/vue-star-rating@2.0.0/dist/VueStarRating.umd.min.js"></script>`
+`<script src="https://unpkg.com/vue-star-rating@next/dist/VueStarRating.umd.min.js"></script>`
 
 ```javascript
 const app = Vue.createApp({ 
