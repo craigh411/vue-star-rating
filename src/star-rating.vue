@@ -206,7 +206,6 @@ export default {
                     level = (this.currentRating - i > 1) ? 100 : (this.currentRating - i) * 100
                 }
                 this.fillLevel[i] = Math.round(level)
-                //this.$set(this.fillLevel, i, Math.round(level))
             }
         },
         round() {
