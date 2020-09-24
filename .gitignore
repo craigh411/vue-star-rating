@@ -1,2 +1,5 @@
+.idea
+/dist/demo.html
 node_modules
 npm-debug.log
+.DS_Store
