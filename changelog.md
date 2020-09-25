@@ -2,6 +2,15 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+## Version 1.6.3
+- Update tests to jest and use vue test utils
+- Fix issue where glow is always on (fixes #56 #50)
+- Update webpack
+- Update lint to eslint-plugin-vue
+
+## Version 1.6.2
+- Update Readme
+
 ## Version 1.6.1
 - Fixes issue where round-start-rating isn't respected when initial value is set via an async call
 

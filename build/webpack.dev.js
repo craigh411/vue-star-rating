@@ -1,7 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const {VueLoaderPlugin} = require('vue-loader');
+const webpack = require('webpack')
 
 module.exports = {
+    mode: 'development',
     entry: {
         'star-rating': './examples/commonjs/app.js',
     },
@@ -18,7 +20,16 @@ module.exports = {
             test: /\.js$/,
             loader: 'babel-loader',
             exclude: /node_modules/
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
         }]
     },
+    plugins: [
+        new VueLoaderPlugin(),
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify(false),
+        })
+    ],
     devtool: 'eval-source-map'
 }

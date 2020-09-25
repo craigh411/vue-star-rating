@@ -53,6 +53,9 @@
         <h2>Preset Stars</h2>
         <star-rating :rating="4"></star-rating>
 
+        <h2>Clearable Stars (when same rating clicked twice)</h2>
+        <star-rating :clearable="true" v-model="clearableRating"></star-rating>
+
         <h2>Non rounded start rating</h2>
         <star-rating :rating="4.67" :round-start-rating="false"></star-rating>
 
@@ -148,7 +151,8 @@
             rating: "No Rating Selected",
             currentRating: "No Rating",
             currentSelectedRating: "No Current Rating",
-            resetableRating: 3
+            resetableRating: 3,
+            clearableRating: 4
         }
     });
     </script>

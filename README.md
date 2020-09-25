@@ -146,8 +146,9 @@ These props are used to style the star rating component
 | padding  | Pads the right of each star so distance between stars can be altered | 0 |
 | rounded-corners | Whether or not to round the star's corners | false |
 | inline  | Sets the star rating to display inline | false |
-| glow | Adds a subtle glow around each active star, this should be a number to spread the glow | 0 |
-| glow-color | Sets the color for the glow (note, this effect can be very subtle) | #000 |
+| clearable  | When set to true a second click on the same rating clears the rating | false |
+| glow | Adds a subtle glow around each active star, this should be a number to spread the glow (requires `glow-color` to be set) | 0 |
+| glow-color | Sets the color for the glow (note, this effect can be very subtle) | null |
 | text-class  | A css class name to style the rating text for a specific star rating component | '' |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.

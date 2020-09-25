@@ -1,7 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+const {VueLoaderPlugin} = require('vue-loader');
 
 module.exports = {
+    mode: 'production',
     entry: {
         'star-rating': './src/index.js',
     },
@@ -15,31 +17,19 @@ module.exports = {
     },
     module: {
         rules: [{
-            enforce: "pre",
-            test: /\.(js|vue)$/,
-            exclude: /node_modules/,
-            loader: "eslint-loader",
-        }, {
-            test: /\.vue$/,
-            loader: 'vue-loader'
-        }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/
-        }]
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }, {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            }, {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }]
     },
     plugins: [
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            include: /\.min\.js$/,
-            compress: {
-                warnings: false
-            }
-        })
+        new VueLoaderPlugin(),
     ],
     devtool: 'source-map'
 }

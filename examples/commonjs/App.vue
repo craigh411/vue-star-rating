@@ -1,6 +1,8 @@
 <template>
     <div>
-        <star-rating v-model="rating" :round-start-rating="false" />
+        <div style="background:#000;overflow:auto;padding:10px;padding-bottom:20px;">
+        <star-rating v-model="rating" :increment="0.5" :clearable="true" active-color="red" :round-start-rating="false" />
+        </div>
         <a href="#" @click.prevent="rating = 3.5">Reset</a>
     </div>
 </template>
