@@ -254,8 +254,8 @@ export default {
         display: inline-flex;
     }
 
+
     .vue-star-rating-rating-text {
-        margin-top: 7px;
         margin-left: 7px;
     }
 
