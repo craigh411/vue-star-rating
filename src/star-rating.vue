@@ -24,6 +24,7 @@
           :rtl="rtl"
           :glow="glow"
           :glow-color="glowColor"
+          :animate="animate"
           @star-selected="setRating($event, true)"
           @star-mouse-move="setRating"
         />
@@ -131,6 +132,14 @@ export default {
         clearable: {
             type: Boolean,
             default: false
+        },
+        applyActiveColorOnHover: {
+            type: Boolean,
+            default: true
+        },
+        animate: {
+            type: Boolean,
+            default: false
         }
     },
     emits: ['update:rating', 'hover:rating'],
@@ -174,8 +183,8 @@ export default {
                 const position = (this.rtl) ? (100 - $event.position) / 100 : $event.position / 100
                 this.currentRating = (($event.id + position) - 1).toFixed(2)
                 this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating
-                this.createStars()
                 if (persist) {
+                    this.createStars(true, true)
                     if (this.clearable && this.currentRating === this.selectedRating) {
                         this.selectedRating = 0
                     } else {
@@ -186,6 +195,7 @@ export default {
                     this.ratingSelected = true
 
                 } else {
+                    this.createStars(true, this.applyActiveColorOnHover)
                     this.$emit('hover:rating', this.currentRating)
                 }
             }
@@ -196,7 +206,7 @@ export default {
                 this.createStars(this.shouldRound)
             }
         },
-        createStars(round = true) {
+        createStars(round = true, applyFill = true) {
             if (round) {
                 this.round()
             }
@@ -205,7 +215,9 @@ export default {
                 if (i < this.currentRating) {
                     level = (this.currentRating - i > 1) ? 100 : (this.currentRating - i) * 100
                 }
-                this.fillLevel[i] = Math.round(level)
+                if (applyFill) {
+                    this.fillLevel[i] = Math.round(level)
+                }
             }
         },
         round() {

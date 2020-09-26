@@ -1,11 +1,13 @@
 <template>
   <svg
-    class="vue-star-rating-star"
+    :class="['vue-star-rating-star', {'vue-star-rating-star-rotate' : shouldAnimate}]"
     :height="starSize"
     :width="starSize"
     :viewBox="viewBox"
     @mousemove="mouseMoving"
     @click="selected"
+    @touchstart="touchStart"
+    @touchend="touchEnd"
   >
 
     <linearGradient
@@ -67,6 +69,8 @@
 </template>
 
 <script type="text/javascript">
+import AlphaColor from './classes/AlphaColor'
+
 export default {
     name: 'Star',
     props: {
@@ -120,6 +124,10 @@ export default {
             type: String,
             default: null,
             required: false
+        },
+        animate: {
+            type: Boolean,
+            default: false
         }
     },
     emits: ['star-mouse-move', 'star-selected'],
@@ -127,7 +135,8 @@ export default {
         return {
             starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
             grad: '',
-            glowId: ''
+            glowId: '',
+            isStarActive: true
         }
     },
     computed: {
@@ -163,6 +172,9 @@ export default {
         },
         viewBox() {
             return '0 0 ' + this.maxSize + ' ' + this.maxSize
+        },
+        shouldAnimate() {
+            return this.animate && this.isStarActive
         }
     },
     created() {
@@ -173,11 +185,23 @@ export default {
     },
     methods: {
         mouseMoving($event) {
-            this.$emit('star-mouse-move', {
-                event: $event,
-                position: this.getPosition($event),
-                id: this.starId
+            if ($event.touchAction !== 'undefined') {
+                this.$emit('star-mouse-move', {
+                    event: $event,
+                    position: this.getPosition($event),
+                    id: this.starId
+                })
+            }
+        },
+        touchStart() {
+            this.$nextTick(() => {
+                this.isStarActive = true
             })
+        },
+        touchEnd() {
+            setTimeout(() => {
+                this.isStarActive = false
+            }, 300)
         },
         getPosition($event) {
             // calculate position in percentage.
@@ -201,56 +225,11 @@ export default {
                 return ((this.size / this.maxSize) * point) + (this.border * 1.5)
             })
         },
-        parseAlphaColor(inputColor) {
-            const patterns = [
-                {
-                    // rgba
-                    pattern: /^rgba\((\d{1,3}%?\s*,\s*){3}(\d*(?:\.\d+)?)\)$/,
-                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
-                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
-                }, {
-                    // hsla
-                    pattern: /^hsla\(\d+\s*,\s*([\d.]+%\s*,\s*){2}(\d*(?:\.\d+)?)\)$/,
-                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
-                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
-                }, {
-                    // alphahex
-                    pattern: /^#([0-9A-Fa-f]{4}|[0-9A-Fa-f]{8})$/,
-                    getColor: color => color.length === 5 ? color.substring(0, 4) : color.substring(0, 7),
-                    getOpacity: color => {
-                        if (color.length === 5) {
-                            return (parseInt(color.substring(4, 5) + color.substring(4, 5), 16) / 255).toFixed(2)
-                        } else {
-                            return (parseInt(color.substring(7, 9), 16) / 255).toFixed(2)
-                        }
-                    }
-                }, {
-                    // transparent
-                    pattern: /^transparent$/,
-                    getColor: () => '#fff',
-                    getOpacity: () => '0'
-                }
-            ]
-
-            for (let i = 0; i < patterns.length; i++) {
-                if (patterns[i].pattern.test(inputColor)) {
-                    return {
-                        color: patterns[i].getColor(inputColor),
-                        opacity: patterns[i].getOpacity(inputColor)
-                    }
-                }
-            }
-
-            return {
-                color: inputColor,
-                opacity: '1'
-            }
-        },
         getColor(color) {
-            return this.parseAlphaColor(color).color
+            return new AlphaColor(color).parseAlphaColor().color
         },
         getOpacity(color) {
-            return this.parseAlphaColor(color).opacity
+            return new AlphaColor(color).parseAlphaColor().opacity
         }
     }
 }
@@ -259,5 +238,14 @@ export default {
 <style scoped>
     .vue-star-rating-star {
         overflow: visible !important;
+    }
+
+    .vue-star-rating-star-rotate {
+        transition: all .25s;
+    }
+
+    .vue-star-rating-star-rotate:hover {
+        transition: transform 0.25s;
+        transform: rotate(-15deg) scale(1.3)
     }
 </style>

@@ -4,6 +4,15 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+
+## Version 2.1.0
+
+- New `animate` prop added which slightly rotates and expands the star on mouseover
+- New `apply-active-color-on-hover` prop, which allows active colours to be applied on hover, or if set to false, on click 
+- Better support for touch screen devices
+- Refactor parseAlphaColor method into own class
+- Refactor star.vue
+
 ## Version 2.0.0 - Vue 3!!
 
 - Code updated to Vue 3
