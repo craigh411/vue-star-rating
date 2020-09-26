@@ -221,9 +221,9 @@ describe('star-rating component', () => {
             const wrapper = mount(StarRating)
             let stars = wrapper.findAll('polygon')
 
-            // expect there to be 10 polygons, because we have 2 polygons for each star (3 if glow is turned on) to account for border and glow
-            // so, 5 stars is 10 polygons
-            expect(stars.length).toEqual(10);
+            // expect there to be 15 polygons, because we have 3 polygons for each star to account for border and glow
+            // so, 5 stars is 15 polygons
+            expect(stars.length).toEqual(15);
         });
 
 

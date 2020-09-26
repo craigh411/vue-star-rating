@@ -132,7 +132,7 @@ export default {
         },
         glowColor: {
             type: String,
-            default: null
+            default: '#fff'
         },
         clearable: {
             type: Boolean,

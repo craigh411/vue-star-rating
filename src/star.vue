@@ -52,6 +52,7 @@
       :fill="gradId"
       :stroke="glowColor"
       :filter="'url(#'+glowId+')'"
+      :stroke-width="border"
     />
 
     <polygon
