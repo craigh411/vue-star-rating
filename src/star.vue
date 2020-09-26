@@ -59,7 +59,7 @@
       :fill="gradId"
       :stroke="getBorderColor"
       :stroke-width="border"
-      :stroke-linejoin="roundedCorners ? 'round' : 'miter'"
+      :stroke-linejoin="strokeLinejoin"
     />
     <polygon
       :points="starPointsToString"
@@ -101,6 +101,10 @@ export default {
             required: true
         },
         borderColor: {
+            type: String,
+            default: '#000'
+        },
+        activeBorderColor: {
             type: String,
             default: '#000'
         },
@@ -163,7 +167,7 @@ export default {
                 return (this.fill <= 0) ? this.inactiveColor : this.activeColor
             }
 
-            return this.borderColor
+            return (this.fill <= 0) ? this.borderColor : this.activeBorderColor
         },
         maxSize() {
             return this.starPoints.reduce(function(a, b) {
@@ -175,6 +179,9 @@ export default {
         },
         shouldAnimate() {
             return this.animate && this.isStarActive
+        },
+        strokeLinejoin() {
+            return this.roundedCorners ? 'round' : 'miter'
         }
     },
     created() {

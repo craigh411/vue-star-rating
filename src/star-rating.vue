@@ -19,6 +19,7 @@
           :active-color="activeColor"
           :inactive-color="inactiveColor"
           :border-color="borderColor"
+          :active-border-color="userActiveBorderColor"
           :border-width="borderWidth"
           :rounded-corners="roundedCorners"
           :rtl="rtl"
@@ -101,6 +102,10 @@ export default {
             type: String,
             default: '#999'
         },
+        activeBorderColor: {
+            type: String,
+            default: null
+        },
         borderWidth: {
             type: Number,
             default: 0
@@ -175,7 +180,9 @@ export default {
         this.step = this.increment * 100
         this.currentRating = this.rating
         this.selectedRating = this.currentRating
+        this.userActiveBorderColor = (this.activeBorderColor) ? this.activeBorderColor : this.borderColor
         this.createStars(this.roundStartRating)
+
     },
     methods: {
         setRating($event, persist) {

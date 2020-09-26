@@ -1,5 +1,6 @@
 import {mount} from '@vue/test-utils'
 import Star from '../src/star.vue'
+import StarRating from "../src/star-rating"
 
 
 var defaultProps = {
@@ -100,6 +101,24 @@ describe('Star Component', () => {
         });
 
         expect(wrapper.vm.gradId.length > 0).toBeTruthy();
+    });
+
+
+    it('should not add the vue-star-rating-star-rotate class when animate is set to false', () => {
+        const wrapper = mount(StarRating)
+
+        expect(wrapper.findAll('.vue-star-rating-star-rotate').length).toEqual(0)
+    });
+
+
+    it('should add the vue-star-rating-star-rotate class when animate is set to true', () => {
+        const wrapper = mount(StarRating,{
+            propsData : {
+                animate: true
+            }
+        })
+
+        expect(wrapper.findAll('.vue-star-rating-star-rotate').length > 0).toBeTruthy()
     });
 
     describe('color parsing function', () => {
