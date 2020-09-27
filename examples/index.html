@@ -15,7 +15,8 @@
 
         .custom-text {
             font-weight: bold;
-            font-size: 1.9em;
+            font-size: 2em;
+            margin-top: 10px;
             border: 1px solid #cfcfcf;
             padding-left: 10px;
             padding-right: 10px;
@@ -64,6 +65,44 @@
     <h2>Lots of stars</h2>
     <star-rating :max-rating="10" :star-size="20"></star-rating>
 
+    <h2>Custom Stars</h2>
+
+    <star-rating
+            :star-size="50"
+            :rounded-corners="false"
+            :border-width="4"
+            :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
+
+
+
+    <h2>Animated Stars</h2>
+
+    <star-rating
+            :rounded-corners="true"
+            :border-width="4"
+            :padding="3"
+            :animate="true"
+            :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
+
+
+
+    <h2>Clearable Stars (click same star twice)</h2>
+
+    <star-rating
+            v-model:rating="rating"
+            :round-start-rating="false"
+            :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"
+            :clearable="true"
+            :apply-active-color-on-hover="false"
+            :glow="5"
+            glow-color="orange"
+            :border-width="4"
+            :padding="3"
+            :animate="true"
+    ></star-rating>
+
+
+
     <h2>Style Rating</h2>
     <star-rating text-class="custom-text"></star-rating>
 
@@ -98,14 +137,6 @@
 
     <h2>Rounded Corners</h2>
     <star-rating :rounded-corners="true" :border-width="6"></star-rating>
-
-    <h2>Custom Stars</h2>
-
-    <star-rating
-            :star-size="50"
-            :rounded-corners="true"
-            :border-width="4"
-            :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
 
 
     <h2>Glowing Stars</h2>

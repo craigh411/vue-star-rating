@@ -16,10 +16,10 @@
           :points="starPoints"
           :star-id="n"
           :step="step"
-          :active-color="activeColor"
+          :active-color="currentActiveColor"
           :inactive-color="inactiveColor"
           :border-color="borderColor"
-          :active-border-color="userActiveBorderColor"
+          :active-border-color="currentActiveBorderColor"
           :border-width="borderWidth"
           :rounded-corners="roundedCorners"
           :rtl="rtl"
@@ -61,7 +61,7 @@ export default {
             default: true
         },
         activeColor: {
-            type: String,
+            type: [String, Array],
             default: '#ffd055'
         },
         inactiveColor: {
@@ -103,7 +103,7 @@ export default {
             default: '#999'
         },
         activeBorderColor: {
-            type: String,
+            type: [String, Array],
             default: null
         },
         borderWidth: {
@@ -131,16 +131,16 @@ export default {
             default: 0
         },
         glowColor: {
-            type: String,
+            type: [String, Array],
             default: '#fff'
         },
         clearable: {
             type: Boolean,
             default: false
         },
-        applyActiveColorOnHover: {
+        activeOnClick: {
             type: Boolean,
-            default: true
+            default: false
         },
         animate: {
             type: Boolean,
@@ -167,6 +167,34 @@ export default {
         },
         margin() {
             return this.padding + this.borderWidth
+        },
+        activeColors() {
+            if (Array.isArray(this.activeColor)) {
+                return this.padColors(this.activeColor, this.maxRating, this.activeColor.slice(-1)[0])
+            }
+
+            return new Array(this.maxRating).fill(this.activeColor)
+        },
+        currentActiveColor() {
+            if (!this.activeOnClick) {
+                return (this.currentRating > 0) ? this.activeColors[Math.ceil(this.currentRating) - 1] : this.inactiveColor
+
+            }
+            return (this.selectedRating > 0) ? this.activeColors[Math.ceil(this.selectedRating) - 1] : this.inactiveColor
+        },
+        activeBorderColors() {
+            if (Array.isArray(this.activeBorderColor)) {
+                return this.padColors(this.activeBorderColor, this.maxRating, this.activeBorderColor.slice(-1)[0])
+            }
+            let borderColor = (this.activeBorderColor) ? this.activeBorderColor : this.borderColor
+            return new Array(this.maxRating).fill(borderColor)
+        },
+        currentActiveBorderColor() {
+            if (!this.activeOnClick) {
+                return (this.currentRating > 0) ? this.activeBorderColors[Math.ceil(this.currentRating) - 1] : this.borderColor
+
+            }
+            return (this.selectedRating > 0) ? this.activeBorderColors[Math.ceil(this.selectedRating) - 1] : this.borderColor
         }
     },
     watch: {
@@ -180,9 +208,7 @@ export default {
         this.step = this.increment * 100
         this.currentRating = this.rating
         this.selectedRating = this.currentRating
-        this.userActiveBorderColor = (this.activeBorderColor) ? this.activeBorderColor : this.borderColor
         this.createStars(this.roundStartRating)
-
     },
     methods: {
         setRating($event, persist) {
@@ -202,7 +228,7 @@ export default {
                     this.ratingSelected = true
 
                 } else {
-                    this.createStars(true, this.applyActiveColorOnHover)
+                    this.createStars(true, !this.activeOnClick)
                     this.$emit('hover:rating', this.currentRating)
                 }
             }
@@ -230,6 +256,9 @@ export default {
         round() {
             var inv = 1.0 / this.increment
             this.currentRating = Math.min(this.maxRating, Math.ceil(this.currentRating * inv) / inv)
+        },
+        padColors(array, minLength, fillValue) {
+            return Object.assign(new Array(minLength).fill(fillValue), array)
         }
     }
 }

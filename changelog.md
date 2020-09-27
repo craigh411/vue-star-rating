@@ -8,9 +8,10 @@
 ## Version 2.1.0
 
 - New `animate` prop added which slightly rotates and expands the star on mouseover
-- New `apply-active-color-on-hover` prop, which allows active colours to be applied on hover, or if set to false, on click 
+- New `active-on-click` prop applies active colors on click rather than on hover when set
 - New `active-border-color` prop, which allows border colour to be changed when star is active (issue #34)
-- Improvements to glow color (thanks to @bifot)
+- `active-color` and `active-border-color` now optionally accept an array of color values, which can be used as break points
+- :glow no longer requires glow-color to be set (thanks to @bifot)
 - Better support for touch screen devices
 - Refactor parseAlphaColor method into own class
 - Refactor star.vue

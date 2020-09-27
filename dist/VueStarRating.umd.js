@@ -96,58 +96,43 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "1bc1":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("47de");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__("499e").default
-var update = add("76fe7eaf", content, true, {"sourceMap":false,"shadowMode":false});
-
-/***/ }),
-
-/***/ "1bf1":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("9040");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__("499e").default
-var update = add("39cbf6aa", content, true, {"sourceMap":false,"shadowMode":false});
-
-/***/ }),
-
-/***/ "38d1":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_rating_vue_vue_type_style_index_0_id_03449088_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1bf1");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_rating_vue_vue_type_style_index_0_id_03449088_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_rating_vue_vue_type_style_index_0_id_03449088_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- 
-
-/***/ }),
-
-/***/ "47de":
+/***/ "097c":
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("4bad");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".vue-star-rating-star[data-v-6b2d6caa]{overflow:visible!important}", ""]);
+exports.push([module.i, ".vue-star-rating-star[data-v-232d9dc0]{overflow:visible!important}.vue-star-rating-star-rotate[data-v-232d9dc0]{transition:all .25s}.vue-star-rating-star-rotate[data-v-232d9dc0]:hover{transition:transform .25s;transform:rotate(-15deg) scale(1.3)}", ""]);
 // Exports
 module.exports = exports;
 
+
+/***/ }),
+
+/***/ "30ce":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("88f6");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("0057312c", content, true, {"sourceMap":false,"shadowMode":false});
+
+/***/ }),
+
+/***/ "4742":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_rating_vue_vue_type_style_index_0_id_306a1cdb_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("30ce");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_rating_vue_vue_type_style_index_0_id_306a1cdb_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_rating_vue_vue_type_style_index_0_id_306a1cdb_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ 
 
 /***/ }),
 
@@ -518,12 +503,27 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ "546b":
+/***/ "4c97":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("097c");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("508fcb2f", content, true, {"sourceMap":false,"shadowMode":false});
+
+/***/ }),
+
+/***/ "5b64":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_vue_vue_type_style_index_0_id_6b2d6caa_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1bc1");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_vue_vue_type_style_index_0_id_6b2d6caa_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_vue_vue_type_style_index_0_id_6b2d6caa_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_vue_vue_type_style_index_0_id_232d9dc0_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("4c97");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_vue_vue_type_style_index_0_id_232d9dc0_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_vue_cli_service_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_v16_dist_index_js_ref_0_1_star_vue_vue_type_style_index_0_id_232d9dc0_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  
 
@@ -614,6 +614,20 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "88f6":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("4bad");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".vue-star-rating-star[data-v-306a1cdb]{display:inline-block;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent}.vue-star-rating-pointer[data-v-306a1cdb]{cursor:pointer}.vue-star-rating[data-v-306a1cdb]{display:flex;align-items:center}.vue-star-rating-inline[data-v-306a1cdb]{display:inline-flex}.vue-star-rating-rating-text[data-v-306a1cdb]{margin-left:7px}.vue-star-rating-rtl[data-v-306a1cdb]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-306a1cdb]{margin-right:10px;direction:rtl}", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
@@ -621,17 +635,63 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 
 /***/ }),
 
-/***/ "9040":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "d4aa":
+/***/ (function(module, exports) {
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("4bad");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, ".vue-star-rating-star[data-v-03449088]{display:inline-block;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent}.vue-star-rating-pointer[data-v-03449088]{cursor:pointer}.vue-star-rating[data-v-03449088]{display:flex;align-items:center}.vue-star-rating-inline[data-v-03449088]{display:inline-flex}.vue-star-rating-rating-text[data-v-03449088]{margin-top:7px;margin-left:7px}.vue-star-rating-rtl[data-v-03449088]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-03449088]{margin-right:10px;direction:rtl}", ""]);
-// Exports
-module.exports = exports;
+class AlphaColor {
 
+    constructor(color) {
+        this.color = color
+    }
+
+    parseAlphaColor() {
+        if (/^rgba\((\d{1,3}%?\s*,\s*){3}(\d*(?:\.\d+)?)\)$/.test(this.color)) {
+            return this.parseRgba()
+        } else if (/^hsla\(\d+\s*,\s*([\d.]+%\s*,\s*){2}(\d*(?:\.\d+)?)\)$/.test(this.color)) {
+            return this.parseHsla()
+        } else if (/^#([0-9A-Fa-f]{4}|[0-9A-Fa-f]{8})$/.test(this.color)) {
+            return this.parseAlphaHex()
+        } else if (/^transparent$/.test(this.color)) {
+            return this.parseTransparent()
+        }
+
+        return {
+            color: this.color,
+            opacity: '1'
+        }
+    }
+
+    parseRgba() {
+        return {
+            color: this.color.replace(/,(?!.*,).*(?=\))|a/g, ''),
+            opacity: this.color.match(/\.\d+|[01](?=\))/)[0]
+        }
+    }
+
+    parseHsla() {
+        return {
+            color: this.color.replace(/,(?!.*,).*(?=\))|a/g, ''),
+            opacity: this.color.match(/\.\d+|[01](?=\))/)[0]
+        }
+    }
+
+    parseAlphaHex() {
+        return {
+            color: this.color.length === 5 ? this.color.substring(0, 4) : this.color.substring(0, 7),
+            opacity: this.color.length === 5 ? (parseInt(this.color.substring(4, 5) + this.color.substring(4, 5), 16) / 255).toFixed(2) : (parseInt(this.color.substring(7, 9), 16) / 255).toFixed(2)
+
+        }
+    }
+
+    parseTransparent() {
+        return {
+            color: '#fff',
+            opacity: 0
+        }
+    }
+}
+
+module.exports = AlphaColor
 
 /***/ }),
 
@@ -669,11 +729,11 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/star-rating.vue?vue&type=template&id=03449088&scoped=true&bindings={"increment":"props","rating":"props","roundStartRating":"props","activeColor":"props","inactiveColor":"props","maxRating":"props","starPoints":"props","starSize":"props","showRating":"props","readOnly":"props","textClass":"props","inline":"props","borderColor":"props","borderWidth":"props","roundedCorners":"props","padding":"props","rtl":"props","fixedPoints":"props","glow":"props","glowColor":"props","clearable":"props","step":"data","fillLevel":"data","currentRating":"data","selectedRating":"data","ratingSelected":"data","formattedRating":"options","shouldRound":"options","margin":"options","setRating":"options","resetRating":"options","createStars":"options","round":"options"}
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/star-rating.vue?vue&type=template&id=306a1cdb&scoped=true&bindings={"increment":"props","rating":"props","roundStartRating":"props","activeColor":"props","inactiveColor":"props","maxRating":"props","starPoints":"props","starSize":"props","showRating":"props","readOnly":"props","textClass":"props","inline":"props","borderColor":"props","activeBorderColor":"props","borderWidth":"props","roundedCorners":"props","padding":"props","rtl":"props","fixedPoints":"props","glow":"props","glowColor":"props","clearable":"props","applyActiveColorOnHover":"props","animate":"props","step":"data","fillLevel":"data","currentRating":"data","selectedRating":"data","ratingSelected":"data","userActiveBorderColor":"data","formattedRating":"options","shouldRound":"options","margin":"options","setRating":"options","resetRating":"options","createStars":"options","round":"options"}
 
-const _withId = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withScopeId"])("data-v-03449088")
+const _withId = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withScopeId"])("data-v-306a1cdb")
 
-const star_ratingvue_type_template_id_03449088_scoped_true_bindings_increment_props_rating_props_roundStartRating_props_activeColor_props_inactiveColor_props_maxRating_props_starPoints_props_starSize_props_showRating_props_readOnly_props_textClass_props_inline_props_borderColor_props_borderWidth_props_roundedCorners_props_padding_props_rtl_props_fixedPoints_props_glow_props_glowColor_props_clearable_props_step_data_fillLevel_data_currentRating_data_selectedRating_data_ratingSelected_data_formattedRating_options_shouldRound_options_margin_options_setRating_options_resetRating_options_createStars_options_round_options_render = /*#__PURE__*/_withId(function render(_ctx, _cache, $props, $setup, $data, $options) {
+const star_ratingvue_type_template_id_306a1cdb_scoped_true_bindings_increment_props_rating_props_roundStartRating_props_activeColor_props_inactiveColor_props_maxRating_props_starPoints_props_starSize_props_showRating_props_readOnly_props_textClass_props_inline_props_borderColor_props_activeBorderColor_props_borderWidth_props_roundedCorners_props_padding_props_rtl_props_fixedPoints_props_glow_props_glowColor_props_clearable_props_applyActiveColorOnHover_props_animate_props_step_data_fillLevel_data_currentRating_data_selectedRating_data_ratingSelected_data_userActiveBorderColor_data_formattedRating_options_shouldRound_options_margin_options_setRating_options_resetRating_options_createStars_options_round_options_render = /*#__PURE__*/_withId(function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_star = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("star")
 
   return (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
@@ -698,14 +758,16 @@ const star_ratingvue_type_template_id_03449088_scoped_true_bindings_increment_pr
             "active-color": $props.activeColor,
             "inactive-color": $props.inactiveColor,
             "border-color": $props.borderColor,
+            "active-border-color": $data.userActiveBorderColor,
             "border-width": $props.borderWidth,
             "rounded-corners": $props.roundedCorners,
             rtl: $props.rtl,
             glow: $props.glow,
             "glow-color": $props.glowColor,
+            animate: $props.animate,
             "onStar-selected": _cache[1] || (_cache[1] = $event => ($options.setRating($event, true))),
             "onStar-mouse-move": $options.setRating
-          }, null, 8, ["fill", "size", "points", "star-id", "step", "active-color", "inactive-color", "border-color", "border-width", "rounded-corners", "rtl", "glow", "glow-color", "onStar-mouse-move"])
+          }, null, 8, ["fill", "size", "points", "star-id", "step", "active-color", "inactive-color", "border-color", "active-border-color", "border-width", "rounded-corners", "rtl", "glow", "glow-color", "animate", "onStar-mouse-move"])
         ], 6))
       }), 128 /* KEYED_FRAGMENT */)),
       ($props.showRating)
@@ -717,27 +779,29 @@ const star_ratingvue_type_template_id_03449088_scoped_true_bindings_increment_pr
     ], 32)
   ], 2))
 })
-// CONCATENATED MODULE: ./src/star-rating.vue?vue&type=template&id=03449088&scoped=true&bindings={"increment":"props","rating":"props","roundStartRating":"props","activeColor":"props","inactiveColor":"props","maxRating":"props","starPoints":"props","starSize":"props","showRating":"props","readOnly":"props","textClass":"props","inline":"props","borderColor":"props","borderWidth":"props","roundedCorners":"props","padding":"props","rtl":"props","fixedPoints":"props","glow":"props","glowColor":"props","clearable":"props","step":"data","fillLevel":"data","currentRating":"data","selectedRating":"data","ratingSelected":"data","formattedRating":"options","shouldRound":"options","margin":"options","setRating":"options","resetRating":"options","createStars":"options","round":"options"}
+// CONCATENATED MODULE: ./src/star-rating.vue?vue&type=template&id=306a1cdb&scoped=true&bindings={"increment":"props","rating":"props","roundStartRating":"props","activeColor":"props","inactiveColor":"props","maxRating":"props","starPoints":"props","starSize":"props","showRating":"props","readOnly":"props","textClass":"props","inline":"props","borderColor":"props","activeBorderColor":"props","borderWidth":"props","roundedCorners":"props","padding":"props","rtl":"props","fixedPoints":"props","glow":"props","glowColor":"props","clearable":"props","applyActiveColorOnHover":"props","animate":"props","step":"data","fillLevel":"data","currentRating":"data","selectedRating":"data","ratingSelected":"data","userActiveBorderColor":"data","formattedRating":"options","shouldRound":"options","margin":"options","setRating":"options","resetRating":"options","createStars":"options","round":"options"}
 
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/star.vue?vue&type=template&id=6b2d6caa&scoped=true&bindings={"fill":"props","points":"props","size":"props","starId":"props","activeColor":"props","inactiveColor":"props","borderColor":"props","borderWidth":"props","roundedCorners":"props","rtl":"props","glow":"props","glowColor":"props","starPoints":"data","grad":"data","glowId":"data","starPointsToString":"options","gradId":"options","starSize":"options","starFill":"options","border":"options","getBorderColor":"options","maxSize":"options","viewBox":"options","mouseMoving":"options","getPosition":"options","selected":"options","getRandomId":"options","calculatePoints":"options","parseAlphaColor":"options","getColor":"options","getOpacity":"options"}
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--5!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/star.vue?vue&type=template&id=232d9dc0&scoped=true&bindings={"fill":"props","points":"props","size":"props","starId":"props","activeColor":"props","inactiveColor":"props","borderColor":"props","activeBorderColor":"props","borderWidth":"props","roundedCorners":"props","rtl":"props","glow":"props","glowColor":"props","animate":"props","starPoints":"data","grad":"data","glowId":"data","isStarActive":"data","starPointsToString":"options","gradId":"options","starSize":"options","starFill":"options","border":"options","getBorderColor":"options","maxSize":"options","viewBox":"options","shouldAnimate":"options","strokeLinejoin":"options","mouseMoving":"options","touchStart":"options","touchEnd":"options","getPosition":"options","selected":"options","getRandomId":"options","calculatePoints":"options","getColor":"options","getOpacity":"options"}
 
-const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_starPoints_data_grad_data_glowId_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_mouseMoving_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_parseAlphaColor_options_getColor_options_getOpacity_options_withId = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withScopeId"])("data-v-6b2d6caa")
+const starvue_type_template_id_232d9dc0_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_activeBorderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_animate_props_starPoints_data_grad_data_glowId_data_isStarActive_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_shouldAnimate_options_strokeLinejoin_options_mouseMoving_options_touchStart_options_touchEnd_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_getColor_options_getOpacity_options_withId = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withScopeId"])("data-v-232d9dc0")
 
-Object(external_commonjs_vue_commonjs2_vue_root_Vue_["pushScopeId"])("data-v-6b2d6caa")
+Object(external_commonjs_vue_commonjs2_vue_root_Vue_["pushScopeId"])("data-v-232d9dc0")
 const _hoisted_1 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("feMerge", null, [
   /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("feMergeNode", { in: "coloredBlur" }),
   /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("feMergeNode", { in: "SourceGraphic" })
 ], -1)
 Object(external_commonjs_vue_commonjs2_vue_root_Vue_["popScopeId"])()
 
-const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_starPoints_data_grad_data_glowId_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_mouseMoving_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_parseAlphaColor_options_getColor_options_getOpacity_options_render = /*#__PURE__*/starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_starPoints_data_grad_data_glowId_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_mouseMoving_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_parseAlphaColor_options_getColor_options_getOpacity_options_withId(function render(_ctx, _cache, $props, $setup, $data, $options) {
+const starvue_type_template_id_232d9dc0_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_activeBorderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_animate_props_starPoints_data_grad_data_glowId_data_isStarActive_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_shouldAnimate_options_strokeLinejoin_options_mouseMoving_options_touchStart_options_touchEnd_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_getColor_options_getOpacity_options_render = /*#__PURE__*/starvue_type_template_id_232d9dc0_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_activeBorderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_animate_props_starPoints_data_grad_data_glowId_data_isStarActive_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_shouldAnimate_options_strokeLinejoin_options_mouseMoving_options_touchStart_options_touchEnd_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_getColor_options_getOpacity_options_withId(function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("svg", {
-    class: "vue-star-rating-star",
+    class: ['vue-star-rating-star', {'vue-star-rating-star-rotate' : $options.shouldAnimate}],
     height: $options.starSize,
     width: $options.starSize,
     viewBox: $options.viewBox,
     onMousemove: _cache[1] || (_cache[1] = (...args) => ($options.mouseMoving(...args))),
-    onClick: _cache[2] || (_cache[2] = (...args) => ($options.selected(...args)))
+    onClick: _cache[2] || (_cache[2] = (...args) => ($options.selected(...args))),
+    onTouchstart: _cache[3] || (_cache[3] = (...args) => ($options.touchStart(...args))),
+    onTouchend: _cache[4] || (_cache[4] = (...args) => ($options.touchEnd(...args)))
   }, [
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("linearGradient", {
       id: $data.grad,
@@ -775,8 +839,9 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
           points: $options.starPointsToString,
           fill: $options.gradId,
           stroke: $props.glowColor,
-          filter: 'url(#'+$data.glowId+')'
-        }, null, 8, ["points", "fill", "stroke", "filter"])), [
+          filter: 'url(#'+$data.glowId+')',
+          "stroke-width": $options.border
+        }, null, 8, ["points", "fill", "stroke", "filter", "stroke-width"])), [
           [external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], $props.fill > 1]
         ])
       : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true),
@@ -785,17 +850,23 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
       fill: $options.gradId,
       stroke: $options.getBorderColor,
       "stroke-width": $options.border,
-      "stroke-linejoin": $props.roundedCorners ? 'round' : 'miter'
+      "stroke-linejoin": $options.strokeLinejoin
     }, null, 8, ["points", "fill", "stroke", "stroke-width", "stroke-linejoin"]),
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("polygon", {
       points: $options.starPointsToString,
       fill: $options.gradId
     }, null, 8, ["points", "fill"])
-  ], 40, ["height", "width", "viewBox"]))
+  ], 42, ["height", "width", "viewBox"]))
 })
-// CONCATENATED MODULE: ./src/star.vue?vue&type=template&id=6b2d6caa&scoped=true&bindings={"fill":"props","points":"props","size":"props","starId":"props","activeColor":"props","inactiveColor":"props","borderColor":"props","borderWidth":"props","roundedCorners":"props","rtl":"props","glow":"props","glowColor":"props","starPoints":"data","grad":"data","glowId":"data","starPointsToString":"options","gradId":"options","starSize":"options","starFill":"options","border":"options","getBorderColor":"options","maxSize":"options","viewBox":"options","mouseMoving":"options","getPosition":"options","selected":"options","getRandomId":"options","calculatePoints":"options","parseAlphaColor":"options","getColor":"options","getOpacity":"options"}
+// CONCATENATED MODULE: ./src/star.vue?vue&type=template&id=232d9dc0&scoped=true&bindings={"fill":"props","points":"props","size":"props","starId":"props","activeColor":"props","inactiveColor":"props","borderColor":"props","activeBorderColor":"props","borderWidth":"props","roundedCorners":"props","rtl":"props","glow":"props","glowColor":"props","animate":"props","starPoints":"data","grad":"data","glowId":"data","isStarActive":"data","starPointsToString":"options","gradId":"options","starSize":"options","starFill":"options","border":"options","getBorderColor":"options","maxSize":"options","viewBox":"options","shouldAnimate":"options","strokeLinejoin":"options","mouseMoving":"options","touchStart":"options","touchEnd":"options","getPosition":"options","selected":"options","getRandomId":"options","calculatePoints":"options","getColor":"options","getOpacity":"options"}
+
+// EXTERNAL MODULE: ./src/classes/AlphaColor.js
+var AlphaColor = __webpack_require__("d4aa");
+var AlphaColor_default = /*#__PURE__*/__webpack_require__.n(AlphaColor);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/star.vue?vue&type=script&lang=js
+
+
 
 /* harmony default export */ var starvue_type_script_lang_js = ({
     name: 'Star',
@@ -830,6 +901,10 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
             type: String,
             default: '#000'
         },
+        activeBorderColor: {
+            type: String,
+            default: '#000'
+        },
         borderWidth: {
             type: Number,
             default: 0
@@ -850,6 +925,10 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
             type: String,
             default: null,
             required: false
+        },
+        animate: {
+            type: Boolean,
+            default: false
         }
     },
     emits: ['star-mouse-move', 'star-selected'],
@@ -857,7 +936,8 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
         return {
             starPoints: [19.8, 2.2, 6.6, 43.56, 39.6, 17.16, 0, 17.16, 33, 43.56],
             grad: '',
-            glowId: ''
+            glowId: '',
+            isStarActive: true
         }
     },
     computed: {
@@ -884,7 +964,7 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
                 return (this.fill <= 0) ? this.inactiveColor : this.activeColor
             }
 
-            return this.borderColor
+            return (this.fill <= 0) ? this.borderColor : this.activeBorderColor
         },
         maxSize() {
             return this.starPoints.reduce(function(a, b) {
@@ -893,6 +973,12 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
         },
         viewBox() {
             return '0 0 ' + this.maxSize + ' ' + this.maxSize
+        },
+        shouldAnimate() {
+            return this.animate && this.isStarActive
+        },
+        strokeLinejoin() {
+            return this.roundedCorners ? 'round' : 'miter'
         }
     },
     created() {
@@ -903,11 +989,23 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
     },
     methods: {
         mouseMoving($event) {
-            this.$emit('star-mouse-move', {
-                event: $event,
-                position: this.getPosition($event),
-                id: this.starId
+            if ($event.touchAction !== 'undefined') {
+                this.$emit('star-mouse-move', {
+                    event: $event,
+                    position: this.getPosition($event),
+                    id: this.starId
+                })
+            }
+        },
+        touchStart() {
+            this.$nextTick(() => {
+                this.isStarActive = true
             })
+        },
+        touchEnd() {
+            setTimeout(() => {
+                this.isStarActive = false
+            }, 300)
         },
         getPosition($event) {
             // calculate position in percentage.
@@ -927,68 +1025,24 @@ const starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_p
             return Math.random().toString(36).substring(7)
         },
         calculatePoints() {
-            this.starPoints = this.starPoints.map((point) => {
-                return ((this.size / this.maxSize) * point) + (this.border * 1.5)
+            this.starPoints = this.starPoints.map((point, i) => {
+                const offset = i % 2 === 0 ? this.border * 1.5 : 0
+                return ((this.size / this.maxSize) * point) + offset
             })
         },
-        parseAlphaColor(inputColor) {
-            const patterns = [
-                {
-                    // rgba
-                    pattern: /^rgba\((\d{1,3}%?\s*,\s*){3}(\d*(?:\.\d+)?)\)$/,
-                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
-                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
-                }, {
-                    // hsla
-                    pattern: /^hsla\(\d+\s*,\s*([\d.]+%\s*,\s*){2}(\d*(?:\.\d+)?)\)$/,
-                    getColor: color => color.replace(/,(?!.*,).*(?=\))|a/g, ''),
-                    getOpacity: color => color.match(/\.\d+|[01](?=\))/)[0]
-                }, {
-                    // alphahex
-                    pattern: /^#([0-9A-Fa-f]{4}|[0-9A-Fa-f]{8})$/,
-                    getColor: color => color.length === 5 ? color.substring(0, 4) : color.substring(0, 7),
-                    getOpacity: color => {
-                        if (color.length === 5) {
-                            return (parseInt(color.substring(4, 5) + color.substring(4, 5), 16) / 255).toFixed(2)
-                        } else {
-                            return (parseInt(color.substring(7, 9), 16) / 255).toFixed(2)
-                        }
-                    }
-                }, {
-                    // transparent
-                    pattern: /^transparent$/,
-                    getColor: () => '#fff',
-                    getOpacity: () => '0'
-                }
-            ]
-
-            for (let i = 0; i < patterns.length; i++) {
-                if (patterns[i].pattern.test(inputColor)) {
-                    return {
-                        color: patterns[i].getColor(inputColor),
-                        opacity: patterns[i].getOpacity(inputColor)
-                    }
-                }
-            }
-
-            return {
-                color: inputColor,
-                opacity: '1'
-            }
-        },
         getColor(color) {
-            return this.parseAlphaColor(color).color
+            return new AlphaColor_default.a(color).parseAlphaColor().color
         },
         getOpacity(color) {
-            return this.parseAlphaColor(color).opacity
+            return new AlphaColor_default.a(color).parseAlphaColor().opacity
         }
     }
 });
 
 // CONCATENATED MODULE: ./src/star.vue?vue&type=script&lang=js
  
-// EXTERNAL MODULE: ./src/star.vue?vue&type=style&index=0&id=6b2d6caa&scoped=true&lang=css
-var starvue_type_style_index_0_id_6b2d6caa_scoped_true_lang_css = __webpack_require__("546b");
+// EXTERNAL MODULE: ./src/star.vue?vue&type=style&index=0&id=232d9dc0&scoped=true&lang=css
+var starvue_type_style_index_0_id_232d9dc0_scoped_true_lang_css = __webpack_require__("5b64");
 
 // CONCATENATED MODULE: ./src/star.vue
 
@@ -996,8 +1050,8 @@ var starvue_type_style_index_0_id_6b2d6caa_scoped_true_lang_css = __webpack_requ
 
 
 
-starvue_type_script_lang_js.render = starvue_type_template_id_6b2d6caa_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_starPoints_data_grad_data_glowId_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_mouseMoving_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_parseAlphaColor_options_getColor_options_getOpacity_options_render
-starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
+starvue_type_script_lang_js.render = starvue_type_template_id_232d9dc0_scoped_true_bindings_fill_props_points_props_size_props_starId_props_activeColor_props_inactiveColor_props_borderColor_props_activeBorderColor_props_borderWidth_props_roundedCorners_props_rtl_props_glow_props_glowColor_props_animate_props_starPoints_data_grad_data_glowId_data_isStarActive_data_starPointsToString_options_gradId_options_starSize_options_starFill_options_border_options_getBorderColor_options_maxSize_options_viewBox_options_shouldAnimate_options_strokeLinejoin_options_mouseMoving_options_touchStart_options_touchEnd_options_getPosition_options_selected_options_getRandomId_options_calculatePoints_options_getColor_options_getOpacity_options_render
+starvue_type_script_lang_js.__scopeId = "data-v-232d9dc0"
 
 /* harmony default export */ var star = (starvue_type_script_lang_js);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/star-rating.vue?vue&type=script&lang=js
@@ -1066,6 +1120,10 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
             type: String,
             default: '#999'
         },
+        activeBorderColor: {
+            type: String,
+            default: null
+        },
         borderWidth: {
             type: Number,
             default: 0
@@ -1092,9 +1150,17 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
         },
         glowColor: {
             type: String,
-            default: null
+            default: '#fff'
         },
         clearable: {
+            type: Boolean,
+            default: false
+        },
+        applyActiveColorOnHover: {
+            type: Boolean,
+            default: true
+        },
+        animate: {
             type: Boolean,
             default: false
         }
@@ -1107,7 +1173,8 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
             fillLevel: [],
             currentRating: 0,
             selectedRating: 0,
-            ratingSelected: false
+            ratingSelected: false,
+            userActiveBorderColor: null
         }
     },
     computed: {
@@ -1132,7 +1199,9 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
         this.step = this.increment * 100
         this.currentRating = this.rating
         this.selectedRating = this.currentRating
+        this.userActiveBorderColor = (this.activeBorderColor) ? this.activeBorderColor : this.borderColor
         this.createStars(this.roundStartRating)
+
     },
     methods: {
         setRating($event, persist) {
@@ -1140,8 +1209,8 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
                 const position = (this.rtl) ? (100 - $event.position) / 100 : $event.position / 100
                 this.currentRating = (($event.id + position) - 1).toFixed(2)
                 this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating
-                this.createStars()
                 if (persist) {
+                    this.createStars(true, true)
                     if (this.clearable && this.currentRating === this.selectedRating) {
                         this.selectedRating = 0
                     } else {
@@ -1152,6 +1221,7 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
                     this.ratingSelected = true
 
                 } else {
+                    this.createStars(true, this.applyActiveColorOnHover)
                     this.$emit('hover:rating', this.currentRating)
                 }
             }
@@ -1162,7 +1232,7 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
                 this.createStars(this.shouldRound)
             }
         },
-        createStars(round = true) {
+        createStars(round = true, applyFill = true) {
             if (round) {
                 this.round()
             }
@@ -1171,7 +1241,9 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
                 if (i < this.currentRating) {
                     level = (this.currentRating - i > 1) ? 100 : (this.currentRating - i) * 100
                 }
-                this.fillLevel[i] = Math.round(level)
+                if (applyFill) {
+                    this.fillLevel[i] = Math.round(level)
+                }
             }
         },
         round() {
@@ -1183,8 +1255,8 @@ starvue_type_script_lang_js.__scopeId = "data-v-6b2d6caa"
 
 // CONCATENATED MODULE: ./src/star-rating.vue?vue&type=script&lang=js
  
-// EXTERNAL MODULE: ./src/star-rating.vue?vue&type=style&index=0&id=03449088&scoped=true&lang=css
-var star_ratingvue_type_style_index_0_id_03449088_scoped_true_lang_css = __webpack_require__("38d1");
+// EXTERNAL MODULE: ./src/star-rating.vue?vue&type=style&index=0&id=306a1cdb&scoped=true&lang=css
+var star_ratingvue_type_style_index_0_id_306a1cdb_scoped_true_lang_css = __webpack_require__("4742");
 
 // CONCATENATED MODULE: ./src/star-rating.vue
 
@@ -1192,8 +1264,8 @@ var star_ratingvue_type_style_index_0_id_03449088_scoped_true_lang_css = __webpa
 
 
 
-star_ratingvue_type_script_lang_js.render = star_ratingvue_type_template_id_03449088_scoped_true_bindings_increment_props_rating_props_roundStartRating_props_activeColor_props_inactiveColor_props_maxRating_props_starPoints_props_starSize_props_showRating_props_readOnly_props_textClass_props_inline_props_borderColor_props_borderWidth_props_roundedCorners_props_padding_props_rtl_props_fixedPoints_props_glow_props_glowColor_props_clearable_props_step_data_fillLevel_data_currentRating_data_selectedRating_data_ratingSelected_data_formattedRating_options_shouldRound_options_margin_options_setRating_options_resetRating_options_createStars_options_round_options_render
-star_ratingvue_type_script_lang_js.__scopeId = "data-v-03449088"
+star_ratingvue_type_script_lang_js.render = star_ratingvue_type_template_id_306a1cdb_scoped_true_bindings_increment_props_rating_props_roundStartRating_props_activeColor_props_inactiveColor_props_maxRating_props_starPoints_props_starSize_props_showRating_props_readOnly_props_textClass_props_inline_props_borderColor_props_activeBorderColor_props_borderWidth_props_roundedCorners_props_padding_props_rtl_props_fixedPoints_props_glow_props_glowColor_props_clearable_props_applyActiveColorOnHover_props_animate_props_step_data_fillLevel_data_currentRating_data_selectedRating_data_ratingSelected_data_userActiveBorderColor_data_formattedRating_options_shouldRound_options_margin_options_setRating_options_resetRating_options_createStars_options_round_options_render
+star_ratingvue_type_script_lang_js.__scopeId = "data-v-306a1cdb"
 
 /* harmony default export */ var star_rating = (star_ratingvue_type_script_lang_js);
 // CONCATENATED MODULE: ./src/index.js
