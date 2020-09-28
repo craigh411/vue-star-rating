@@ -1,6 +1,6 @@
 <template>
   <svg
-    :class="['vue-star-rating-star', {'vue-star-rating-star-rotate' : shouldAnimate}, {'vue-star-rating-star-rotate-reverse' : !shouldAnimate}]"
+    :class="['vue-star-rating-star', {'vue-star-rating-star-rotate' : shouldAnimate}]"
     :height="starSize"
     :width="starSize"
     :viewBox="viewBox"
