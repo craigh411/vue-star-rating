@@ -1,6 +1,6 @@
 <template>
   <svg
-    :class="['vue-star-rating-star', {'vue-star-rating-star-rotate' : shouldAnimate}]"
+    :class="['vue-star-rating-star', {'vue-star-rating-star-rotate' : shouldAnimate}, {'vue-star-rating-star-rotate-reverse' : !shouldAnimate}]"
     :height="starSize"
     :width="starSize"
     :viewBox="viewBox"
@@ -207,9 +207,9 @@ export default {
             })
         },
         touchEnd() {
-            setTimeout(() => {
+            this.$nextTick(() => {
                 this.isStarActive = false
-            }, 300)
+            })
         },
         getPosition($event) {
             // calculate position in percentage.

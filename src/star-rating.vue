@@ -1,5 +1,15 @@
 <template>
   <div :class="['vue-star-rating', {'vue-star-rating-rtl':rtl}, {'vue-star-rating-inline': inline}]">
+    <div class="sr-only">
+      <slot
+        name="screen-reader"
+        :rating="selectedRating"
+        :stars="maxRating"
+      >
+        <span>Rated {{ selectedRating }} stars out of {{ maxRating }}</span>
+      </slot>
+    </div>
+
     <div
       class="vue-star-rating"
       @mouseleave="resetRating"
@@ -295,5 +305,14 @@ export default {
     .vue-star-rating-rtl .vue-star-rating-rating-text {
         margin-right: 10px;
         direction: rtl;
+    }
+
+    .sr-only {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
     }
 </style>
