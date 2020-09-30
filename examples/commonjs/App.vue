@@ -1,5 +1,5 @@
 <template>
-    <div style="background: #fff;padding:50px;">
+    <div style="background: #000;padding:50px;">
         <star-rating
                 :rating="rating"
                 :round-start-rating="false"

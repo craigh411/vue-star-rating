@@ -46,8 +46,7 @@
     </filter>
 
     <polygon
-      v-if="glowColor"
-      v-show="fill > 1"
+      v-show="glowColor && glow > 0 && fill > 0"
       :points="starPointsToString"
       :fill="gradId"
       :stroke="glowColor"

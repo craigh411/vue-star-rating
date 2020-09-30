@@ -141,7 +141,7 @@ export default {
             default: 0
         },
         glowColor: {
-            type: [String, Array],
+            type: String,
             default: '#fff'
         },
         clearable: {
