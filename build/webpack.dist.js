@@ -17,16 +17,20 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            }, {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            }, {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            }]
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }, {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            options: {
+                babelrc: false,
+                presets: ['@babel/preset-env']
+            }
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        }]
     },
     plugins: [
         new VueLoaderPlugin(),

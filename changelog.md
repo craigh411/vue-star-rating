@@ -2,6 +2,27 @@
 - Changes before version 1.2.1 not documented (see commit history)
 - Project follows [Semantic Versioning](http://semver.org/)
 
+## Version 1.7.0 (Development)
+
+- New `animate` prop added which slightly rotates and expands the star on mouseover
+- New `active-on-click` prop applies active colors on click rather than on hover when set
+- New `active-border-color` prop, which allows border colour to be changed when star is active (issue #34)
+- `active-color` and `active-border-color` now optionally accept an array of color values, which can be used as break points
+- :glow no longer requires glow-color to be set (thanks to @bifot)
+- Screen readers are now supported. You can change the default message ("Rated {{rating}} out of {{maxRating}} stars") by using the `screen-reader` scoped slot:
+
+````javascript
+<star-rating>
+    <template v-slot:screen-reader="slotProps">
+        This product has been rated {{slotProps.rating}} out of {{slotProps.stars}} stars
+    </template>
+</star-rating>
+````
+
+- Better support for touch screen devices
+- Refactor parseAlphaColor method into own class
+- Refactor star.vue
+
 ## Version 1.6.3
 - Update tests to jest and use vue test utils
 - Fix issue where glow is always on (fixes #56 #50)
