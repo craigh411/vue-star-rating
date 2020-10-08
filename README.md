@@ -147,9 +147,9 @@ These props are used to style the star rating component
 | ------------- | ------------- |-------------|-------------|
 | star-size  | The size of each star, this gets passed to the `SVG` width attribute, so  larger numbers are larger stars  | Number | 50 |
 | inactive-color  | The color of the non-highlighted portion of a star.  | String | #d8d8d8 |
-| active-color  | The color of the highlighted portion of a star. Pass an array of colours to colour each star individually | String &#124; Array | #ffd055 |
+| active-color  | The color of the highlighted portion of a star. Pass an array of colors to color each star individually | String &#124; Array | #ffd055 |
 | border-color  | Sets the colour of the border for each star | String | #999 |
-| active-border-color  | The border color of a highlighted / active star | String &#124; Array | null |
+| active-border-color  | The border color of a highlighted star. Pass an array of colors to color each star's border individually  | String &#124; Array | null |
 | border-width  | Sets the width of the border for each star | Number | 0 |
 | animate  | Set to true for an animation to be applied on mouseover | Boolean | false |
 | padding  | Pads the right of each star so distance between stars can be altered | Number | 0 |
