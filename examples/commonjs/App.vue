@@ -1,7 +1,7 @@
 <template>
-    <div style="background: #000;padding:50px;">
+    <div style="background: #fff;padding:50px;">
         <star-rating
-                :rating="rating"
+                v-model="rating"
                 :round-start-rating="false"
                 :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"
                 :border-width="4"
