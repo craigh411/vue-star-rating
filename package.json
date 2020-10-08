@@ -2,14 +2,13 @@
   "name": "vue-star-rating",
   "version": "1.6.3",
   "description": "A simple, highly customisable star rating component for Vue 2.x.",
-  "main": "dist/star-rating.min.js",
+  "main": "dist/VueStarRating.common.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "karma start --single-run=false",
     "lint": "eslint src --ext=js,vue",
     "lint:fix": "eslint src --ext=js,vue --fix",
-    "dev": "webpack-dev-server --content-base ./examples/commonjs --env=webpack.dev --open --hot",
-    "dist": "webpack --env=webpack.dist"
+    "serve": "vue-cli-service serve ./examples/commonjs/app.js",
+    "build": "vue-cli-service build --target lib --name VueStarRating ./src/index.js --mode production"
   },
   "repository": {
     "type": "git",
@@ -37,24 +36,18 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/runtime-corejs3": "^7.11.2",
+    "@vue/cli-service": "^4.5.7",
     "@vue/test-utils": "^1.1.0",
     "babel-jest": "^26.3.0",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^4.3.0",
-    "eslint": "^7.9.0",
-    "eslint-config-vue": "^2.0.2",
-    "eslint-loader": "^1.7.1",
+    "eslint": "^7.10.0",
     "eslint-plugin-vue": "^6.2.2",
     "jest": "^26.4.2",
     "style-loader": "^1.2.1",
     "typescript": "^4.0.3",
-    "vue": "^2.3.3",
     "vue-jest": "^4.0.0-rc.0",
-    "vue-loader": "^15.9.3",
-    "vue-template-compiler": "^2.3.3",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "vue-template-compiler": "^2.3.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.3.3"
+  }
 }
