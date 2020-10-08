@@ -153,7 +153,7 @@ These props are used to style the star rating component
 | inline  | Sets the star rating to display inline | Boolean | false |
 | glow | Adds a subtle glow around each active star, this should be a number to spread the glow | Number | 0 |
 | glow-color | Sets the color for the glow  | String | #fff |
-| text-class  | A css class name to style the rating text for a specific star rating component | '' |
+| text-class  | A css class name to style the rating text for a specific star rating component | String | '' |
 
 **Important:** Vue requires you to pass numbers and boolean values using `v-bind`, any props that require a number or bool should use `v-bind:` or the colon (`:`) shorthand.
 
