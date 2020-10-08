@@ -1,5 +1,6 @@
 import {mount} from '@vue/test-utils'
 import Star from '../src/star.vue'
+import StarRating from "../src/star-rating"
 
 
 var defaultProps = {
@@ -9,11 +10,13 @@ var defaultProps = {
     activeColor: 'yellow',
     inactiveColor: 'grey',
     borderColor: '#000',
+    activeBorderColor: '#fff',
     borderWidth: 0,
     roundedCorners: true,
     rtl: true,
     glow: 1,
-    glowColor: '#000'
+    glowColor: '#000',
+    animate: true
 };
 
 
@@ -36,6 +39,8 @@ describe('Star Component', () => {
         expect(props.rtl).toBeTruthy()
         expect(props.glow).toEqual(1)
         expect(props.glowColor).toEqual('#000')
+        expect(props.animate).toBeTruthy()
+        expect(props.activeBorderColor).toEqual("#fff")
 
     })
 
@@ -94,6 +99,30 @@ describe('Star Component', () => {
         expect(props.fill).toEqual(50);
     });
 
+    it('should set getBorderColor to borderColor prop when no fill is 0', () => {
+        const wrapper = mount(Star, {
+            propsData: Object.assign(defaultProps, {
+                fill: 0,
+                borderColor: "#bada55",
+                activeBorderColor: "#123456"
+            })
+        });
+        expect(wrapper.vm.getBorderColor).toBe("#bada55");
+
+    })
+
+    it('should set getBorderColor to activeBorderColor prop when no fill is more than 0', () => {
+        const wrapper = mount(Star, {
+            propsData: Object.assign(defaultProps, {
+                fill: 1,
+                borderColor: "#bada55",
+                activeBorderColor: "#123456"
+            })
+        });
+        expect(wrapper.vm.getBorderColor).toBe("#123456");
+    })
+
+
     it('should create a random gradient id', () => {
         const wrapper = mount(Star, {
             propsData: defaultProps
@@ -101,6 +130,27 @@ describe('Star Component', () => {
 
         expect(wrapper.vm.gradId.length > 0).toBeTruthy();
     });
+
+    it('should not apply the vue-star-rotate class when animate is false', () => {
+        const wrapper = mount(Star, {
+            propsData: Object.assign(defaultProps, {
+                animate:false
+            })
+        });
+
+        expect(wrapper.findAll('.vue-star-rating-star-rotate').length).toEqual(0)
+    })
+
+    it('should apply the vue-star-rotate class when animate is true', () => {
+        const wrapper = mount(Star, {
+            propsData: Object.assign(defaultProps, {
+                animate: true
+            })
+        });
+
+        expect(wrapper.findAll('.vue-star-rating-star-rotate').length > 0).toBeTruthy()
+    })
+
 
     describe('color parsing function', () => {
         it('should calculate hex(a) color and opacity', () => {

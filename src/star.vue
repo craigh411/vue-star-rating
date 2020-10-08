@@ -151,7 +151,7 @@ export default {
             return 'url(#' + this.grad + ')'
         },
         starSize() {
-        // Adjust star size when rounded corners are set with no border, to account for the 'hidden' border
+            // Adjust star size when rounded corners are set with no border, to account for the 'hidden' border
             const size = (this.roundedCorners && this.borderWidth <= 0) ? parseInt(this.size) - parseInt(this.border) : this.size
             return parseInt(size) + parseInt(this.border)
         },
@@ -211,7 +211,7 @@ export default {
             })
         },
         getPosition($event) {
-        // calculate position in percentage.
+            // calculate position in percentage.
             var starWidth = (92 / 100) * this.size
             const offset = (this.rtl) ? Math.min($event.offsetX, 45) : Math.max($event.offsetX, 1)
             var position = Math.round((100 / starWidth) * offset)
@@ -244,16 +244,16 @@ export default {
 </script>
 
 <style scoped>
-  .vue-star-rating-star {
-    overflow: visible !important;
-  }
+    .vue-star-rating-star {
+        overflow: visible !important;
+    }
 
-  .vue-star-rating-star-rotate {
-    transition: all .25s;
-  }
+    .vue-star-rating-star-rotate {
+        transition: all .25s;
+    }
 
-  .vue-star-rating-star-rotate:hover {
-    transition: transform 0.25s;
-    transform: rotate(-15deg) scale(1.3)
-  }
+    .vue-star-rating-star-rotate:hover {
+        transition: transform 0.25s;
+        transform: rotate(-15deg) scale(1.3)
+    }
 </style>

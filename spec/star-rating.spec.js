@@ -19,10 +19,16 @@ describe('star-rating component', () => {
         expect(props.textClass).toBe("");
         expect(props.inline).toBeFalsy();
         expect(props.borderColor).toBe("#999");
+        expect(props.activeBorderColor).toBeNull();
         expect(props.borderWidth).toEqual(0);
         expect(props.padding).toEqual(0);
         expect(props.fixedPoints).toBe(null);
         expect(props.rtl).toBeFalsy();
+        expect(props.glow).toEqual(0);
+        expect(props.glowColor).toBe('#fff');
+        expect(props.clearable).toBeFalsy();
+        expect(props.activeOnClick).toBeFalsy();
+        expect(props.animate).toBeFalsy();
     });
 
     it('should set the props', () => {
@@ -39,10 +45,16 @@ describe('star-rating component', () => {
             textClass: 'foo',
             inline: true,
             borderColor: "#000",
+            activeBorderColor: "#000",
             borderWidth: 1,
             padding: 5,
             fixedPoints: 2,
-            rtl: true
+            rtl: true,
+            glow: 5,
+            glowColor: "#000",
+            clearable: true,
+            activeOnClick: true,
+            animate: true
         }
 
         const wrapper = mount(StarRating, {
@@ -59,12 +71,18 @@ describe('star-rating component', () => {
         expect(props.showRating).toBeFalsy();
         expect(props.readOnly).toBeTruthy();
         expect(props.borderColor).toBe("#000");
+        expect(props.activeBorderColor).toBe("#000");
         expect(props.borderWidth).toEqual(1);
         expect(props.padding).toEqual(5);
         expect(props.fixedPoints).toEqual(2);
         expect(props.rtl).toBeTruthy();
         expect(props.inline).toBeTruthy();
         expect(props.textClass).toBe("foo");
+        expect(props.glow).toEqual(5);
+        expect(props.glowColor).toBe('#000');
+        expect(props.clearable).toBeTruthy();
+        expect(props.activeOnClick).toBeTruthy();
+        expect(props.animate).toBeTruthy();
     });
 
 
@@ -201,8 +219,6 @@ describe('star-rating component', () => {
     });
 
     it('should not round the start rating', () => {
-        //vm = getViewInstance({roundStartRating: false, rating: 4.34}).$mount("#app");
-
         const wrapper = mount(StarRating, {
             propsData: {
                 roundStartRating: false,
@@ -213,9 +229,72 @@ describe('star-rating component', () => {
         expect(wrapper.vm.currentRating).toEqual(4.34);
     });
 
+    it('should pad the color values with last array value when activeColor is array', () => {
+        const wrapper = mount(StarRating, {
+            propsData: {
+                activeColor: ["red", "black"],
+            }
+        })
+
+        expect(wrapper.vm.activeColors.length).toEqual(5)
+        expect(wrapper.vm.activeColors[4]).toBe("black")
+    })
+
+    it('should set the first star color value to first active color in array', () => {
+        const wrapper = mount(StarRating, {
+            propsData: {
+                activeColor: ["red", "black"],
+            }
+        })
+
+        expect(wrapper.vm.activeColors[0]).toBe("red")
+        expect(wrapper.vm.activeColors[1]).toBe("black")
+    })
+
+    it('should pad the color values with last array value when activeBorderColor is array', () => {
+        const wrapper = mount(StarRating, {
+            propsData: {
+                activeBorderColor: ["red", "black"],
+            }
+        })
+
+        expect(wrapper.vm.activeBorderColors.length).toEqual(5)
+        expect(wrapper.vm.activeBorderColors[4]).toBe("black")
+    })
+
+    it('should set the first star color value to first active border color in array', () => {
+        const wrapper = mount(StarRating, {
+            propsData: {
+                activeBorderColor: ["red", "black"],
+            }
+        })
+
+        expect(wrapper.vm.activeBorderColors[0]).toBe("red")
+        expect(wrapper.vm.activeBorderColors[1]).toBe("black")
+    })
+
+    it('should set the screenReader scoped slot to the default', () => {
+        const wrapper = mount(StarRating, {
+            propsData: {
+                rating: 4
+            }
+        })
+        expect(wrapper.text()).toContain('Rated 4 stars out of 5')
+    })
+
+    it('should set the screenReader scoped slot to the passed value', () => {
+        const wrapper = mount(StarRating, {
+            propsData: {
+                rating: 4
+            },
+            scopedSlots: {
+                'screen-reader': '<p>This product has been rated {{props.rating}} out of {{props.stars}} stars</p>'
+            }
+        })
+        expect(wrapper.text()).toContain('This product has been rated 4 out of 5 stars')
+    })
 
     describe('dom events', () => {
-
 
         it('should add the given number of stars to the page ', () => {
             const wrapper = mount(StarRating)
@@ -305,7 +384,7 @@ describe('star-rating component', () => {
 
         it('should add the textClass class to rating-text', () => {
 
-            const wrapper = mount(StarRating,{
+            const wrapper = mount(StarRating, {
                 propsData: {
                     textClass: 'foo'
                 }
@@ -316,7 +395,7 @@ describe('star-rating component', () => {
 
 
         it('should add the vue-star-rating-inline class to star-rating', () => {
-            const wrapper = mount(StarRating,{
+            const wrapper = mount(StarRating, {
                 propsData: {
                     inline: false
                 }
@@ -326,7 +405,7 @@ describe('star-rating component', () => {
         });
 
         it('should add the vue-star-rating-inline class to star-rating', () => {
-            const wrapper = mount(StarRating,{
+            const wrapper = mount(StarRating, {
                 propsData: {
                     inline: true
                 }
