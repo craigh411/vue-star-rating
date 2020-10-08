@@ -5,7 +5,7 @@
 - Project follows [Semantic Versioning](http://semver.org/)
 
 
-## Version 2.1.0 (Development)
+## Version 2.1.0
 
 - New `animate` prop added which slightly rotates and expands the star on mouseover
 - New `active-on-click` prop applies active colors on click rather than on hover when set
