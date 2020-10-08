@@ -66,7 +66,9 @@ You may also include `vue-star-rating` directly in to your webpage via Unpkg. Si
 
 #### Vue 2.x
 
-`<script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>`
+```javascript
+<script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>`
+```
 
 You will need to register the component by doing:
 
@@ -76,7 +78,9 @@ Vue.component('star-rating', VueStarRating.default);
 
 #### Vue 3.x
 
-`<script src="https://unpkg.com/vue-star-rating@next/dist/VueStarRating.umd.min.js"></script>`
+```javascript
+<script src="https://unpkg.com/vue-star-rating@next/dist/VueStarRating.umd.min.js"></script>
+````
 
 ```javascript
 const app = Vue.createApp({ 
