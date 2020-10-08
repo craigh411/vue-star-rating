@@ -10,11 +10,13 @@ var defaultProps = {
     activeColor: 'yellow',
     inactiveColor: 'grey',
     borderColor: '#000',
+    activeBorderColor: '#fff',
     borderWidth: 0,
     roundedCorners: true,
-    rtl: true,
+    rtl: false,
     glow: 1,
-    glowColor: '#000'
+    glowColor: '#000',
+    animate: true
 };
 
 
@@ -32,11 +34,14 @@ describe('Star Component', () => {
         expect(props.activeColor).toBe('yellow');
         expect(props.inactiveColor).toBe('grey');
         expect(props.borderColor).toBe('#000');
+        expect(props.activeBorderColor).toBe('#fff');
         expect(props.borderWidth).toEqual(0);
         expect(props.roundedCorners).toBeTruthy()
-        expect(props.rtl).toBeTruthy()
+        expect(props.rtl).toBeFalsy()
         expect(props.glow).toEqual(1)
         expect(props.glowColor).toEqual('#000')
+        expect(props.animate).toBeTruthy()
+        expect(props.activeBorderColor).toEqual("#fff")
 
     })
 
@@ -94,6 +99,30 @@ describe('Star Component', () => {
 
         expect(props.fill).toEqual(50);
     });
+
+    it('should set getBorderColor to borderColor prop when no fill is 0', () => {
+        const wrapper = mount(Star, {
+            propsData: Object.assign(defaultProps, {
+                fill: 0,
+                borderColor: "#bada55",
+                activeBorderColor: "#123456"
+            })
+        });
+        expect(wrapper.vm.getBorderColor).toBe("#bada55");
+
+    })
+
+    it('should set getBorderColor to activeBorderColor prop when no fill is more than 0', () => {
+        const wrapper = mount(Star, {
+            propsData: Object.assign(defaultProps, {
+                fill: 1,
+                borderColor: "#bada55",
+                activeBorderColor: "#123456"
+            })
+        });
+        expect(wrapper.vm.getBorderColor).toBe("#123456");
+    })
+
 
     it('should create a random gradient id', () => {
         const wrapper = mount(Star, {
