@@ -175,7 +175,7 @@ These props are used to style the star rating component
 
 #### Passing an Array of Colors
 
-The `active-rating` and `active-border-rating` props also accept an array of colors. The colors in the array will be applied to the stars in order, so index 0 will be the color of the first star, index 1 will be the second and so on. 
+The `active-color` and `active-border-color` props also accept an array of colors. The colors in the array will be applied to the stars in order, so index 0 will be the color of the first star, index 1 will be the second and so on. 
 Any array you pass will be padded if the number of elements in the array is less than the number of stars. This means that the following code will color the first star red and *ALL* remaining stars black.
 
 
