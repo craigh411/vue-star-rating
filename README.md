@@ -66,7 +66,7 @@ You may also include `vue-star-rating` directly in to your webpage via Unpkg. Si
 
 #### Vue 2.x
 
-`<script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>`
+`<script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>`
 
 You will need to register the component by doing:
 
@@ -123,7 +123,7 @@ These props provide general functionailty to the star rating component
 | ------------- | ------------- |-------------|-------------|
 | increment  |  The rating increment, for example pass 0.5 for half stars or 0.01 for fluid stars. Expects a number between 0.01 - 1. | Number | 1
 | rating  | The initial rating, this will automatically round to the closest increment, so for the most accurate rating pass 0.01 as increment or set the `round-start-rating` prop to false  | Number | 0 |
-| max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | 5 |
+| max-rating  | The maximum rating, this lets `vue-star-rating` know how many stars to display | Number | 5 |
 | star-points | The points defining a custom star shape.<br><small>_If no points are passed the default star shape is used._</small> | Array| [] |
 | read-only  | When set to true, the rating cannot be edited. Use in conjuction with `increment` to define rounding precision.  | Boolean | false |
 | show-rating  | Whether or not to show the rating next to the stars  | Boolean | true |
