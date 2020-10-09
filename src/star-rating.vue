@@ -205,6 +205,10 @@ export default {
 
             }
             return (this.selectedRating > 0) ? this.activeBorderColors[Math.ceil(this.selectedRating) - 1] : this.borderColor
+        },
+        roundedRating() {
+            let inv = 1.0 / this.increment
+            return Math.min(this.maxRating, Math.ceil(this.currentRating * inv) / inv)
         }
     },
     watch: {
@@ -246,7 +250,7 @@ export default {
         },
         createStars(round = true, applyFill = true) {
             if (round) {
-                this.round()
+                this.currentRating = this.roundedRating
             }
             for (let i = 0; i < this.maxRating; i++) {
                 let level = 0
@@ -257,10 +261,6 @@ export default {
                     this.fillLevel[i] = Math.round(level)
                 }
             }
-        },
-        round() {
-            let inv = 1.0 / this.increment
-            this.currentRating = Math.min(this.maxRating, Math.ceil(this.currentRating * inv) / inv)
         },
         padColors(array, minLength, fillValue) {
             return Object.assign(new Array(minLength).fill(fillValue), array)
