@@ -249,9 +249,8 @@ export default {
             }
         },
         createStars(round = true, applyFill = true) {
-            if (round) {
-                this.currentRating = this.roundedRating
-            }
+
+            this.currentRating = (round) ? this.roundedRating : this.currentRating
             for (let i = 0; i < this.maxRating; i++) {
                 let level = 0
                 if (i < this.currentRating) {
