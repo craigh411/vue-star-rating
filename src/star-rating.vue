@@ -270,7 +270,6 @@ export default {
 <style scoped>
     .vue-star-rating-star {
         display: inline-block;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-tap-highlight-color: transparent;
     }
 
