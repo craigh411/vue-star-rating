@@ -212,9 +212,9 @@ export default {
         },
         getPosition($event) {
             // calculate position in percentage.
-            var starWidth = (92 / 100) * this.size
+            let starWidth = (92 / 100) * this.size
             const offset = (this.rtl) ? Math.min($event.offsetX, 45) : Math.max($event.offsetX, 1)
-            var position = Math.round((100 / starWidth) * offset)
+            let position = Math.round((100 / starWidth) * offset)
 
             return Math.min(position, 100)
         },

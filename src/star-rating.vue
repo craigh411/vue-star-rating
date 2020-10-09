@@ -253,7 +253,7 @@ export default {
             if (round) {
                 this.round()
             }
-            for (var i = 0; i < this.maxRating; i++) {
+            for (let i = 0; i < this.maxRating; i++) {
                 let level = 0
                 if (i < this.currentRating) {
                     level = (this.currentRating - i > 1) ? 100 : (this.currentRating - i) * 100
@@ -264,7 +264,7 @@ export default {
             }
         },
         round() {
-            var inv = 1.0 / this.increment
+            let inv = 1.0 / this.increment
             this.currentRating = Math.min(this.maxRating, Math.ceil(this.currentRating * inv) / inv)
         },
         padColors(array, minLength, fillValue) {
