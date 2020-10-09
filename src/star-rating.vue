@@ -228,12 +228,7 @@ export default {
                 this.currentRating = (this.currentRating > this.maxRating) ? this.maxRating : this.currentRating
                 if (persist) {
                     this.createStars(true, true)
-                    if (this.clearable && this.currentRating === this.selectedRating) {
-                        this.selectedRating = 0
-                    } else {
-                        this.selectedRating = this.currentRating
-                    }
-
+                    this.selectedRating = (this.clearable && this.currentRating === this.selectedRating) ? 0 : this.currentRating
                     this.$emit('update:rating', this.selectedRating)
                     this.ratingSelected = true
 
