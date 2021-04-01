@@ -102,11 +102,11 @@ export default {
         },
         borderColor: {
             type: String,
-            default: '#000'
+            default: '#fff'
         },
         activeBorderColor: {
             type: String,
-            default: '#000'
+            default: '#fff'
         },
         borderWidth: {
             type: Number,
@@ -249,11 +249,11 @@ export default {
     }
 
     .vue-star-rating-star-rotate {
-        transition: all .25s;
+        transition: all .3s ease-in-out;
     }
 
     .vue-star-rating-star-rotate:hover {
         transition: transform 0.25s;
-        transform: rotate(-15deg) scale(1.3)
+        transform:  scale(1.3)
     }
 </style>
