@@ -102,7 +102,7 @@ export default {
         },
         borderColor: {
             type: String,
-            default: '#fff'
+            default: '#ffd055'
         },
         activeBorderColor: {
             type: String,

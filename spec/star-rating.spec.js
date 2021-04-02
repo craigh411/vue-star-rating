@@ -7,7 +7,6 @@ describe('star-rating component', () => {
     it('should set the default props values', () => {
         const wrapper = mount(StarRating)
         const props = wrapper.props()
-
         expect(props.increment).toEqual(1);
         expect(props.rating).toEqual(0);
         expect(props.activeColor).toBe("#ffd055");
